@@ -1,4 +1,6 @@
+const { findById } = require('../models/User');
 const Workspace = require('../models/Workspace');
+const User = require('../models/User');
 
 const createWorkspace = async (req, res)=>{
     try{
@@ -10,9 +12,10 @@ const createWorkspace = async (req, res)=>{
             members: [{user: req.user._id, role: 'owner'}]
         });
         
-        res.status(201).json({message: 'Workspace created!'});
+        res.status(201).json({message: 'Workspace created!', workspace: workspace});
     }
     catch(e){
+          console.log(e);
         res.status(500).json({message: 'Server Error'});
     }
 };
@@ -23,12 +26,20 @@ const getWorkspaces = async (req, res) => {
         res.status(200).json({ workspaces });
     }
     catch (e) {
+          console.log(e);
         res.status(500).json({ message: 'Invalid Id format' });
     }
 };
 
 const getWorkspace = async(req, res)=>{
-    res.status(200).json({workspace: req.workspace});
+    try{
+        res.status(200).json({workspace: req.workspace});
+    }
+    catch(e){
+          console.log(e);
+        res.status(500).json({message: 'Invalid Id format'});
+    }
+    
 };
 
 const updateWorkspace = async (req, res) => {
@@ -40,6 +51,7 @@ const updateWorkspace = async (req, res) => {
         res.status(200).json({ message: 'Workspace updated!', Workspace: req.workspace});
     }
     catch (e) {
+          console.log(e);
         res.status(500).json({ message: 'Invalid Id format' });
     }
 };
@@ -47,12 +59,35 @@ const updateWorkspace = async (req, res) => {
 const deleteWorkspace = async (req, res)=>{
     try{
         await Workspace.findByIdAndDelete(req.params.id);
-        res.status(200).json({messaeg: 'workspace deleted successfully'});
+        res.status(200).json({message: 'workspace deleted successfully'});
     }
     catch(e){
+        console.log(e);
         res.status(500).json({message: 'Server error'});
     }
 };
 
-module.exports = { createWorkspace, getWorkspaces, getWorkspace, updateWorkspace, deleteWorkspace};
+const addMember = async (req, res)=>{
+    try{
+    
+        const {email, role} = req.body;
+
+        const userToAdd = await User.findOne({ email });
+        if(!userToAdd) return res.status(404).json({mesasge: 'User with that email does not exists'});
+
+        const alreadyMember = req.workspace.members.find(m => m.user.toString() === userToAdd._id.toString());
+        if(alreadyMember) return res.status(400).json({message: 'User is already a member'});
+
+        req.workspace.members.push({user: userToAdd._id, role: role || 'member'});
+        await req.workspace.save();
+
+        res.status(200).json({message: 'Member added', workspace: req.workspace});
+    }
+    catch(e){
+        console.log(e);
+        res.status(500).json({message: 'Server error on adding member'});
+    }
+}
+
+module.exports = { createWorkspace, getWorkspaces, getWorkspace, updateWorkspace, deleteWorkspace, addMember};
 
