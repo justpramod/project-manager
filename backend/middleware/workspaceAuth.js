@@ -21,7 +21,7 @@ const checkOwner = async function (req, res, next) {
         const workspace = await Workspace.findById(req.params.id);
         if (!workspace) return res.status(404).json({ message: 'workspace doesnot exists' });
 
-        const member = await ws.find(m=> m.user.toString() === req.user._id.toString());
+        const member =  workspace.find(m=> m.user.toString() === req.user._id.toString());
 
         if (!member || member.role != 'owner')
         {
