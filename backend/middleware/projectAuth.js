@@ -16,10 +16,12 @@ const isWorkspaceMember = async (req, res, next) => {
         res.status(500).json({ message: 'server error on check workspace_membersihp' });
     }
 };
-const isProjectMember = async (req, res, next) => {
+const isProjectMember = (paramName)=>{
+
+return async (req, res, next) => {
 
     try {
-        const project = await Project.findById(req.params.id);
+        const project = await Project.findById(req.params[paramName]);
         if (!project) return res.status(404).json({ message: 'Project doesnot exists' });
 
         const ws = await Workspace.findById(project.workspace);
@@ -36,6 +38,7 @@ const isProjectMember = async (req, res, next) => {
         console.log(e);
         res.status(500).json({ message: 'Invalid Id format' });
     }
+};
 };
 
 module.exports = {isWorkspaceMember, isProjectMember};
