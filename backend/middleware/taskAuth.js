@@ -2,10 +2,11 @@ const Project = require('../models/Project');
 const Task = require('../models/Task');
 const Workspace = require('../models/Workspace');
 
-// for api/tasks/:id 
-const isTaskMember = async(req, res, next)=>{
+// for api/tasks/:id  and api/tasks/:taskId
+const isTaskMember = (paramName)=>{
+   return async(req, res, next)=>{
  try{
-    const task = await Task.findById(req.params.id);
+    const task = await Task.findById(req.params[paramName]);
     if(!task) return res.status(404).json({message: 'Task does not exists'});
 
     const project = await Project.findById(task.project);
@@ -27,6 +28,8 @@ const isTaskMember = async(req, res, next)=>{
     res.status(500).json({message: 'Invalid Id Format'});
  }
 };
+}
+
 
 
 module.exports = {isTaskMember};

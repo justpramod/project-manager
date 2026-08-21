@@ -16,6 +16,7 @@ app.use('/api/auth', authRouter);
 
 app.use('/api/workspace',workspaceRouter); //includes workspace routes as well as nested project routes within it.
 app.use('/api/projects', projectRouter); // includes project routes as well as nested task routes.
-app.use('/api/tasks/',taskRouter);
+app.use('/api/tasks',taskRouter); // also handles coments CRUD
+ 
 
 app.listen(PORT, ()=> console.log(`Server running on http://localhost: ${PORT}`));
