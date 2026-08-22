@@ -6,7 +6,8 @@ const attachmentSchema = new mongoose.Schema(
         size: {type: Number, required: true },
         mimetype: {type: String, required: true},
         uploadedBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-        task: {type: mongoose.Schema.Types.ObjectId, ref: 'Task'}
+        task: {type: mongoose.Schema.Types.ObjectId, ref: 'Task'},
+        url: {type: String, required: true}
     },
     {
         timestamps: true

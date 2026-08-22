@@ -18,5 +18,6 @@ app.use('/api/workspace',workspaceRouter); //includes workspace routes as well a
 app.use('/api/projects', projectRouter); // includes project routes as well as nested task routes.
 app.use('/api/tasks',taskRouter); // also handles coments CRUD
  
+app.use('/uploads', express.static('uploads'));
 
 app.listen(PORT, ()=> console.log(`Server running on http://localhost: ${PORT}`));
