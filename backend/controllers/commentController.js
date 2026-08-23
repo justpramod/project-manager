@@ -1,4 +1,5 @@
 const Comment = require("../models/Comment");
+const { getIO } = require('../utils/socket');
 
 const createComment = async(req, res)=>{
 try{
@@ -6,6 +7,8 @@ try{
     if(!text) return res.status(400).json({message: 'text filed required to comment'});
 
     const comment = await Comment.create({text, author: req.user._id, task: req.task._id});
+    getIO().to(req.task._id.toString()).emit('newComment', comment);
+
     res.status(201).json({comment});
 }
 catch(e){
