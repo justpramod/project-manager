@@ -1,4 +1,5 @@
 const Project = require('../models/Project');
+const { getIO } = require('../utils/socket');
 
 const createProject = async (req, res) => {
     try {
@@ -6,6 +7,8 @@ const createProject = async (req, res) => {
         if (!name) return res.status(400).json({ message: 'Name is required' });
 
         const project = await Project.create({ name, description, workspace: req.workspace._id });
+        getIO().to(req.workspace._id.toString()).emit('newProject', project);
+
         res.status(201).json({ project });
     }
     catch (e) {
@@ -37,6 +40,7 @@ const updateProject = async (req, res) => {
         if (name) req.project.name = name;
         if (description !== undefined) req.project.description = description;
         await req.project.save();
+        getIO().to(req.workspace._id.toString()).emit('updateProject', req.project);
 
         res.status(200).json({ message: 'Project Updated', project: req.project });
     }
@@ -50,7 +54,10 @@ const deleteProject = async (req, res) => {
     try {
 
         await Project.findByIdAndDelete(req.params.id);
+        getIO().to(req.workspace._id.toString()).emit('deleteProject', req.params.id);
+        
         res.status(200).json({ message: 'Project deleted successfully' });
+
     }
     catch (e) {
         console.log(e);

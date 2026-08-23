@@ -61,6 +61,8 @@ const updateTask = async (req, res) => {
          req.task.assignee = user._id; // store actual objectId reference on task.
         }
         await req.task.save();
+        getIO().to(req.project._id.toString()).emit('updateTask', req.task);
+        
         res.status(200).json({message: 'Task updated', task: req.task});
     }
     catch (e) {
@@ -72,6 +74,7 @@ const updateTask = async (req, res) => {
 const deleteTask = async (req, res)=>{
     try{
          await Task.findByIdAndDelete(req.params.id);
+         getIO().to(req.project._id.toString()).emit('deleteTask', req.params.id);
          res.status(200).json({message: 'Task deleted successfully'});
     }
     catch(e){

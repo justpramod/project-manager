@@ -19,6 +19,11 @@ function initSocket(server) {
             socket.join(projectId);
             console.log(`Socket ${socket.id} joined Project room ${projectId}`);
         });
+        
+        socket.on('joinWorkspace',(workspaceId)=>{
+            socket.join(workspaceId);
+            console.log(`Socket ${socket.id} joined Workspace room ${workspaceId}`);
+        });
 
         socket.on('disconnect', () => {
             console.log('User disconected: ', socket.id);

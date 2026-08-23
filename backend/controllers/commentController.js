@@ -38,6 +38,8 @@ try{
     if(comment.author.toString()!== req.user.toString()) return res.status(403).json({message: 'Not your comment!'});
 
     comment.deleteOne(req.params.id);
+    getIO().to(req.task._id.toString()).emit('deleteComment', comment._id);
+    
     res.status(200).json({message: 'Comment Deleted Successfully'});
 }
 catch(e){

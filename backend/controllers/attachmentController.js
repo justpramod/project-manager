@@ -49,6 +49,7 @@ const deleteAttachment = async (req, res) => {
         }
        
         await attachment.deleteOne();
+        getIO().to(req.task._id.toString()).emit('deleteAttachment', req.params.id);
 
         res.status(200).json({ message: `File Deleted Successfully: ${attachment.filename}` });
     }
