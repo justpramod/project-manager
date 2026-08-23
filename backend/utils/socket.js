@@ -14,7 +14,12 @@ function initSocket(server) {
             socket.join(taskId);
             console.log(`Socket ${socket.id} joined task room ${taskId}`);
         });
-        
+
+        socket.on('joinProject',(projectId)=>{
+            socket.join(projectId);
+            console.log(`Socket ${socket.id} joined Project room ${projectId}`);
+        });
+
         socket.on('disconnect', () => {
             console.log('User disconected: ', socket.id);
         });

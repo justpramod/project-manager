@@ -1,5 +1,6 @@
 const Task = require('../models/Task');
 const User = require('../models/User');
+const { getIO } = require('../utils/socket');
 
 //protected by isprojectMember on api/project/projectId/tasks 
 const createTask = async (req, res) => {
@@ -9,6 +10,7 @@ const createTask = async (req, res) => {
         const task = await Task.create({
             title, description, status, priority, createdBy: req.user._id, project: req.project._id
         });
+        getIO().to(req.project._id.toString()).emit('newTask', task);
         res.status(201).json({ message: 'Task created', task: task });
     }
     catch (e) {
