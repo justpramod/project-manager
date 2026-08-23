@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 const Attachment = require('../models/Attachment');
-
+const {getIO} = require('../utils/socket');
 const createAttachment = async (req, res) => {
     try {
         if (!req.file) return res.status(400).json({ message: 'File does not exists' });
@@ -9,6 +9,8 @@ const createAttachment = async (req, res) => {
         const url = `/uploads/${filename}`;
         const attachment = await Attachment.create(
             { filename, size, mimetype, uploadedBy: req.user._id, task: req.task._id, url: url });
+        getIO().to(req.task._id.toString()).emit('newAttachment', attachment);
+        
         res.status(201).json({ message: 'Attachment created successfully!!', attachment: attachment });
     }
     catch (e) {
