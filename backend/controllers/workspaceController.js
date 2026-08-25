@@ -22,8 +22,25 @@ const createWorkspace = async (req, res)=>{
 
 const getWorkspaces = async (req, res) => {
     try {
-        const workspaces = await Workspace.find({ 'members.user': req.user._id });
-        res.status(200).json({ workspaces });
+
+        const filter = { 'members.user': req.user._id};
+    
+        let page = parseInt(req.query.page) || 1;
+        let limit = parseInt(req.query.limit) || 10;
+        if(page<1) page = 1;
+        if(limit < 1) limit = 10;
+        if(limit > 100) limit = 100;
+        
+        const skip = (page - 1) * limit;
+        
+        const workspaces = await Workspace.find(filter).skip(skip).limit(limit);
+        const total = await Workspace.countDocuments(filter);
+
+        res.status(200).json({ 
+            workspaces,
+            pagination: {total, page, limit, totalPages: Math.ceil(total / limit )}
+         });
+
     }
     catch (e) {
           console.log(e);

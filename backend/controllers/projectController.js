@@ -19,8 +19,23 @@ const createProject = async (req, res) => {
 
 const getProjects = async (req, res) => {
     try {
-        const projects = await Project.find({ workspace: req.params.workspaceId });
-        res.status(200).json({ projects });
+        const filter = {workspace: req.params.workspaceId};
+        if(req.query.name) filter.name = { $regex: req.query.name, $options: 'i'};
+        
+        let page = parseInt(req.query.page) || 1;
+        let limit = parseInt(req.query.limit) || 10;
+        if(page< 1) page = 1;
+        if(limit< 1) limit = 10;
+        if(limit > 100) limit = 100;
+
+        const skip = (page - 1) * limit;
+
+        const projects = await Project.find(filter).skip(skip).limit(limit);
+        const total = await Project.countDocuments(filter);
+        res.status(200).json({
+             projects,
+            pagination: { total, page, limit, totalPages: Math.ceil(total / limit )}
+         });
     }
     catch (e) {
         console.log(e);
