@@ -10,6 +10,11 @@ function initSocket(server) {
     io.on('connection', (socket) => {
         console.log('A user connected: ', socket.id);
 
+        socket.on('joinUser', (userId)=>{
+            socket.join(userId);
+            console.log(`Socket ${socket.id} joined user room ${userId}`);
+        });
+
         socket.on('joinTask', (taskId)=>{
             socket.join(taskId);
             console.log(`Socket ${socket.id} joined task room ${taskId}`);

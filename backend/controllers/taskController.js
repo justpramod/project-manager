@@ -1,5 +1,7 @@
 const Task = require('../models/Task');
 const User = require('../models/User');
+
+const Notification = require('../models/Notification');
 const { getIO } = require('../utils/socket');
 
 //protected by isprojectMember on api/project/projectId/tasks 
@@ -79,6 +81,14 @@ const updateTask = async (req, res) => {
             if (!isMember) return res.status(403).json({ message: 'The desired assignee is not a member of the workspace' });
 
             req.task.assignee = user._id; // store actual objectId reference on task.
+
+           const notification =  await Notification.create({
+                recipient: user._id,
+                type: 'task_assigned',
+                message: `You were assigned to "${req.task.title}"`,
+                relatedTask: req.task._id
+            });
+            getIO().to(user._id.toString()).emit('newNotification', notification);
         }
         await req.task.save();
         getIO().to(req.project._id.toString()).emit('updateTask', req.task);
