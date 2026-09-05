@@ -7,14 +7,23 @@ const { getIO } = require('../utils/socket');
 //protected by isprojectMember on api/project/projectId/tasks 
 const createTask = async (req, res) => {
     try {
-        const { title, description, status, priority, assignee } = req.body;
+         const { title, description, status, priority, assignee } = req.body;
         if (!title) return res.status(400).json({ message: 'Title is required' });
-        const Assignee = await User.findOne({ username: assignee });
+
+        let assigneeId = undefined;
+        if (assignee) {
+            const assigneeUser = await User.findOne({ email: assignee });
+            if (!assigneeUser) return res.status(404).json({ message: 'Assignee user does not exist' });
+            assigneeId = assigneeUser._id;
+        }
 
         const task = await Task.create({
-            title, description, status, priority, assignee: Assignee._id, createdBy: req.user._id, project: req.project._id
+            title, description, status, priority,
+            assignee: assigneeId,
+            createdBy: req.user._id,
+            project: req.project._id
         });
-
+        
         getIO().to(req.project._id.toString()).emit('newTask', task);
         res.status(201).json({ message: 'Task created', task: task });
     }
