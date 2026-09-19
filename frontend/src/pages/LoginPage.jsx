@@ -44,7 +44,7 @@ function LoginPage(){
                 value={email}
                 onChange={(e)=> setEmail(e.target.value)}
                 required
-                class="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
+                className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
 
         />
     </div>
@@ -57,7 +57,7 @@ function LoginPage(){
         value={password}
         onChange={(e)=> setPassword(e.target.value)}
         required
-            class="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"/>
+            className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"/>
     </div>
 
     <p class="mt-4">

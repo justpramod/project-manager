@@ -33,13 +33,13 @@ function RegisterPage() {
 
     return (
         <div className="grid place-content-center h-screen ">
-            <h2 className="text-3xl">Register</h2>
-            <form action="" onSubmit={handleSubmit}>
+            <h2 className="text-3xl text-center">Register</h2>
+            <form className="bg-white rounded-lg shadow-xl text-sm text-gray-500 border-gray-200 p-8 py-12 w-100"  onSubmit={handleSubmit}>
 
                 {error && <p style={{ color: 'red' }}>{error}</p>}
 
-                <div className="flex">
-                     <label htmlFor="username">Username</label>
+                <div className="mt-4">
+                     <label htmlFor="username" className="block">Username</label>
                 <input
                     id="username"
                     type="text"
@@ -47,9 +47,10 @@ function RegisterPage() {
                     value={username}
                     onChange={(e)=> setUsername(e.target.value)}
                     required
+                    className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
                  />
 
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email" className="mt-4">Email</label>
                 <input
                     id="email"
                     type="email"
@@ -57,9 +58,10 @@ function RegisterPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
                 />
 
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password" className="mt-4">Password</label>
                 <input 
                     id="password"
                     type="text"
@@ -67,12 +69,14 @@ function RegisterPage() {
                     value={password}
                     onChange={(e)=> setPassword(e.target.value)}
                     required
+                    className="border-gray-200 border rounded w-full p-2 mt-1 outline-indigo-500"
                  />
 
-                <button type="submit" disabled = {submitting}>
+                <button type="submit" disabled = {submitting} 
+                className="bg-indigo-500 hover:bg-indigo-600 transition-all text-white w-full py-2 rounded-md mt-4 cursor-pointer">
                     {submitting ? 'Registering..': 'Register'}
                 </button>
-                <p>Already have an account? <Link to= "/login">Login</Link></p>
+                <p className="mt-4">Already have an account? <Link to= "/login">Login</Link></p>
 
                 </div>
 
