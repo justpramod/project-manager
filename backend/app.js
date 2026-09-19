@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const app = express();
 
@@ -6,6 +7,8 @@ const workspaceRouter = require('./routes/workspaceRouter');
 const projectRouter = require('./routes/projectRoutes');
 const taskRouter = require('./routes/taskRoutes');
 const notificationRouter = require('./routes/notificationRoutes');
+
+app.use(cors({origin: process.env.CLIENT_URL})); 
 
 app.use(express.json());
 

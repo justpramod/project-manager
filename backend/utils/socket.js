@@ -1,10 +1,11 @@
+require('dotenv').config();
+const { configDotenv } = require('dotenv');
 const { Server } = require('socket.io');
 let io;
-
 // initSocket sets the module-level io variable once.
 function initSocket(server) {
     io = new Server(server, {
-        cors: { origin: '*' }
+        cors: { origin: process.env.CLIENT_URL }
     });
 
     io.on('connection', (socket) => {
