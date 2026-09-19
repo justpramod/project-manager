@@ -32,11 +32,11 @@ function LoginPage(){
     return (
     <div className='grid place-content-center h-screen'>
         <form className="bg-white rounded-lg shadow-xl text-sm text-gray-500 border border-gray-200 p-8 py-12 w-80 " onSubmit={handleSubmit}>
-    <p class="text-2xl font-medium text-center">
-        <span class="text-indigo-500">User</span> Login
+    <p className="text-2xl font-medium text-center">
+        <span className="text-indigo-500">User</span> Login
     </p>
 
-    <div class="mt-4">
+    <div className="mt-4">
         <label  htmlFor='email' className="block">Email</label>
         <input  id='email'
                 type="email"
@@ -49,7 +49,7 @@ function LoginPage(){
         />
     </div>
 
-    <div class="mt-4">
+    <div className="mt-4">
         <label htmlFor='password' className="block">Password</label>
         <input 
         type="password" 
@@ -60,7 +60,7 @@ function LoginPage(){
             className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"/>
     </div>
 
-    <p class="mt-4">
+    <p className="mt-4">
         Create an account?
         <Link to= "/register" className="text-indigo-500">Click here </Link>
     </p>

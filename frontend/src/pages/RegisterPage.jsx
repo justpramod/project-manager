@@ -39,7 +39,7 @@ function RegisterPage() {
                 {error && <p style={{ color: 'red' }}>{error}</p>}
 
                 <div className="mt-4">
-                     <label htmlFor="username" className="block">Username</label>
+                     <label htmlFor="username" className="block mt-4">Username</label>
                 <input
                     id="username"
                     type="text"
@@ -50,7 +50,7 @@ function RegisterPage() {
                     className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
                  />
 
-                <label htmlFor="email" className="mt-4">Email</label>
+                <label htmlFor="email" className="mt-4 block">Email</label>
                 <input
                     id="email"
                     type="email"
@@ -61,10 +61,10 @@ function RegisterPage() {
                     className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
                 />
 
-                <label htmlFor="password" className="mt-4">Password</label>
+                <label htmlFor="password" className="mt-4 block">Password</label>
                 <input 
                     id="password"
-                    type="text"
+                    type="password"
                     placeholder="eg: #!@@%pass@#$"
                     value={password}
                     onChange={(e)=> setPassword(e.target.value)}
@@ -76,7 +76,7 @@ function RegisterPage() {
                 className="bg-indigo-500 hover:bg-indigo-600 transition-all text-white w-full py-2 rounded-md mt-4 cursor-pointer">
                     {submitting ? 'Registering..': 'Register'}
                 </button>
-                <p className="mt-4">Already have an account? <Link to= "/login">Login</Link></p>
+                <p className="mt-4">Already have an account? <Link to= "/login" className="text-indigo-500">Login</Link></p>
 
                 </div>
 

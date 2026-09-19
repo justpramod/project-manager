@@ -2,16 +2,17 @@ import axiosClient from "./axiosClient";
 
 export const registerUser = async (userData)=>{
 
-    const res = await axiosClient.post('auth/register', userData);
+    const res = await axiosClient.post('/auth/register', userData);
     return res.data;
 };
 
 export const loginUser = async (Credential)=>{
-    const res = await axiosClient.post('auth/login', Credential);
+    const res = await axiosClient.post('/auth/login', Credential);
+    console.log(res.data);
     return res.data;
 };
 
 export const getMe = async ()=>{
-    const res = await axiosClient.get('auth/me');
+    const res = await axiosClient.get('/auth/me');
     return res.data;
 };
