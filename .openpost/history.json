@@ -1,0 +1,1075 @@
+[
+  {
+    "id": "1789925396575",
+    "timestamp": 1789925396575,
+    "request": {
+      "id": "1789925396560",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost: 5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Failed to parse URL from http://localhost: 5050/api/workspace",
+      "time": 12,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789925408885",
+    "timestamp": 1789925408885,
+    "request": {
+      "id": "1789925408881",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost: 5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Failed to parse URL from http://localhost: 5050/api/workspace",
+      "time": 1,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789925444187",
+    "timestamp": 1789925444187,
+    "request": {
+      "id": "1789925444184",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost: 5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"justpramod\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Failed to parse URL from http://localhost: 5050/api/auth/login",
+      "time": 1,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789925601553",
+    "timestamp": 1789925601553,
+    "request": {
+      "id": "1789925601549",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost: 5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Failed to parse URL from http://localhost: 5050/api/auth/login",
+      "time": 1,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789925647343",
+    "timestamp": 1789925647343,
+    "request": {
+      "id": "1789925647335",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost: 5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Failed to parse URL from http://localhost: 5050/api/auth/login",
+      "time": 4,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789925671380",
+    "timestamp": 1789925671380,
+    "request": {
+      "id": "1789925671200",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "33",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:34:31 GMT",
+        "etag": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Invalid credentials\"}",
+      "time": 177,
+      "size": 33,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789925689212",
+    "timestamp": 1789925689212,
+    "request": {
+      "id": "1789925689007",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "271",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:34:49 GMT",
+        "etag": "W/\"10f-Jz84EVPIzLEl9pOVRWPnWSHWuL0\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"_id\":\"6aaeaa7f3bcccf5d51523924\",\"username\":\"justpramod\",\"email\":\"justpramod@gmail.com\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40\"}",
+      "time": 203,
+      "size": 271,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789925959855",
+    "timestamp": 1789925959855,
+    "request": {
+      "id": "178992594083610sq",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspaces",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": ""
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "153",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:39:19 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/workspaces</pre>\n</body>\n</html>\n",
+      "time": 4,
+      "size": 153,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926061753",
+    "timestamp": 1789926061753,
+    "request": {
+      "id": "1789926061746",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/worksapces",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "153",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:41:01 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/worksapces</pre>\n</body>\n</html>\n",
+      "time": 4,
+      "size": 153,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926066315",
+    "timestamp": 1789926066315,
+    "request": {
+      "id": "1789926066308",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/worksapce",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "152",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:41:06 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/worksapce</pre>\n</body>\n</html>\n",
+      "time": 4,
+      "size": 152,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926095039",
+    "timestamp": 1789926095039,
+    "request": {
+      "id": "1789926094815",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "77",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:41:35 GMT",
+        "etag": "W/\"4d-Ibrsf+NWSwqTd/tRKa1P8KcP3sc\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspaces\":[],\"pagination\":{\"total\":0,\"page\":1,\"limit\":10,\"totalPages\":0}}",
+      "time": 222,
+      "size": 77,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926144945",
+    "timestamp": 1789926144945,
+    "request": {
+      "id": "1789926144833",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justprabesh@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "33",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:42:24 GMT",
+        "etag": "W/\"21-10Yc7UhEvgvMDtpQHJBDqUZFnuA\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Invalid Credentials\"}",
+      "time": 108,
+      "size": 33,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926151289",
+    "timestamp": 1789926151289,
+    "request": {
+      "id": "1789926151211",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justprabesh@gmail.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "33",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:42:31 GMT",
+        "etag": "W/\"21-10Yc7UhEvgvMDtpQHJBDqUZFnuA\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Invalid Credentials\"}",
+      "time": 76,
+      "size": 33,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926160084",
+    "timestamp": 1789926160084,
+    "request": {
+      "id": "1789926160036",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justprabesh@gmail.com\",\n  \"password\": \"justprabesh\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "33",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:42:40 GMT",
+        "etag": "W/\"21-10Yc7UhEvgvMDtpQHJBDqUZFnuA\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Invalid Credentials\"}",
+      "time": 45,
+      "size": 33,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926169715",
+    "timestamp": 1789926169715,
+    "request": {
+      "id": "1789926169604",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justprabesh@gmail.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "33",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:42:49 GMT",
+        "etag": "W/\"21-10Yc7UhEvgvMDtpQHJBDqUZFnuA\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Invalid Credentials\"}",
+      "time": 110,
+      "size": 33,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926195025",
+    "timestamp": 1789926195025,
+    "request": {
+      "id": "1789926194853",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justnewaj@gmail.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "269",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:43:15 GMT",
+        "etag": "W/\"10d-e33yUqyOuy0RonfQHk0S2KibA20\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"_id\":\"6ab00bbf666bc8aac366caa2\",\"username\":\"justnewaj\",\"email\":\"justnewaj@gmail.com\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE\"}",
+      "time": 171,
+      "size": 269,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926256446",
+    "timestamp": 1789926256446,
+    "request": {
+      "id": "1789926256443",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justnewaj@gmail.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Request with GET/HEAD method cannot have body.",
+      "time": 1,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926263881",
+    "timestamp": 1789926263881,
+    "request": {
+      "id": "1789926263713",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"email\": \"justnewaj@gmail.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "77",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:44:23 GMT",
+        "etag": "W/\"4d-Ibrsf+NWSwqTd/tRKa1P8KcP3sc\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspaces\":[],\"pagination\":{\"total\":0,\"page\":1,\"limit\":10,\"totalPages\":0}}",
+      "time": 166,
+      "size": 77,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926437121",
+    "timestamp": 1789926437121,
+    "request": {
+      "id": "1789926436989",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"project-manager\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "286",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:47:17 GMT",
+        "etag": "W/\"11e-uhtxKrdmuIf9r+r6y7sOoVS7/Yc\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Workspace created!\",\"workspace\":{\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"}],\"_id\":\"6ab01c25666bc8aac366caa3\",\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-20T17:47:17.042Z\",\"__v\":0}}",
+      "time": 130,
+      "size": 286,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926454305",
+    "timestamp": 1789926454305,
+    "request": {
+      "id": "1789926454173",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Red label\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "280",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:47:34 GMT",
+        "etag": "W/\"118-89uqhChHvhlW5b9LxhBJFQagRPE\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Workspace created!\",\"workspace\":{\"name\":\"Red label\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c36666bc8aac366caa6\"}],\"_id\":\"6ab01c36666bc8aac366caa5\",\"createdAt\":\"2026-09-20T17:47:34.227Z\",\"updatedAt\":\"2026-09-20T17:47:34.227Z\",\"__v\":0}}",
+      "time": 130,
+      "size": 280,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1789926481697",
+    "timestamp": 1789926481697,
+    "request": {
+      "id": "1789926481568",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Frontending\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "282",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 20 Sep 2026 17:48:01 GMT",
+        "etag": "W/\"11a-NbhjWNYGAi42x5a6BrnUWTyAOK0\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Workspace created!\",\"workspace\":{\"name\":\"Frontending\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c51666bc8aac366caa8\"}],\"_id\":\"6ab01c51666bc8aac366caa7\",\"createdAt\":\"2026-09-20T17:48:01.638Z\",\"updatedAt\":\"2026-09-20T17:48:01.638Z\",\"__v\":0}}",
+      "time": 126,
+      "size": 282,
+      "cookies": []
+    }
+  }
+]

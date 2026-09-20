@@ -1,0 +1,278 @@
+{
+  "tabs": [
+    {
+      "id": "1789925342409w4mu",
+      "tabKind": "request",
+      "name": "New Request",
+      "method": "GET",
+      "url": "",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true,
+      "inheritScripts": false,
+      "preRequestScript": "",
+      "testScript": "",
+      "testRules": [],
+      "setVariables": [],
+      "activeTab": "headers",
+      "responseTab": "body",
+      "sourceRequestId": null,
+      "sourceCollectionId": null,
+      "sourceFolderPath": null,
+      "sourceScope": "local",
+      "proxyId": null,
+      "certificateConfig": null,
+      "inheritCertificate": false,
+      "response": null,
+      "error": null,
+      "loading": false,
+      "wsConnected": false,
+      "wsUrl": null,
+      "wsMessages": [],
+      "grpcConnected": false,
+      "grpcStreaming": false,
+      "grpcMessages": [],
+      "grpcConfig": null,
+      "groupId": null,
+      "mcpDescription": "",
+      "mcpInputSchema": "",
+      "collectionId": null,
+      "folderId": null,
+      "folderPath": null,
+      "editorScope": "local"
+    },
+    {
+      "id": "1789925347436zxt5",
+      "tabKind": "request",
+      "name": "http://localhost:5050/api/workspace",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": ""
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true,
+      "inheritScripts": false,
+      "preRequestScript": "",
+      "testScript": "",
+      "testRules": [],
+      "setVariables": [],
+      "activeTab": "headers",
+      "responseTab": "body",
+      "sourceRequestId": "178992594083610sq",
+      "sourceCollectionId": "1789925940836",
+      "sourceFolderPath": null,
+      "sourceScope": "local",
+      "proxyId": null,
+      "certificateConfig": null,
+      "inheritCertificate": false,
+      "response": {
+        "status": 401,
+        "statusText": "Unauthorized",
+        "headers": {
+          "access-control-allow-origin": "http://localhost:5173",
+          "connection": "keep-alive",
+          "content-length": "42",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Sun, 20 Sep 2026 17:39:29 GMT",
+          "etag": "W/\"2a-fKiW2B513CG5KEe3wzos7bAjHzY\"",
+          "keep-alive": "timeout=5",
+          "vary": "Origin",
+          "x-powered-by": "Express"
+        },
+        "body": "{\"message\":\"Not authorized, no token yet\"}",
+        "time": 5,
+        "size": 42,
+        "actualRequest": {
+          "method": "GET",
+          "url": "http://localhost:5050/api/workspace",
+          "headers": {
+            "Accept": "application/json",
+            "Authorization": "bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40"
+          },
+          "body": null,
+          "protocol": "HTTP/1.1",
+          "certificateNames": "System Trust Store"
+        },
+        "cookies": []
+      },
+      "error": null,
+      "loading": false,
+      "wsConnected": false,
+      "wsUrl": null,
+      "wsMessages": [],
+      "grpcConnected": false,
+      "grpcStreaming": false,
+      "grpcMessages": [],
+      "grpcConfig": null,
+      "groupId": null,
+      "mcpDescription": "",
+      "mcpInputSchema": "",
+      "collectionId": null,
+      "folderId": null,
+      "folderPath": null,
+      "editorScope": "local",
+      "fromHistory": false
+    },
+    {
+      "id": "1789926027430vfor",
+      "tabKind": "request",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Frontending\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true,
+      "inheritScripts": false,
+      "preRequestScript": "",
+      "testScript": "",
+      "testRules": [],
+      "setVariables": [],
+      "activeTab": "body",
+      "responseTab": "body",
+      "sourceRequestId": null,
+      "sourceCollectionId": null,
+      "sourceFolderPath": null,
+      "sourceScope": "local",
+      "proxyId": null,
+      "certificateConfig": null,
+      "inheritCertificate": false,
+      "response": {
+        "status": 201,
+        "statusText": "Created",
+        "headers": {
+          "access-control-allow-origin": "http://localhost:5173",
+          "connection": "keep-alive",
+          "content-length": "282",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Sun, 20 Sep 2026 17:48:01 GMT",
+          "etag": "W/\"11a-NbhjWNYGAi42x5a6BrnUWTyAOK0\"",
+          "keep-alive": "timeout=5",
+          "vary": "Origin",
+          "x-powered-by": "Express"
+        },
+        "body": "{\"message\":\"Workspace created!\",\"workspace\":{\"name\":\"Frontending\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c51666bc8aac366caa8\"}],\"_id\":\"6ab01c51666bc8aac366caa7\",\"createdAt\":\"2026-09-20T17:48:01.638Z\",\"updatedAt\":\"2026-09-20T17:48:01.638Z\",\"__v\":0}}",
+        "time": 126,
+        "size": 282,
+        "actualRequest": {
+          "method": "POST",
+          "url": "http://localhost:5050/api/workspace",
+          "headers": {
+            "Accept": "application/json",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+            "Content-Type": "application/json"
+          },
+          "body": "{\n  \"name\": \"Frontending\"\n}",
+          "protocol": "HTTP/1.1",
+          "certificateNames": "System Trust Store"
+        },
+        "cookies": [],
+        "timingPhases": [
+          {
+            "name": "Environment",
+            "duration": 0
+          },
+          {
+            "name": "Auth",
+            "duration": 0
+          },
+          {
+            "name": "HTTP Request",
+            "duration": 126
+          },
+          {
+            "name": "Post-processing",
+            "duration": 0
+          }
+        ]
+      },
+      "error": null,
+      "loading": false,
+      "wsConnected": false,
+      "wsUrl": null,
+      "wsMessages": [],
+      "grpcConnected": false,
+      "grpcStreaming": false,
+      "grpcMessages": [],
+      "grpcConfig": null,
+      "groupId": null,
+      "mcpDescription": "",
+      "mcpInputSchema": "",
+      "collectionId": null,
+      "folderId": null,
+      "folderPath": null,
+      "editorScope": "local"
+    }
+  ],
+  "groups": [],
+  "activeTabId": "1789926027430vfor",
+  "currentView": "requests",
+  "sidebarTab": "collections",
+  "sidebarCollapsed": true,
+  "responseTab": "body",
+  "layoutMode": "vertical",
+  "splitRatio": 0.5,
+  "horizontalSplitRatio": 0.5,
+  "selectedMockServerId": null
+}
