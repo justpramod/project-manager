@@ -47,10 +47,11 @@ function LoginPage() {
                     <form className="space-y-6" onSubmit={handleSubmit}>
 
                         <InputField label="Email Address" type="email" placeholder="example@gmail.com" value={email} onChange={(e)=> setEmail(e.target.value)}  />
-                        <InputField label="Password" type="password" placeholder="Strong password"  value={password} onChange={(e)=> setPassword(e.target.value)}/>
+                        <InputField label="Password" type="password" placeholder="Strong password" isPassword={true} value={password} onChange={(e)=> setPassword(e.target.value)} /> 
+                        
 
-                        <button type='submit' className="w-full bg-[#4338CA] text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition mt-6">
-                            Sign In
+                        <button type='submit' disabled = {submitting} className="w-full bg-[#4338CA] text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition mt-6">
+                           { submitting? "Signing In...": "Sign In"}
                         </button>
                     </form>
                     <div className="mt-8 text-center text-sm text-gray-600">
