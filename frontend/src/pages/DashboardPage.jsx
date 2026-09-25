@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { getWorkspace } from '../api/workspaceApi';
+import WorkspaceCard from '../components/ui/WorkspaceCard';
+import { AuthProvider } from '../contexts/AuthContext';
 
 const DashboardPage = () => {
     const { logout, user } = useAuth();
@@ -28,12 +30,16 @@ const DashboardPage = () => {
             }
         };
 
-        getWorkspaces();
+         getWorkspaces();
+
     }, []);
 
+    
+
+    const currentUserId = user?._id;
     return (
         <div>
-            
+
             <div className="flex w-full items-center justify-start bg-amber-700 px-5 py-3">
                 <button
                     type="button"
@@ -43,7 +49,7 @@ const DashboardPage = () => {
                     Logout
                 </button>
             </div>
-            
+
             <div className="min-h-screen bg-amber-700 p-4">
 
                 <div className="mb-4 bg-white border-4 p-14">
@@ -99,6 +105,21 @@ const DashboardPage = () => {
 
                 </div>
             </div>
+            <div className="p-8 bg-gray-50 min-h-screen">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+                    {workspaces.map((workspace) => (
+                        <WorkspaceCard
+                            key={workspace._id} 
+                            workspace={workspace}
+                            currentUserId={currentUserId}
+                        />
+                    ))}
+
+                </div>
+            </div>
+
+
         </div>
     );
 };
