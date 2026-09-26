@@ -3,6 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { getWorkspace } from '../api/workspaceApi';
 import WorkspaceCard from '../components/ui/WorkspaceCard';
 import { AuthProvider } from '../contexts/AuthContext';
+import CreateWorkspaceModal from '../components/ui/CreateWorkspaceModal';
 
 const DashboardPage = () => {
     const { logout, user } = useAuth();
@@ -10,33 +11,43 @@ const DashboardPage = () => {
     const [workspaces, setWorkspaces] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const getWorkspaces = async () => {
+        setLoading(true);
+        setError('');
+
+        try {
+            const data = await getWorkspace({ page: 1, limit: 100 });
+
+            setWorkspaces(data.workspaces);
+        } catch (err) {
+            setError(
+                err.response?.data?.message ||
+                'Workspace error'
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
+
 
     useEffect(() => {
-        const getWorkspaces = async () => {
-            setLoading(true);
-            setError('');
 
-            try {
-                const data = await getWorkspace();
-
-                setWorkspaces(data.workspaces);
-            } catch (err) {
-                setError(
-                    err.response?.data?.message ||
-                    'Workspace error'
-                );
-            } finally {
-                setLoading(false);
-            }
-        };
-
-         getWorkspaces();
+        getWorkspaces();
 
     }, []);
 
-    
 
     const currentUserId = user?._id;
+
+
+    const handleSuccess = () => {
+
+        setIsModalOpen(false);
+        getWorkspaces();
+
+    }
     return (
         <div>
 
@@ -50,67 +61,34 @@ const DashboardPage = () => {
                 </button>
             </div>
 
-            <div className="min-h-screen bg-amber-700 p-4">
 
-                <div className="mb-4 bg-white border-4 p-14">
-                    <h1 className="text-2xl font-bold">
-                        User Info
-                    </h1>
-
-                    <p>
-                        Username: {user?.username}
-                    </p>
-
-                    <p>
-                        Email: {user?.email}
-                    </p>
+            <div className="flex justify-between items-center p-7 mb-6">
+                <div className='block'>
+                    <h1 className="text-3xl font-bold mb-3">My Workspaces</h1>
+                    <p className='text-sm m-auto'>Choose a workspace to collaborate and track progress.</p>
                 </div>
 
-                <div className="bg-amber-200 p-6 text-black">
-
-                    <h2 className="mb-4 text-2xl font-bold">
-                        Workspaces
-                    </h2>
-
-                    {/* Loading */}
-                    {loading && (
-                        <p>Loading workspaces...</p>
-                    )}
-
-                    {/* Error */}
-                    {error && (
-                        <p className="text-red-600">
-                            {error}
-                        </p>
-                    )}
-
-                    {!loading && !error && (
-                        <div>
-                            {workspaces.length === 0 ? (
-                                <p>No workspaces found.</p>
-                            ) : (
-                                workspaces.map((workspace) => (
-                                    <div
-                                        key={workspace._id}
-                                        className="mb-2 rounded bg-white p-4"
-                                    >
-                                        <h3 className="font-bold">
-                                            {workspace.name}
-                                        </h3>
-                                    </div>
-                                ))
-                            )}
-                        </div>
-                    )}
-
-                </div>
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-[#4338CA] text-white px-4 py-2 rounded-lg"
+                >
+                    + New Workspace
+                </button>
             </div>
+
+            <CreateWorkspaceModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onSuccess={handleSuccess}
+            />
+
+
             <div className="p-8 bg-gray-50 min-h-screen">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
                     {workspaces.map((workspace) => (
                         <WorkspaceCard
-                            key={workspace._id} 
+                            key={workspace._id}
                             workspace={workspace}
                             currentUserId={currentUserId}
                         />
