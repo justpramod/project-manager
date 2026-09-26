@@ -14,19 +14,19 @@ const WorkspaceCard = ({ workspace, currentUserId }) => {
     });
 
     return (
-        <div className='bg-white border rounded-xl p-6 shadow-sm hover:shadow-md ransition-shadow cursor-pointer flex flex-col h-full"'>
+        <div className='bg-white border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col h-full'>
 
             {/* top section */}
             <div className='flex justify-between items-start mb-2'>
                 <h3 className='text-lg font-bold text-gray-900' >{workspace.name}</h3>
 
-                <span className={`px-2 py-1 rounded-full text-xs ${isOwner ? 'bg-green-50 text-green-700 border-green-200'
-                    : 'bg-gray-50 text-gray-600 border-gray-200'}`}>
+                <span className={`px-2 py-1 rounded-full text-xs ${isOwner ? 'bg-green-50 text-green-700 border-2 border-green-200'
+                    : 'bg-gray-50 text-gray-600 border-2 border-gray-200'}`}>
                     {role}
                 </span>
             </div>
             {/* middle section */}
-            <p className="text-sm text-gray-500"> {memberCount}{memberCount === 1 ? 'member' : 'members'}</p>
+            <p className="text-sm text-gray-500  justify-between"> {memberCount}{memberCount === 1 ? 'member' : 'members'}</p>
 
             <div className="flex grow mt-6"></div>
 
