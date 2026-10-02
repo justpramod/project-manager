@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { getWorkspace } from '../api/workspaceApi';
 import WorkspaceCard from '../components/ui/WorkspaceCard';
-import { AuthProvider } from '../contexts/AuthContext';
 import CreateWorkspaceModal from '../components/ui/CreateWorkspaceModal';
 
 const DashboardPage = () => {
     const { logout, user } = useAuth();
 
     const [workspaces, setWorkspaces] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,8 +18,8 @@ const DashboardPage = () => {
 
         try {
             const data = await getWorkspace({ page: 1, limit: 100 });
-
             setWorkspaces(data.workspaces);
+    
         } catch (err) {
             setError(
                 err.response?.data?.message ||
@@ -49,7 +48,7 @@ const DashboardPage = () => {
 
     }
     return (
-        <div>
+        <div className='relative'>
 
             <div className="flex w-full items-center justify-start bg-amber-700 px-5 py-3">
                 <button
@@ -62,11 +61,29 @@ const DashboardPage = () => {
             </div>
 
 
-            <div className="flex justify-between items-center p-7 mb-6">
+            
+
+                {!loading && 
+
+                <div className="flex justify-between items-center p-7 mb-6">
+                
                 <div className='block'>
+                    {error && <h2 className="text-red-500  mt-5">{error}</h2>}
+                    {workspaces.length === 0 ?
+                     <div>
+                     <h1 className="text-3xl font-bold mb-3">No Workspace Yet</h1> 
+                     <p className='text-sm m-auto'>Create your Workspace here.</p> 
+                     </div>
+
+                    :
+                    <div>
                     <h1 className="text-3xl font-bold mb-3">My Workspaces</h1>
-                    <p className='text-sm m-auto'>Choose a workspace to collaborate and track progress.</p>
+                    <p className='text-sm m-auto'>Choose a workspace to collaborate and track progress. </p>
+                    </div>
+                  
+                    }
                 </div>
+
 
                 <button
                     onClick={() => setIsModalOpen(true)}
@@ -75,28 +92,31 @@ const DashboardPage = () => {
                     + New Workspace
                 </button>
             </div>
+}
 
             <CreateWorkspaceModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 onSuccess={handleSuccess}
             />
+            {loading && <div className='flex place-content-center justify-center h-screen items-center text-6xl '>Loading....</div>
+            }
 
+            {!loading &&
+                <div className="p-8 bg-gray-50 min-h-screen">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
-            <div className="p-8 bg-gray-50 min-h-screen">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                        {workspaces.map((workspace) => (
+                            <WorkspaceCard
+                                key={workspace._id}
+                                workspace={workspace}
+                                currentUserId={currentUserId}
+                            />
+                        ))}
 
-                    {workspaces.map((workspace) => (
-                        <WorkspaceCard
-                            key={workspace._id}
-                            workspace={workspace}
-                            currentUserId={currentUserId}
-                        />
-                    ))}
-
+                    </div>
                 </div>
-            </div>
-
+            }
 
         </div>
     );
