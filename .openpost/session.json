@@ -32,7 +32,6 @@
       "testRules": [],
       "setVariables": [],
       "activeTab": "headers",
-      "responseTab": "body",
       "sourceRequestId": null,
       "sourceCollectionId": null,
       "sourceFolderPath": null,
@@ -46,17 +45,16 @@
       "wsConnected": false,
       "wsUrl": null,
       "wsMessages": [],
-      "grpcConnected": false,
-      "grpcStreaming": false,
-      "grpcMessages": [],
-      "grpcConfig": null,
       "groupId": null,
       "mcpDescription": "",
       "mcpInputSchema": "",
       "collectionId": null,
       "folderId": null,
       "folderPath": null,
-      "editorScope": "local"
+      "editorScope": "local",
+      "grpcConnected": false,
+      "grpcStreaming": false,
+      "responseTab": "body"
     },
     {
       "id": "1789925347436zxt5",
@@ -91,7 +89,6 @@
       "testRules": [],
       "setVariables": [],
       "activeTab": "headers",
-      "responseTab": "body",
       "sourceRequestId": "178992594083610sq",
       "sourceCollectionId": "1789925940836",
       "sourceFolderPath": null,
@@ -134,10 +131,6 @@
       "wsConnected": false,
       "wsUrl": null,
       "wsMessages": [],
-      "grpcConnected": false,
-      "grpcStreaming": false,
-      "grpcMessages": [],
-      "grpcConfig": null,
       "groupId": null,
       "mcpDescription": "",
       "mcpInputSchema": "",
@@ -145,14 +138,16 @@
       "folderId": null,
       "folderPath": null,
       "editorScope": "local",
-      "fromHistory": false
+      "grpcConnected": false,
+      "grpcStreaming": false,
+      "responseTab": "body"
     },
     {
       "id": "1789926027430vfor",
       "tabKind": "request",
       "name": "New Request",
-      "method": "POST",
-      "url": "http://localhost:5050/api/workspace",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace/",
       "params": [],
       "headers": [
         {
@@ -169,16 +164,11 @@
           "key": "Authorization",
           "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
           "enabled": true
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true
         }
       ],
       "body": {
-        "type": "json",
-        "raw": "{\n  \"name\": \"Frontending\"\n}"
+        "type": "none",
+        "raw": "{\n \"email\": \"justpramod@gmail.com\"\n}"
       },
       "auth": {
         "type": "none"
@@ -190,7 +180,6 @@
       "testRules": [],
       "setVariables": [],
       "activeTab": "body",
-      "responseTab": "body",
       "sourceRequestId": null,
       "sourceCollectionId": null,
       "sourceFolderPath": null,
@@ -199,31 +188,30 @@
       "certificateConfig": null,
       "inheritCertificate": false,
       "response": {
-        "status": 201,
-        "statusText": "Created",
+        "status": 200,
+        "statusText": "OK",
         "headers": {
           "access-control-allow-origin": "http://localhost:5173",
           "connection": "keep-alive",
-          "content-length": "282",
+          "content-length": "1111",
           "content-type": "application/json; charset=utf-8",
-          "date": "Sun, 20 Sep 2026 17:48:01 GMT",
-          "etag": "W/\"11a-NbhjWNYGAi42x5a6BrnUWTyAOK0\"",
+          "date": "Fri, 25 Sep 2026 12:28:27 GMT",
+          "etag": "W/\"457-n7LYHFOfbBiV1cChesEeXpjfTD4\"",
           "keep-alive": "timeout=5",
           "vary": "Origin",
           "x-powered-by": "Express"
         },
-        "body": "{\"message\":\"Workspace created!\",\"workspace\":{\"name\":\"Frontending\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c51666bc8aac366caa8\"}],\"_id\":\"6ab01c51666bc8aac366caa7\",\"createdAt\":\"2026-09-20T17:48:01.638Z\",\"updatedAt\":\"2026-09-20T17:48:01.638Z\",\"__v\":0}}",
-        "time": 126,
-        "size": 282,
+        "body": "{\"workspaces\":[{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"},{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"member\",\"_id\":\"6ab6684b5c0404c622ce9f1b\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-25T12:25:47.149Z\",\"__v\":1},{\"_id\":\"6ab01c36666bc8aac366caa5\",\"name\":\"Red label\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c36666bc8aac366caa6\"}],\"createdAt\":\"2026-09-20T17:47:34.227Z\",\"updatedAt\":\"2026-09-20T17:47:34.227Z\",\"__v\":0},{\"_id\":\"6ab01c51666bc8aac366caa7\",\"name\":\"Frontending\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c51666bc8aac366caa8\"}],\"createdAt\":\"2026-09-20T17:48:01.638Z\",\"updatedAt\":\"2026-09-20T17:48:01.638Z\",\"__v\":0},{\"_id\":\"6ab60247a9fb24e41ff3f3b8\",\"name\":\"justiny\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab60247a9fb24e41ff3f3b9\"}],\"createdAt\":\"2026-09-25T05:10:31.701Z\",\"updatedAt\":\"2026-09-25T05:10:31.701Z\",\"__v\":0}],\"pagination\":{\"total\":4,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+        "time": 346,
+        "size": 1111,
         "actualRequest": {
-          "method": "POST",
-          "url": "http://localhost:5050/api/workspace",
+          "method": "GET",
+          "url": "http://localhost:5050/api/workspace/",
           "headers": {
             "Accept": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
-            "Content-Type": "application/json"
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE"
           },
-          "body": "{\n  \"name\": \"Frontending\"\n}",
+          "body": null,
           "protocol": "HTTP/1.1",
           "certificateNames": "System Trust Store"
         },
@@ -239,7 +227,7 @@
           },
           {
             "name": "HTTP Request",
-            "duration": 126
+            "duration": 346
           },
           {
             "name": "Post-processing",
@@ -252,17 +240,16 @@
       "wsConnected": false,
       "wsUrl": null,
       "wsMessages": [],
-      "grpcConnected": false,
-      "grpcStreaming": false,
-      "grpcMessages": [],
-      "grpcConfig": null,
       "groupId": null,
       "mcpDescription": "",
       "mcpInputSchema": "",
       "collectionId": null,
       "folderId": null,
       "folderPath": null,
-      "editorScope": "local"
+      "editorScope": "local",
+      "grpcConnected": false,
+      "grpcStreaming": false,
+      "responseTab": "body"
     }
   ],
   "groups": [],
@@ -272,7 +259,7 @@
   "sidebarCollapsed": true,
   "responseTab": "body",
   "layoutMode": "vertical",
-  "splitRatio": 0.5,
+  "splitRatio": 0.6960950764006791,
   "horizontalSplitRatio": 0.5,
   "selectedMockServerId": null
 }

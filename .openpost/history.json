@@ -1071,5 +1071,1270 @@
       "size": 282,
       "cookies": []
     }
+  },
+  {
+    "id": "1790270804068",
+    "timestamp": 1790270804068,
+    "request": {
+      "id": "1790270802366",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justresh@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "33",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Thu, 24 Sep 2026 17:26:44 GMT",
+        "etag": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Invalid credentials\"}",
+      "time": 1697,
+      "size": 33,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790270810864",
+    "timestamp": 1790270810864,
+    "request": {
+      "id": "1790270810705",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justresh@gmail.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "267",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Thu, 24 Sep 2026 17:26:50 GMT",
+        "etag": "W/\"10b-3nyyVwInXQfH2mXunNl0zEF99jg\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"_id\":\"6ab558638adfd3f6329627e3\",\"username\":\"justresh\",\"email\":\"justresh@gmail.com\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjU1ODYzOGFkZmQzZjYzMjk2MjdlMyIsImlhdCI6MTc5MDI3MDgxMCwiZXhwIjoxNzkwODc1NjEwfQ.iApCJ7XpJrQLzzo5qwqv8evjnLv3O8hF96R3f65MCKQ\"}",
+      "time": 156,
+      "size": 267,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790270858496",
+    "timestamp": 1790270858496,
+    "request": {
+      "id": "1790270858164",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justjoking@gmail.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "271",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Thu, 24 Sep 2026 17:27:38 GMT",
+        "etag": "W/\"10f-E1MJfnCst0IGOwIeD0+sEtXgROc\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"_id\":\"6ab55d758adfd3f6329627e5\",\"username\":\"justjoking\",\"email\":\"justjoking@gmail.com\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjU1ZDc1OGFkZmQzZjYzMjk2MjdlNSIsImlhdCI6MTc5MDI3MDg1OCwiZXhwIjoxNzkwODc1NjU4fQ.87m_03YZZPTMnfVRn8erygpj20bo_GZLc-Hxxab_Qtk\"}",
+      "time": 329,
+      "size": 271,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790313031781",
+    "timestamp": 1790313031781,
+    "request": {
+      "id": "1790313031596",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"name\": \"justiny\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "278",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 05:10:31 GMT",
+        "etag": "W/\"116-92IA8KNFNsJavDMy6nUtGtk99Yo\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Workspace created!\",\"workspace\":{\"name\":\"justiny\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab60247a9fb24e41ff3f3b9\"}],\"_id\":\"6ab60247a9fb24e41ff3f3b8\",\"createdAt\":\"2026-09-25T05:10:31.701Z\",\"updatedAt\":\"2026-09-25T05:10:31.701Z\",\"__v\":0}}",
+      "time": 180,
+      "size": 278,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790314308075",
+    "timestamp": 1790314308075,
+    "request": {
+      "id": "1790314308071",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"name\": \"justiny\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Request with GET/HEAD method cannot have body.",
+      "time": 1,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790314315356",
+    "timestamp": 1790314315356,
+    "request": {
+      "id": "1790314315124",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n \"name\": \"justiny\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "1026",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 05:31:55 GMT",
+        "etag": "W/\"402-Vfm7E33k5NxBeDgzODfiDpGY4Q8\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspaces\":[{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-20T17:47:17.042Z\",\"__v\":0},{\"_id\":\"6ab01c36666bc8aac366caa5\",\"name\":\"Red label\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c36666bc8aac366caa6\"}],\"createdAt\":\"2026-09-20T17:47:34.227Z\",\"updatedAt\":\"2026-09-20T17:47:34.227Z\",\"__v\":0},{\"_id\":\"6ab01c51666bc8aac366caa7\",\"name\":\"Frontending\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c51666bc8aac366caa8\"}],\"createdAt\":\"2026-09-20T17:48:01.638Z\",\"updatedAt\":\"2026-09-20T17:48:01.638Z\",\"__v\":0},{\"_id\":\"6ab60247a9fb24e41ff3f3b8\",\"name\":\"justiny\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab60247a9fb24e41ff3f3b9\"}],\"createdAt\":\"2026-09-25T05:10:31.701Z\",\"updatedAt\":\"2026-09-25T05:10:31.701Z\",\"__v\":0}],\"pagination\":{\"total\":4,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+      "time": 229,
+      "size": 1026,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790314367773",
+    "timestamp": 1790314367773,
+    "request": {
+      "id": "1790314367762",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspaces",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n \"name\": \"justiny\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "153",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 05:32:47 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/workspaces</pre>\n</body>\n</html>\n",
+      "time": 8,
+      "size": 153,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790314375567",
+    "timestamp": 1790314375567,
+    "request": {
+      "id": "1790314375275",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n \"name\": \"justiny\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "1026",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 05:32:55 GMT",
+        "etag": "W/\"402-Vfm7E33k5NxBeDgzODfiDpGY4Q8\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspaces\":[{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-20T17:47:17.042Z\",\"__v\":0},{\"_id\":\"6ab01c36666bc8aac366caa5\",\"name\":\"Red label\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c36666bc8aac366caa6\"}],\"createdAt\":\"2026-09-20T17:47:34.227Z\",\"updatedAt\":\"2026-09-20T17:47:34.227Z\",\"__v\":0},{\"_id\":\"6ab01c51666bc8aac366caa7\",\"name\":\"Frontending\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c51666bc8aac366caa8\"}],\"createdAt\":\"2026-09-20T17:48:01.638Z\",\"updatedAt\":\"2026-09-20T17:48:01.638Z\",\"__v\":0},{\"_id\":\"6ab60247a9fb24e41ff3f3b8\",\"name\":\"justiny\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab60247a9fb24e41ff3f3b9\"}],\"createdAt\":\"2026-09-25T05:10:31.701Z\",\"updatedAt\":\"2026-09-25T05:10:31.701Z\",\"__v\":0}],\"pagination\":{\"total\":4,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+      "time": 290,
+      "size": 1026,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790338817665",
+    "timestamp": 1790338817665,
+    "request": {
+      "id": "1790338817340",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n \"name\": \"justiny\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "1026",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:20:17 GMT",
+        "etag": "W/\"402-Vfm7E33k5NxBeDgzODfiDpGY4Q8\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspaces\":[{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-20T17:47:17.042Z\",\"__v\":0},{\"_id\":\"6ab01c36666bc8aac366caa5\",\"name\":\"Red label\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c36666bc8aac366caa6\"}],\"createdAt\":\"2026-09-20T17:47:34.227Z\",\"updatedAt\":\"2026-09-20T17:47:34.227Z\",\"__v\":0},{\"_id\":\"6ab01c51666bc8aac366caa7\",\"name\":\"Frontending\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c51666bc8aac366caa8\"}],\"createdAt\":\"2026-09-20T17:48:01.638Z\",\"updatedAt\":\"2026-09-20T17:48:01.638Z\",\"__v\":0},{\"_id\":\"6ab60247a9fb24e41ff3f3b8\",\"name\":\"justiny\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab60247a9fb24e41ff3f3b9\"}],\"createdAt\":\"2026-09-25T05:10:31.701Z\",\"updatedAt\":\"2026-09-25T05:10:31.701Z\",\"__v\":0}],\"pagination\":{\"total\":4,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+      "time": 320,
+      "size": 1026,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790338919792",
+    "timestamp": 1790338919792,
+    "request": {
+      "id": "1790338919712",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace/member",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"username\": \"pramod_01\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "160",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:21:59 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/workspace/member</pre>\n</body>\n</html>\n",
+      "time": 76,
+      "size": 160,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790338927348",
+    "timestamp": 1790338927348,
+    "request": {
+      "id": "1790338927338",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace/members",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"username\": \"pramod_01\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "161",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:22:07 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/workspace/members</pre>\n</body>\n</html>\n",
+      "time": 7,
+      "size": 161,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790338933961",
+    "timestamp": 1790338933961,
+    "request": {
+      "id": "1790338933953",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspaces/member",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"username\": \"pramod_01\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "161",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:22:13 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/workspaces/member</pre>\n</body>\n</html>\n",
+      "time": 6,
+      "size": 161,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790338937536",
+    "timestamp": 1790338937536,
+    "request": {
+      "id": "1790338937512",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspaces/members",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"username\": \"pramod_01\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "162",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:22:17 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /api/workspaces/members</pre>\n</body>\n</html>\n",
+      "time": 16,
+      "size": 162,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790339064526",
+    "timestamp": 1790339064526,
+    "request": {
+      "id": "1790339064522",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"username\": \"pramod_01\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Request with GET/HEAD method cannot have body.",
+      "time": 2,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790339070532",
+    "timestamp": 1790339070532,
+    "request": {
+      "id": "1790339070272",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n \"username\": \"pramod_01\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "1026",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:24:30 GMT",
+        "etag": "W/\"402-Vfm7E33k5NxBeDgzODfiDpGY4Q8\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspaces\":[{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-20T17:47:17.042Z\",\"__v\":0},{\"_id\":\"6ab01c36666bc8aac366caa5\",\"name\":\"Red label\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c36666bc8aac366caa6\"}],\"createdAt\":\"2026-09-20T17:47:34.227Z\",\"updatedAt\":\"2026-09-20T17:47:34.227Z\",\"__v\":0},{\"_id\":\"6ab01c51666bc8aac366caa7\",\"name\":\"Frontending\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c51666bc8aac366caa8\"}],\"createdAt\":\"2026-09-20T17:48:01.638Z\",\"updatedAt\":\"2026-09-20T17:48:01.638Z\",\"__v\":0},{\"_id\":\"6ab60247a9fb24e41ff3f3b8\",\"name\":\"justiny\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab60247a9fb24e41ff3f3b9\"}],\"createdAt\":\"2026-09-25T05:10:31.701Z\",\"updatedAt\":\"2026-09-25T05:10:31.701Z\",\"__v\":0}],\"pagination\":{\"total\":4,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+      "time": 256,
+      "size": 1026,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790339105433",
+    "timestamp": 1790339105433,
+    "request": {
+      "id": "1790339105270",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace/6ab01c25666bc8aac366caa3/members",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"username\": \"pramod_01\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "50",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:25:05 GMT",
+        "etag": "W/\"32-pvzZvKM9uhDv1S1WqO73CkT5j1s\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"mesasge\":\"User with that email does not exists\"}",
+      "time": 160,
+      "size": 50,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790339114294",
+    "timestamp": 1790339114294,
+    "request": {
+      "id": "1790339114024",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace/6ab01c25666bc8aac366caa3/members",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"username\": \"justprabesh\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "50",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:25:14 GMT",
+        "etag": "W/\"32-pvzZvKM9uhDv1S1WqO73CkT5j1s\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"mesasge\":\"User with that email does not exists\"}",
+      "time": 267,
+      "size": 50,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790339122270",
+    "timestamp": 1790339122270,
+    "request": {
+      "id": "1790339121931",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace/6ab01c25666bc8aac366caa3/members",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"username\": \"justprabesh@gmail.com\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "50",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:25:22 GMT",
+        "etag": "W/\"32-pvzZvKM9uhDv1S1WqO73CkT5j1s\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"mesasge\":\"User with that email does not exists\"}",
+      "time": 336,
+      "size": 50,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790339131902",
+    "timestamp": 1790339131902,
+    "request": {
+      "id": "1790339131619",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace/6ab01c25666bc8aac366caa3/members",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"email\": \"justprabesh@gmail.com\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "50",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:25:31 GMT",
+        "etag": "W/\"32-pvzZvKM9uhDv1S1WqO73CkT5j1s\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"mesasge\":\"User with that email does not exists\"}",
+      "time": 273,
+      "size": 50,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790339147221",
+    "timestamp": 1790339147221,
+    "request": {
+      "id": "1790339146854",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace/6ab01c25666bc8aac366caa3/members",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"email\": \"justpramod@gmail.com\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "365",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:25:47 GMT",
+        "etag": "W/\"16d-btQ0DUzydKfamaC6ZfcrPBPc3nw\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Member added\",\"workspace\":{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"},{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"member\",\"_id\":\"6ab6684b5c0404c622ce9f1b\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-25T12:25:47.149Z\",\"__v\":1}}",
+      "time": 364,
+      "size": 365,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790339279931",
+    "timestamp": 1790339279931,
+    "request": {
+      "id": "1790339279927",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace/",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"email\": \"justpramod@gmail.com\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Request with GET/HEAD method cannot have body.",
+      "time": 2,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1790339307950",
+    "timestamp": 1790339307950,
+    "request": {
+      "id": "1790339307601",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace/",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n \"email\": \"justpramod@gmail.com\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "1111",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 25 Sep 2026 12:28:27 GMT",
+        "etag": "W/\"457-n7LYHFOfbBiV1cChesEeXpjfTD4\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspaces\":[{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"},{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"member\",\"_id\":\"6ab6684b5c0404c622ce9f1b\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-25T12:25:47.149Z\",\"__v\":1},{\"_id\":\"6ab01c36666bc8aac366caa5\",\"name\":\"Red label\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c36666bc8aac366caa6\"}],\"createdAt\":\"2026-09-20T17:47:34.227Z\",\"updatedAt\":\"2026-09-20T17:47:34.227Z\",\"__v\":0},{\"_id\":\"6ab01c51666bc8aac366caa7\",\"name\":\"Frontending\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c51666bc8aac366caa8\"}],\"createdAt\":\"2026-09-20T17:48:01.638Z\",\"updatedAt\":\"2026-09-20T17:48:01.638Z\",\"__v\":0},{\"_id\":\"6ab60247a9fb24e41ff3f3b8\",\"name\":\"justiny\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab60247a9fb24e41ff3f3b9\"}],\"createdAt\":\"2026-09-25T05:10:31.701Z\",\"updatedAt\":\"2026-09-25T05:10:31.701Z\",\"__v\":0}],\"pagination\":{\"total\":4,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+      "time": 346,
+      "size": 1111,
+      "cookies": []
+    }
   }
 ]

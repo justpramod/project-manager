@@ -20,7 +20,7 @@ const WorkspaceCard = ({ workspace, currentUserId }) => {
             <div className='flex justify-between items-start mb-2'>
                 <h3 className='text-lg font-bold text-gray-900' >{workspace.name}</h3>
 
-                <span className={`px-2 py-1 rounded-full text-xs ${isOwner ? 'bg-green-50 text-green-700 border-2 border-green-200'
+                <span className={`px-2 py-1 rounded-full text-xs ${isOwner ? 'bg-green-100 text-green-600 border-2 border-green-200'
                     : 'bg-gray-50 text-gray-600 border-2 border-gray-200'}`}>
                     {role}
                 </span>
