@@ -40,6 +40,7 @@ const deleteAttachment = async (req, res) => {
             return res.status(403).json({ message: 'You are not eligible to delete it' })
         }
 
+        //constructing an absolute path to the file on disk by joining the controller directory, ascending one level, then uploads, then the attachment's filename
         const filePath = path.join(__dirname, '..', 'uploads', attachment.filename);
         try{
              await fs.unlink(filePath);

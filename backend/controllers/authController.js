@@ -47,7 +47,7 @@ const login = async (req, res) => {
 
 const getMe = async(req, res)=>{
 
-    res.status(200).json({_id: req.user._id, username: req.user.username, email: req.user.email});
+    res.status(200).json({_id: req.user._id, username: req.user.username, email: req.user.email, avatarUrl: req.user.avatarUrl});
 };
 
 module.exports = {register, login, getMe};
