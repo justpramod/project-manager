@@ -47,15 +47,19 @@ export const AuthProvider = ({children})=>{
     setUser(data);
 };
 
- const logout = async()=>{
+ const logout = ()=>{
 
     localStorage.removeItem('token');
     setUser(null);
 };
 
+const updateAvatarUrl = async(newUrl) =>{
+    setUser(prev=> ({...prev, avatarUrl: newUrl}));
+}
+
 
 return (
-    <authContext.Provider value={{user, loading, login, register, logout}} >
+    <authContext.Provider value={{user, updateAvatarUrl, loading, login, register, logout}} >
         {children}
     </authContext.Provider>
 )
