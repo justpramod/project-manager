@@ -78,7 +78,7 @@ const EditAvatarModal = ({ isOpen, onClose, onSuccess }) => {
         };
         document.addEventListener('keydown', downKeyHandler);
         return () => document.removeEventListener('keydown', downKeyHandler);
-    }, [onClose]);
+    }, [onClose, isOpen]);
 
     if (!isOpen) return null;
 

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-
+import ProfileMenu from "../ui/ProfileMenu";
 
 const Layout = () => {
     const [notificationCount, setNotificationCount] = useState(5);
@@ -39,7 +39,7 @@ const Layout = () => {
                             )}
                         </div>
 
-                        <img className="w-10 h-10 rounded-full object-cover" src={userAvatar ? userAvatar : "/dummyprofile.jpg"} alt="User"  />
+                      <ProfileMenu />
 
                     </div>
 
