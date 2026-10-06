@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
@@ -7,18 +6,18 @@ import { NavLink, Link } from "react-router-dom";
 const Layout = () => {
     const [notificationCount, setNotificationCount] = useState(5);
     const [userAvatar, setUserAvatar] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <div className="flex-col ">
             <div className=" border-t-gray-200 border-b">
                 <nav className="flex  items-center justify-between mx-7 py-3">
                     <div className="flex items-center  px-4 py-2  gap-8">
                         <Link to="/dashboard">
-                            <img src="../../public/projectLogo.png" alt="Proj" className="w-12" />
+                            <img src="/projectLogo.png" alt="Proj" className="w-12" />
                         </Link>
 
-                        <NavLink to="/dashboard" className={({ isActive }) => isActive ? "text-blue-700" : ""}> Dashboard</NavLink>
                         <NavLink to="/dashboard" className={({ isActive }) => isActive ? "text-blue-700" : ""} > Workspaces</NavLink>
-                        <NavLink to="/Settings" className={({ isActive }) => isActive ? "text-blue-700" : ""}> Settings</NavLink>
+                        <NavLink to="/settings" className={({ isActive }) => isActive ? "text-blue-700" : ""}> Settings</NavLink>
                         <NavLink to="/calendar" className={({ isActive }) => isActive ? "text-blue-700" : ""} > Calendar</NavLink>
                     </div>
                     <div className="flex items-center gap-8">
@@ -40,7 +39,7 @@ const Layout = () => {
                             )}
                         </div>
 
-                        <img className="w-10 h-10 rounded-full object-cover" src={userAvatar ? userAvatar : "/dummyprofile.jpg"} alt="User" />
+                        <img className="w-10 h-10 rounded-full object-cover" src={userAvatar ? userAvatar : "/dummyprofile.jpg"} alt="User"  />
 
                     </div>
 

@@ -11,10 +11,15 @@ const EditAvatarModal = ({ isOpen, onClose, onSuccess }) => {
     const fileInputRef = useRef(null);
 
     useEffect(() => {
+
         if (isOpen) {
             setSelectedFile(null);
             setError(null);
-            setPreviewUrl(null);
+            if (previewUrl) {
+                URL.revokeObjectURL(previewUrl);
+                setPreviewUrl(null);
+            }
+
             setIsDragging(false);
         }
     }, [isOpen]);
@@ -58,7 +63,7 @@ const EditAvatarModal = ({ isOpen, onClose, onSuccess }) => {
         try {
             const newAvatarUrl = await uploadAvatar(selectedFile);
             onSuccess(newAvatarUrl);
-            onClose(); // Close on success
+            
         } catch (e) {
             setError(e?.response?.data?.message || 'Failed to upload avatar. Please try again.');
         } finally {
@@ -67,6 +72,7 @@ const EditAvatarModal = ({ isOpen, onClose, onSuccess }) => {
     };
 
     useEffect(() => {
+        if(!isOpen) return;
         const downKeyHandler = (e) => {
             if (e.key === 'Escape') onClose();
         };
@@ -77,21 +83,21 @@ const EditAvatarModal = ({ isOpen, onClose, onSuccess }) => {
     if (!isOpen) return null;
 
     return (
-        /* 1. Backdrop: Full screen, dark overlay, centered */
-        <div 
-            onClick={onClose} 
+        
+        <div
+            onClick={onClose}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
         >
-            {/* 2. Modal Container: White box, rounded, shadow */}
-            <div 
-                onClick={(e) => e.stopPropagation()} 
+           
+            <div
+                onClick={(e) => e.stopPropagation()}
                 className="w-full max-w-md bg-white rounded-xl shadow-xl overflow-hidden"
             >
-                {/* 3. Header: Title and Close X */}
+               
                 <header className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
                     <h2 className="text-lg font-semibold text-gray-800">Upload new profile picture</h2>
-                    <button 
-                        type="button" 
+                    <button
+                        type="button"
                         onClick={onClose}
                         className="text-gray-400 hover:text-gray-600 transition-colors"
                     >
@@ -103,48 +109,46 @@ const EditAvatarModal = ({ isOpen, onClose, onSuccess }) => {
                 </header>
 
                 <div className="p-6">
-                    {/* Hidden File Input */}
-                    <input 
-                        type="file" 
-                        ref={fileInputRef} 
-                        onChange={onInputChange} 
-                        className="hidden" 
-                        accept="image/*" 
+                
+                    <input
+                        type="file"
+                        ref={fileInputRef}
+                        onChange={onInputChange}
+                        className="hidden"
+                        accept="image/*"
                     />
 
-                    {/* 4. Dropzone */}
-                    <div 
-                        onClick={() => fileInputRef.current.click()} 
-                        onDragOver={onDragOver} 
-                        onDragLeave={onDragLeave} 
-                        onDrop={onDrop} 
-                        className={`relative flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer transition-colors duration-200 ${
-                            isDragging 
-                                ? 'border-indigo-500 bg-indigo-50' 
+                    <div
+                        onClick={() => fileInputRef.current.click()}
+                        onDragOver={onDragOver}
+                        onDragLeave={onDragLeave}
+                        onDrop={onDrop}
+                        className={`relative flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer transition-colors duration-200 ${isDragging
+                                ? 'border-indigo-500 bg-indigo-50'
                                 : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
-                        }`}
+                            }`}
                     >
-                        {/* Conditional Rendering: Filled State */}
+                        
                         {previewUrl ? (
                             <div className="pointer-events-none flex items-center justify-center w-full h-full p-4">
-                                <img 
-                                    src={previewUrl} 
-                                    alt="Avatar Preview" 
-                                    className="w-32 h-32 rounded-full object-cover shadow-md border-4 border-white" 
+                                <img
+                                    src={previewUrl}
+                                    alt="Avatar Preview"
+                                    className="w-32 h-32 rounded-full object-cover shadow-md border-4 border-white"
                                 />
                             </div>
                         ) : (
-                            /* Conditional Rendering: Empty State */
+                          
                             <div className="pointer-events-none flex flex-col items-center justify-center text-center space-y-3">
                                 <div className="p-3 bg-white rounded-full shadow-sm">
-                                    <svg 
-                                        xmlns="http://www.w3.org/2000/svg" 
-                                        width="24" height="24" 
-                                        viewBox="0 0 24 24" 
-                                        fill="none" 
-                                        stroke="currentColor" 
-                                        strokeWidth="1.8" 
-                                        strokeLinecap="round" 
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="1.8"
+                                        strokeLinecap="round"
                                         strokeLinejoin="round"
                                         className="text-gray-500"
                                     >
@@ -165,29 +169,28 @@ const EditAvatarModal = ({ isOpen, onClose, onSuccess }) => {
                         )}
                     </div>
 
-                    {/* Error Message */}
+                   
                     {error && (
                         <p className="mt-3 text-sm text-red-500 text-center">{error}</p>
                     )}
 
-                    {/* 5. Footer Buttons */}
+                   
                     <div className="flex justify-end gap-3 mt-6">
-                        <button 
-                            type="button" 
+                        <button
+                            type="button"
                             onClick={onClose}
                             className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                         >
                             Cancel
                         </button>
-                        <button 
-                            type="button" 
-                            disabled={!selectedFile || submitting} 
+                        <button
+                            type="button"
+                            disabled={!selectedFile || submitting}
                             onClick={handleSubmit}
-                            className={`px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors ${
-                                !selectedFile || submitting 
-                                    ? 'bg-indigo-300 cursor-not-allowed' 
+                            className={`px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors ${!selectedFile || submitting
+                                    ? 'bg-indigo-300 cursor-not-allowed'
                                     : 'bg-indigo-600 hover:bg-indigo-700'
-                            }`}
+                                }`}
                         >
                             {submitting ? 'Uploading...' : 'Upload'}
                         </button>
