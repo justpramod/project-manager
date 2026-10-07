@@ -50,19 +50,6 @@ const DashboardPage = () => {
     return (
         <div className='relative'>
 
-            <div className="flex w-full items-center justify-start bg-amber-700 px-5 py-3">
-                <button
-                    type="button"
-                    onClick={logout}
-                    className="inline-flex w-fit flex-none items-center gap-2 rounded-full border border-amber-400 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800 shadow-sm transition hover:bg-amber-100 hover:shadow-md"
-                >
-                    Logout
-                </button>
-            </div>
-
-
-            
-
                 {!loading && 
 
                 <div className="flex justify-between items-center p-7 mb-6">

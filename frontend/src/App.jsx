@@ -7,6 +7,7 @@ import Layout from './components/layout/Layout';
 import Settings from './pages/Settings';
 import Calendar from './pages/calendar';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -17,7 +18,8 @@ function App() {
         <Route element= {<ProtectedRoute> <Layout /> </ProtectedRoute>}>
         <Route path="/dashboard" element= {<DashboardPage />} />
         <Route path="/settings" element= {<Settings />}/>
-        <Route path="/calendar" element = {<Calendar />}/>
+        <Route path="/calendar" element = {<Calendar/>}/>
+
         </Route>
     
       </Routes>
