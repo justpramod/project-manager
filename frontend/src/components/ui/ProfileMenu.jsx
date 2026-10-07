@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import {useAuth} from "../../hooks/useAuth";
 import EditAvatarModal from "./EditAvatarModal";
-
+import {getImageUrl} from '../../utils/getImageUrl';
 const ProfileMenu = () => {
 
     const { user, logout, updateAvatarUrl } = useAuth();
@@ -42,7 +42,7 @@ const ProfileMenu = () => {
     return (
         <div ref={menuRef} className="relative">
 
-            <img src={user?.avatarUrl || '/dummyprofile.jpg'}
+            <img src={getImageUrl(user?.avatarUrl)}
                 alt="Avatar"
                 onClick={handleAvatarClick}
                 className="w-13 h-13 object-cover  rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition-colors" />
@@ -54,7 +54,7 @@ const ProfileMenu = () => {
 
                     <div className="flex flex-col items-center px-4 py-5 border-b border-gray-100">
 
-                        <img src={user?.avatarUrl || '/dummyprofile.jpg'}
+                        <img src={getImageUrl(user?.avatarUrl)}
                             alt="Avatar"
                             className="w-16 h-16 rounded-full object-cover mb-2" />
 
