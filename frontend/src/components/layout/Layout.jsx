@@ -12,11 +12,11 @@ const Layout = () => {
             <div className=" border-t-gray-200 border-b">
                 <nav className="flex  items-center justify-between mx-7 py-3">
                     <div className="flex items-center  px-4 py-2  gap-8">
-                        <Link to="/dashboard">
+                        <Link to="/workspace">
                             <img src="/projectLogo.png" alt="Proj" className="w-12" />
                         </Link>
 
-                        <NavLink to="/dashboard" className={({ isActive }) => isActive ? "text-blue-700" : ""} > Workspaces</NavLink>
+                        <NavLink to="/workspace" className={({ isActive }) => isActive ? "text-blue-700" : ""} > Workspaces</NavLink>
                         <NavLink to="/settings" className={({ isActive }) => isActive ? "text-blue-700" : ""}> Settings</NavLink>
                         <NavLink to="/calendar" className={({ isActive }) => isActive ? "text-blue-700" : ""} > Calendar</NavLink>
                     </div>

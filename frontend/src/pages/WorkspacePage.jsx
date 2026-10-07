@@ -4,7 +4,7 @@ import { getWorkspace } from '../api/workspaceApi';
 import WorkspaceCard from '../components/ui/WorkspaceCard';
 import CreateWorkspaceModal from '../components/ui/CreateWorkspaceModal';
 
-const DashboardPage = () => {
+const WorkspacePage = () => {
     const { logout, user } = useAuth();
 
     const [workspaces, setWorkspaces] = useState([]);
@@ -109,4 +109,4 @@ const DashboardPage = () => {
     );
 };
 
-export default DashboardPage;
+export default WorkspacePage;

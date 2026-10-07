@@ -22,7 +22,7 @@ function LoginPage() {
         setSubmitting(true);
         try {
             await login({ email, password });
-            navigate('/dashboard');
+            navigate('/workspace');
         }
         catch (err) {
             setError(err.response?.data?.message || 'Login Failed!');

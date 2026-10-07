@@ -23,7 +23,7 @@ function RegisterPage() {
         setSubmitting(true);
         try {
             await register({ username, email, password });
-            navigate('/dashboard');
+            navigate('/workspace');
         }
         catch (err) {
             setError(err.response?.data?.message || 'Register Failed!');
