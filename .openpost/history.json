@@ -2336,5 +2336,1860 @@
       "size": 1111,
       "cookies": []
     }
+  },
+  {
+    "id": "1791380058873",
+    "timestamp": 1791380058873,
+    "request": {
+      "id": "1791380058836",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"email\": \"justpramod@gmail.com\"\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 500,
+      "statusText": "Internal Server Error",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "35",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 13:34:18 GMT",
+        "etag": "W/\"23-8NdEwgOr82p+EmFyYngVj/j+ywQ\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Internal server error\"}",
+      "time": 32,
+      "size": 35,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380072846",
+    "timestamp": 1791380072846,
+    "request": {
+      "id": "1791380072830",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "150",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 13:34:32 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /auth/login</pre>\n</body>\n</html>\n",
+      "time": 8,
+      "size": 150,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380095188",
+    "timestamp": 1791380095188,
+    "request": {
+      "id": "1791380095172",
+      "name": "New Request",
+      "method": "POST",
+      "url": "https://localhost:5050/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: fetch failed",
+      "time": 14,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380108971",
+    "timestamp": 1791380108971,
+    "request": {
+      "id": "1791380108956",
+      "name": "New Request",
+      "method": "POST",
+      "url": "https://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: fetch failed",
+      "time": 13,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380137444",
+    "timestamp": 1791380137444,
+    "request": {
+      "id": "1791380137429",
+      "name": "New Request",
+      "method": "POST",
+      "url": "https://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: fetch failed",
+      "time": 13,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380166564",
+    "timestamp": 1791380166564,
+    "request": {
+      "id": "1791380166559",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost: 5050/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Failed to parse URL from http://localhost: 5050/auth/login",
+      "time": 2,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380188298",
+    "timestamp": 1791380188298,
+    "request": {
+      "id": "1791380188291",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "150",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 13:36:28 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /auth/login</pre>\n</body>\n</html>\n",
+      "time": 5,
+      "size": 150,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380252667",
+    "timestamp": 1791380252667,
+    "request": {
+      "id": "1791380252508",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/auth/login",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "271",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 13:37:32 GMT",
+        "etag": "W/\"10f-4hh89BekyQ0K4LdEN7DVqCIbQaQ\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"_id\":\"6aaeaa7f3bcccf5d51523924\",\"username\":\"justpramod\",\"email\":\"justpramod@gmail.com\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0\"}",
+      "time": 156,
+      "size": 271,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380288363",
+    "timestamp": 1791380288363,
+    "request": {
+      "id": "1791380288355",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspaces/",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "154",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 13:38:08 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/workspaces/</pre>\n</body>\n</html>\n",
+      "time": 5,
+      "size": 154,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380294249",
+    "timestamp": 1791380294249,
+    "request": {
+      "id": "1791380294243",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspaces",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "153",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 13:38:14 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/workspaces</pre>\n</body>\n</html>\n",
+      "time": 4,
+      "size": 153,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380310532",
+    "timestamp": 1791380310532,
+    "request": {
+      "id": "1791380310525",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "43",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 13:38:30 GMT",
+        "etag": "W/\"2b-sd8hdOl8o/XJGXMSr25NskWbE9w\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Not authorized, invalid token\"}",
+      "time": 5,
+      "size": 43,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380329398",
+    "timestamp": 1791380329398,
+    "request": {
+      "id": "1791380329391",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "43",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 13:38:49 GMT",
+        "etag": "W/\"2b-sd8hdOl8o/XJGXMSr25NskWbE9w\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Not authorized, invalid token\"}",
+      "time": 5,
+      "size": 43,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380334133",
+    "timestamp": 1791380334133,
+    "request": {
+      "id": "1791380334126",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "enabled": false
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "43",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 13:38:54 GMT",
+        "etag": "W/\"2b-sd8hdOl8o/XJGXMSr25NskWbE9w\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Not authorized, invalid token\"}",
+      "time": 4,
+      "size": 43,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791380363936",
+    "timestamp": 1791380363936,
+    "request": {
+      "id": "1791380363740",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "2521",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 13:39:23 GMT",
+        "etag": "W/\"9d9-8AXZBucbH47dHHEK54wOk4fmX2w\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspaces\":[{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"},{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"member\",\"_id\":\"6ab6684b5c0404c622ce9f1b\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-25T12:25:47.149Z\",\"__v\":1},{\"_id\":\"6ab7855ba09f117ddb2186cf\",\"name\":\"web-novel\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab7855ba09f117ddb2186d0\"}],\"createdAt\":\"2026-09-26T08:42:03.476Z\",\"updatedAt\":\"2026-09-26T08:42:03.476Z\",\"__v\":0},{\"_id\":\"6ab78567a09f117ddb2186d1\",\"name\":\"web-novel\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78567a09f117ddb2186d2\"}],\"createdAt\":\"2026-09-26T08:42:15.568Z\",\"updatedAt\":\"2026-09-26T08:42:15.568Z\",\"__v\":0},{\"_id\":\"6ab7867fa09f117ddb2186d3\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab7867fa09f117ddb2186d4\"}],\"createdAt\":\"2026-09-26T08:46:55.680Z\",\"updatedAt\":\"2026-09-26T08:46:55.680Z\",\"__v\":0},{\"_id\":\"6ab78681a09f117ddb2186d5\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78681a09f117ddb2186d6\"}],\"createdAt\":\"2026-09-26T08:46:57.321Z\",\"updatedAt\":\"2026-09-26T08:46:57.321Z\",\"__v\":0},{\"_id\":\"6ab78682a09f117ddb2186d7\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78682a09f117ddb2186d8\"}],\"createdAt\":\"2026-09-26T08:46:58.063Z\",\"updatedAt\":\"2026-09-26T08:46:58.063Z\",\"__v\":0},{\"_id\":\"6ab78713a09f117ddb2186d9\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78713a09f117ddb2186da\"}],\"createdAt\":\"2026-09-26T08:49:23.521Z\",\"updatedAt\":\"2026-09-26T08:49:23.521Z\",\"__v\":0},{\"_id\":\"6ab78714a09f117ddb2186db\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78714a09f117ddb2186dc\"}],\"createdAt\":\"2026-09-26T08:49:24.354Z\",\"updatedAt\":\"2026-09-26T08:49:24.354Z\",\"__v\":0},{\"_id\":\"6ab78715a09f117ddb2186dd\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78715a09f117ddb2186de\"}],\"createdAt\":\"2026-09-26T08:49:25.412Z\",\"updatedAt\":\"2026-09-26T08:49:25.412Z\",\"__v\":0},{\"_id\":\"6ab78716a09f117ddb2186df\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78716a09f117ddb2186e0\"}],\"createdAt\":\"2026-09-26T08:49:26.398Z\",\"updatedAt\":\"2026-09-26T08:49:26.398Z\",\"__v\":0}],\"pagination\":{\"total\":23,\"page\":1,\"limit\":10,\"totalPages\":3}}",
+      "time": 194,
+      "size": 2521,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791381689204",
+    "timestamp": 1791381689204,
+    "request": {
+      "id": "1791381689109",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace/6ab78681a09f117ddb2186d5",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "248",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 14:01:29 GMT",
+        "etag": "W/\"f8-30VWAuVwCXNdTDytFFDNz02etOw\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspace\":{\"_id\":\"6ab78681a09f117ddb2186d5\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78681a09f117ddb2186d6\"}],\"createdAt\":\"2026-09-26T08:46:57.321Z\",\"updatedAt\":\"2026-09-26T08:46:57.321Z\",\"__v\":0}}",
+      "time": 92,
+      "size": 248,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791381807255",
+    "timestamp": 1791381807256,
+    "request": {
+      "id": "1791381807085",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace/6ab78681a09f117ddb2186d5/projects",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"email\": \"justpramod@gmail.com\",\n  \"password\": \"12345678\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "75",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 14:03:27 GMT",
+        "etag": "W/\"4b-7COuLiyAHz7ikSwgSczTYPn48R8\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"projects\":[],\"pagination\":{\"total\":0,\"page\":1,\"limit\":10,\"totalPages\":0}}",
+      "time": 168,
+      "size": 75,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791381834190",
+    "timestamp": 1791381834190,
+    "request": {
+      "id": "1791381834028",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/workspace/6ab78681a09f117ddb2186d5/projects",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"something good stuff\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "201",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 14:03:54 GMT",
+        "etag": "W/\"c9-DIBItfExcgoTJbqSZo7OglTGEWQ\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"project\":{\"name\":\"something good stuff\",\"workspace\":\"6ab78681a09f117ddb2186d5\",\"_id\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T14:03:54.117Z\",\"updatedAt\":\"2026-10-07T14:03:54.117Z\",\"__v\":0}}",
+      "time": 159,
+      "size": 201,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791392079913",
+    "timestamp": 1791392079913,
+    "request": {
+      "id": "1791392079899",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"something good stuff\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Error",
+      "headers": {},
+      "body": "Request failed: Request with GET/HEAD method cannot have body.",
+      "time": 11,
+      "size": 0,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791392084941",
+    "timestamp": 1791392084941,
+    "request": {
+      "id": "1791392084794",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"name\": \"something good stuff\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "2521",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 16:54:44 GMT",
+        "etag": "W/\"9d9-8AXZBucbH47dHHEK54wOk4fmX2w\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspaces\":[{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"},{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"member\",\"_id\":\"6ab6684b5c0404c622ce9f1b\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-25T12:25:47.149Z\",\"__v\":1},{\"_id\":\"6ab7855ba09f117ddb2186cf\",\"name\":\"web-novel\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab7855ba09f117ddb2186d0\"}],\"createdAt\":\"2026-09-26T08:42:03.476Z\",\"updatedAt\":\"2026-09-26T08:42:03.476Z\",\"__v\":0},{\"_id\":\"6ab78567a09f117ddb2186d1\",\"name\":\"web-novel\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78567a09f117ddb2186d2\"}],\"createdAt\":\"2026-09-26T08:42:15.568Z\",\"updatedAt\":\"2026-09-26T08:42:15.568Z\",\"__v\":0},{\"_id\":\"6ab7867fa09f117ddb2186d3\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab7867fa09f117ddb2186d4\"}],\"createdAt\":\"2026-09-26T08:46:55.680Z\",\"updatedAt\":\"2026-09-26T08:46:55.680Z\",\"__v\":0},{\"_id\":\"6ab78681a09f117ddb2186d5\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78681a09f117ddb2186d6\"}],\"createdAt\":\"2026-09-26T08:46:57.321Z\",\"updatedAt\":\"2026-09-26T08:46:57.321Z\",\"__v\":0},{\"_id\":\"6ab78682a09f117ddb2186d7\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78682a09f117ddb2186d8\"}],\"createdAt\":\"2026-09-26T08:46:58.063Z\",\"updatedAt\":\"2026-09-26T08:46:58.063Z\",\"__v\":0},{\"_id\":\"6ab78713a09f117ddb2186d9\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78713a09f117ddb2186da\"}],\"createdAt\":\"2026-09-26T08:49:23.521Z\",\"updatedAt\":\"2026-09-26T08:49:23.521Z\",\"__v\":0},{\"_id\":\"6ab78714a09f117ddb2186db\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78714a09f117ddb2186dc\"}],\"createdAt\":\"2026-09-26T08:49:24.354Z\",\"updatedAt\":\"2026-09-26T08:49:24.354Z\",\"__v\":0},{\"_id\":\"6ab78715a09f117ddb2186dd\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78715a09f117ddb2186de\"}],\"createdAt\":\"2026-09-26T08:49:25.412Z\",\"updatedAt\":\"2026-09-26T08:49:25.412Z\",\"__v\":0},{\"_id\":\"6ab78716a09f117ddb2186df\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78716a09f117ddb2186e0\"}],\"createdAt\":\"2026-09-26T08:49:26.398Z\",\"updatedAt\":\"2026-09-26T08:49:26.398Z\",\"__v\":0}],\"pagination\":{\"total\":23,\"page\":1,\"limit\":10,\"totalPages\":3}}",
+      "time": 145,
+      "size": 2521,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791392156848",
+    "timestamp": 1791392156848,
+    "request": {
+      "id": "1791392156642",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace/6ab78681a09f117ddb2186d5/projects",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"name\": \"something good stuff\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "264",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 16:55:56 GMT",
+        "etag": "W/\"108-5gTZMrFByrpkjgrXaS1iJsu4D9U\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"projects\":[{\"_id\":\"6ac6514adf25b9862670e736\",\"name\":\"something good stuff\",\"workspace\":\"6ab78681a09f117ddb2186d5\",\"createdAt\":\"2026-10-07T14:03:54.117Z\",\"updatedAt\":\"2026-10-07T14:03:54.117Z\",\"__v\":0}],\"pagination\":{\"total\":1,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+      "time": 204,
+      "size": 264,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791392189886",
+    "timestamp": 1791392189886,
+    "request": {
+      "id": "1791392189761",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace/",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"name\": \"something good stuff\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "2521",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 16:56:29 GMT",
+        "etag": "W/\"9d9-8AXZBucbH47dHHEK54wOk4fmX2w\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"workspaces\":[{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"},{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"member\",\"_id\":\"6ab6684b5c0404c622ce9f1b\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-25T12:25:47.149Z\",\"__v\":1},{\"_id\":\"6ab7855ba09f117ddb2186cf\",\"name\":\"web-novel\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab7855ba09f117ddb2186d0\"}],\"createdAt\":\"2026-09-26T08:42:03.476Z\",\"updatedAt\":\"2026-09-26T08:42:03.476Z\",\"__v\":0},{\"_id\":\"6ab78567a09f117ddb2186d1\",\"name\":\"web-novel\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78567a09f117ddb2186d2\"}],\"createdAt\":\"2026-09-26T08:42:15.568Z\",\"updatedAt\":\"2026-09-26T08:42:15.568Z\",\"__v\":0},{\"_id\":\"6ab7867fa09f117ddb2186d3\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab7867fa09f117ddb2186d4\"}],\"createdAt\":\"2026-09-26T08:46:55.680Z\",\"updatedAt\":\"2026-09-26T08:46:55.680Z\",\"__v\":0},{\"_id\":\"6ab78681a09f117ddb2186d5\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78681a09f117ddb2186d6\"}],\"createdAt\":\"2026-09-26T08:46:57.321Z\",\"updatedAt\":\"2026-09-26T08:46:57.321Z\",\"__v\":0},{\"_id\":\"6ab78682a09f117ddb2186d7\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78682a09f117ddb2186d8\"}],\"createdAt\":\"2026-09-26T08:46:58.063Z\",\"updatedAt\":\"2026-09-26T08:46:58.063Z\",\"__v\":0},{\"_id\":\"6ab78713a09f117ddb2186d9\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78713a09f117ddb2186da\"}],\"createdAt\":\"2026-09-26T08:49:23.521Z\",\"updatedAt\":\"2026-09-26T08:49:23.521Z\",\"__v\":0},{\"_id\":\"6ab78714a09f117ddb2186db\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78714a09f117ddb2186dc\"}],\"createdAt\":\"2026-09-26T08:49:24.354Z\",\"updatedAt\":\"2026-09-26T08:49:24.354Z\",\"__v\":0},{\"_id\":\"6ab78715a09f117ddb2186dd\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78715a09f117ddb2186de\"}],\"createdAt\":\"2026-09-26T08:49:25.412Z\",\"updatedAt\":\"2026-09-26T08:49:25.412Z\",\"__v\":0},{\"_id\":\"6ab78716a09f117ddb2186df\",\"name\":\"NeonPage\",\"members\":[{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"owner\",\"_id\":\"6ab78716a09f117ddb2186e0\"}],\"createdAt\":\"2026-09-26T08:49:26.398Z\",\"updatedAt\":\"2026-09-26T08:49:26.398Z\",\"__v\":0}],\"pagination\":{\"total\":23,\"page\":1,\"limit\":10,\"totalPages\":3}}",
+      "time": 123,
+      "size": 2521,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791392225009",
+    "timestamp": 1791392225009,
+    "request": {
+      "id": "1791392224845",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace/6ab78681a09f117ddb2186d5/projects",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"name\": \"something good stuff\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "264",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 16:57:05 GMT",
+        "etag": "W/\"108-5gTZMrFByrpkjgrXaS1iJsu4D9U\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"projects\":[{\"_id\":\"6ac6514adf25b9862670e736\",\"name\":\"something good stuff\",\"workspace\":\"6ab78681a09f117ddb2186d5\",\"createdAt\":\"2026-10-07T14:03:54.117Z\",\"updatedAt\":\"2026-10-07T14:03:54.117Z\",\"__v\":0}],\"pagination\":{\"total\":1,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+      "time": 162,
+      "size": 264,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791392900638",
+    "timestamp": 1791392900638,
+    "request": {
+      "id": "1791392900462",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"name\": \"something good stuff\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "201",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:08:20 GMT",
+        "etag": "W/\"c9-WcZ2TzQU0H1zI/PHqkM4JxvKf8M\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"project\":{\"_id\":\"6ac6514adf25b9862670e736\",\"name\":\"something good stuff\",\"workspace\":\"6ab78681a09f117ddb2186d5\",\"createdAt\":\"2026-10-07T14:03:54.117Z\",\"updatedAt\":\"2026-10-07T14:03:54.117Z\",\"__v\":0}}",
+      "time": 165,
+      "size": 201,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791393112287",
+    "timestamp": 1791393112287,
+    "request": {
+      "id": "1791393112067",
+      "name": "New Request",
+      "method": "PUT",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"description\": \"This is good stuff creating spot\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "278",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:11:52 GMT",
+        "etag": "W/\"116-odlNTY1mg/uhVYgqz9eQEJgfrvs\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Project Updated\",\"project\":{\"_id\":\"6ac6514adf25b9862670e736\",\"name\":\"something good stuff\",\"workspace\":\"6ab78681a09f117ddb2186d5\",\"createdAt\":\"2026-10-07T14:03:54.117Z\",\"updatedAt\":\"2026-10-07T17:11:52.222Z\",\"__v\":0,\"description\":\"This is good stuff creating spot\"}}",
+      "time": 209,
+      "size": 278,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791393151948",
+    "timestamp": 1791393151948,
+    "request": {
+      "id": "1791393151775",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/workspace/6ab78681a09f117ddb2186d5/projects",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"\"\"This is good stuff creating spot\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "313",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:12:31 GMT",
+        "etag": "W/\"139-QAR0XIlzSegERl+yDA/nLdlb8NE\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"projects\":[{\"_id\":\"6ac6514adf25b9862670e736\",\"name\":\"something good stuff\",\"workspace\":\"6ab78681a09f117ddb2186d5\",\"createdAt\":\"2026-10-07T14:03:54.117Z\",\"updatedAt\":\"2026-10-07T17:11:52.222Z\",\"__v\":0,\"description\":\"This is good stuff creating spot\"}],\"pagination\":{\"total\":1,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+      "time": 171,
+      "size": 313,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791393186646",
+    "timestamp": 1791393186646,
+    "request": {
+      "id": "1791393186473",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"\"\"This is good stuff creating spot\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "250",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:13:06 GMT",
+        "etag": "W/\"fa-1j8dnk6oS36YkOPwpxc0AY0YPIU\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"project\":{\"_id\":\"6ac6514adf25b9862670e736\",\"name\":\"something good stuff\",\"workspace\":\"6ab78681a09f117ddb2186d5\",\"createdAt\":\"2026-10-07T14:03:54.117Z\",\"updatedAt\":\"2026-10-07T17:11:52.222Z\",\"__v\":0,\"description\":\"This is good stuff creating spot\"}}",
+      "time": 170,
+      "size": 250,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791393876967",
+    "timestamp": 1791393876967,
+    "request": {
+      "id": "1791393876826",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736/tasks",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Desktop UI\",\n  \"description\": \"creating a task bar all upto working windows tabs\",\n  \"status\": \"in-progress\",\n  \"priority\": \"high\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 400,
+      "statusText": "Bad Request",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "31",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:24:36 GMT",
+        "etag": "W/\"1f-CiZjx0oSR9/MBDe1c1NA8JbkvI8\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Title is required\"}",
+      "time": 137,
+      "size": 31,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791393889804",
+    "timestamp": 1791393889804,
+    "request": {
+      "id": "1791393889573",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736/tasks",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"title\": \"Desktop UI\",\n  \"description\": \"creating a task bar all upto working windows tabs\",\n  \"status\": \"in-progress\",\n  \"priority\": \"high\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "358",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:24:49 GMT",
+        "etag": "W/\"166-NxGMUQArudY+Nu8Bts1+glpTppg\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Task created\",\"task\":{\"title\":\"Desktop UI\",\"description\":\"creating a task bar all upto working windows tabs\",\"status\":\"in-progress\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"_id\":\"6ac6806133d62f97a4b2f7fc\",\"createdAt\":\"2026-10-07T17:24:49.746Z\",\"updatedAt\":\"2026-10-07T17:24:49.746Z\",\"__v\":0}}",
+      "time": 229,
+      "size": 358,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791393946329",
+    "timestamp": 1791393946329,
+    "request": {
+      "id": "1791393946132",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736/tasks",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"title\": \"python IDE\",\n  \"description\": \"creating a python IDE for users to write their custom code\",\n  \"status\": \"done\",\n  \"priority\": \"high\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "360",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:25:46 GMT",
+        "etag": "W/\"168-N6TQMLBhfunRGxzqeB7baYsj4yg\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Task created\",\"task\":{\"title\":\"python IDE\",\"description\":\"creating a python IDE for users to write their custom code\",\"status\":\"done\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"_id\":\"6ac6809a33d62f97a4b2f7fe\",\"createdAt\":\"2026-10-07T17:25:46.286Z\",\"updatedAt\":\"2026-10-07T17:25:46.286Z\",\"__v\":0}}",
+      "time": 195,
+      "size": 360,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791393985830",
+    "timestamp": 1791393985830,
+    "request": {
+      "id": "1791393985641",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736/tasks",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"title\": \"Interrupt handler\",\n  \"description\": \"Handle something interrupt occurance\",\n  \"status\": \"todo\",\n  \"priority\": \"high\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "345",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:26:25 GMT",
+        "etag": "W/\"159-sLiag0C6vX3xSPbahNuA17x7YHY\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Task created\",\"task\":{\"title\":\"Interrupt handler\",\"description\":\"Handle something interrupt occurance\",\"status\":\"todo\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"_id\":\"6ac680c133d62f97a4b2f800\",\"createdAt\":\"2026-10-07T17:26:25.786Z\",\"updatedAt\":\"2026-10-07T17:26:25.786Z\",\"__v\":0}}",
+      "time": 186,
+      "size": 345,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791394001759",
+    "timestamp": 1791394001759,
+    "request": {
+      "id": "1791394001589",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736/tasks",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"title\": \"Exception Handling\",\n  \"description\": \"Handle something ..\",\n  \"status\": \"todo\",\n  \"priority\": \"high\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "329",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:26:41 GMT",
+        "etag": "W/\"149-AEaiTtAWiUKQD5HbqzWOsYWe/+s\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Task created\",\"task\":{\"title\":\"Exception Handling\",\"description\":\"Handle something ..\",\"status\":\"todo\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"_id\":\"6ac680d133d62f97a4b2f802\",\"createdAt\":\"2026-10-07T17:26:41.716Z\",\"updatedAt\":\"2026-10-07T17:26:41.716Z\",\"__v\":0}}",
+      "time": 167,
+      "size": 329,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791394021218",
+    "timestamp": 1791394021218,
+    "request": {
+      "id": "1791394021017",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736/tasks",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"title\": \"Just Handling\",\n  \"description\": \"Handle anything ..\",\n  \"status\": \"todo\",\n  \"priority\": \"high\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "323",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:27:01 GMT",
+        "etag": "W/\"143-LQwDO+5B0yZ7sf48x2v/1Uw+x4Y\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"message\":\"Task created\",\"task\":{\"title\":\"Just Handling\",\"description\":\"Handle anything ..\",\"status\":\"todo\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"_id\":\"6ac680e533d62f97a4b2f804\",\"createdAt\":\"2026-10-07T17:27:01.157Z\",\"updatedAt\":\"2026-10-07T17:27:01.157Z\",\"__v\":0}}",
+      "time": 197,
+      "size": 323,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791394050340",
+    "timestamp": 1791394050340,
+    "request": {
+      "id": "1791394050331",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736/tasks/6ac680e533d62f97a4b2f804",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"title\": \"Just Handling\",\n  \"description\": \"Handle anything ..\",\n  \"status\": \"todo\",\n  \"priority\": \"high\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "207",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:27:30 GMT",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/projects/6ac6514adf25b9862670e736/tasks/6ac680e533d62f97a4b2f804</pre>\n</body>\n</html>\n",
+      "time": 7,
+      "size": 207,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791394057056",
+    "timestamp": 1791394057056,
+    "request": {
+      "id": "1791394056881",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/tasks/6ac680e533d62f97a4b2f804",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"title\": \"Just Handling\",\n  \"description\": \"Handle anything ..\",\n  \"status\": \"todo\",\n  \"priority\": \"high\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "298",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:27:37 GMT",
+        "etag": "W/\"12a-7Os29ZxMitFJLk/5233AtZffRMk\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"task\":{\"_id\":\"6ac680e533d62f97a4b2f804\",\"title\":\"Just Handling\",\"description\":\"Handle anything ..\",\"status\":\"todo\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:27:01.157Z\",\"updatedAt\":\"2026-10-07T17:27:01.157Z\",\"__v\":0}}",
+      "time": 173,
+      "size": 298,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1791394117657",
+    "timestamp": 1791394117658,
+    "request": {
+      "id": "1791394117438",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736/tasks/",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": false
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none",
+        "raw": "{\n  \"title\": \"Just Handling\",\n  \"description\": \"Handle anything ..\",\n  \"status\": \"todo\",\n  \"priority\": \"high\"\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:5173",
+        "connection": "keep-alive",
+        "content-length": "1621",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 17:28:37 GMT",
+        "etag": "W/\"655-Y2fh8IqsEjUOLN+QsIK+fRKzyEA\"",
+        "keep-alive": "timeout=5",
+        "vary": "Origin",
+        "x-powered-by": "Express"
+      },
+      "body": "{\"tasks\":[{\"_id\":\"6ac6806133d62f97a4b2f7fc\",\"title\":\"Desktop UI\",\"description\":\"creating a task bar all upto working windows tabs\",\"status\":\"in-progress\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:24:49.746Z\",\"updatedAt\":\"2026-10-07T17:24:49.746Z\",\"__v\":0},{\"_id\":\"6ac6809a33d62f97a4b2f7fe\",\"title\":\"python IDE\",\"description\":\"creating a python IDE for users to write their custom code\",\"status\":\"done\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:25:46.286Z\",\"updatedAt\":\"2026-10-07T17:25:46.286Z\",\"__v\":0},{\"_id\":\"6ac680c133d62f97a4b2f800\",\"title\":\"Interrupt handler\",\"description\":\"Handle something interrupt occurance\",\"status\":\"todo\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:26:25.786Z\",\"updatedAt\":\"2026-10-07T17:26:25.786Z\",\"__v\":0},{\"_id\":\"6ac680d133d62f97a4b2f802\",\"title\":\"Exception Handling\",\"description\":\"Handle something ..\",\"status\":\"todo\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:26:41.716Z\",\"updatedAt\":\"2026-10-07T17:26:41.716Z\",\"__v\":0},{\"_id\":\"6ac680e533d62f97a4b2f804\",\"title\":\"Just Handling\",\"description\":\"Handle anything ..\",\"status\":\"todo\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:27:01.157Z\",\"updatedAt\":\"2026-10-07T17:27:01.157Z\",\"__v\":0}],\"pagination\":{\"total\":5,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+      "time": 213,
+      "size": 1621,
+      "cookies": []
+    }
   }
 ]

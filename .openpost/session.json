@@ -147,28 +147,23 @@
       "tabKind": "request",
       "name": "New Request",
       "method": "GET",
-      "url": "http://localhost:5050/api/workspace/",
+      "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736/tasks/",
       "params": [],
       "headers": [
         {
           "key": "Accept",
           "value": "application/json",
-          "enabled": true
-        },
-        {
-          "key": "Authorization",
-          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc4OTkyNTY4OSwiZXhwIjoxNzkwNTMwNDg5fQ.eGFu6O9r8reoXSw6j0-0X0GBxUoPvWDMvOyl4mvZU40",
           "enabled": false
         },
         {
           "key": "Authorization",
-          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0",
           "enabled": true
         }
       ],
       "body": {
         "type": "none",
-        "raw": "{\n \"email\": \"justpramod@gmail.com\"\n}"
+        "raw": "{\n  \"title\": \"Just Handling\",\n  \"description\": \"Handle anything ..\",\n  \"status\": \"todo\",\n  \"priority\": \"high\"\n}"
       },
       "auth": {
         "type": "none"
@@ -193,23 +188,22 @@
         "headers": {
           "access-control-allow-origin": "http://localhost:5173",
           "connection": "keep-alive",
-          "content-length": "1111",
+          "content-length": "1621",
           "content-type": "application/json; charset=utf-8",
-          "date": "Fri, 25 Sep 2026 12:28:27 GMT",
-          "etag": "W/\"457-n7LYHFOfbBiV1cChesEeXpjfTD4\"",
+          "date": "Wed, 07 Oct 2026 17:28:37 GMT",
+          "etag": "W/\"655-Y2fh8IqsEjUOLN+QsIK+fRKzyEA\"",
           "keep-alive": "timeout=5",
           "vary": "Origin",
           "x-powered-by": "Express"
         },
-        "body": "{\"workspaces\":[{\"_id\":\"6ab01c25666bc8aac366caa3\",\"name\":\"project-manager\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c25666bc8aac366caa4\"},{\"user\":\"6aaeaa7f3bcccf5d51523924\",\"role\":\"member\",\"_id\":\"6ab6684b5c0404c622ce9f1b\"}],\"createdAt\":\"2026-09-20T17:47:17.042Z\",\"updatedAt\":\"2026-09-25T12:25:47.149Z\",\"__v\":1},{\"_id\":\"6ab01c36666bc8aac366caa5\",\"name\":\"Red label\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c36666bc8aac366caa6\"}],\"createdAt\":\"2026-09-20T17:47:34.227Z\",\"updatedAt\":\"2026-09-20T17:47:34.227Z\",\"__v\":0},{\"_id\":\"6ab01c51666bc8aac366caa7\",\"name\":\"Frontending\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab01c51666bc8aac366caa8\"}],\"createdAt\":\"2026-09-20T17:48:01.638Z\",\"updatedAt\":\"2026-09-20T17:48:01.638Z\",\"__v\":0},{\"_id\":\"6ab60247a9fb24e41ff3f3b8\",\"name\":\"justiny\",\"members\":[{\"user\":\"6ab00bbf666bc8aac366caa2\",\"role\":\"owner\",\"_id\":\"6ab60247a9fb24e41ff3f3b9\"}],\"createdAt\":\"2026-09-25T05:10:31.701Z\",\"updatedAt\":\"2026-09-25T05:10:31.701Z\",\"__v\":0}],\"pagination\":{\"total\":4,\"page\":1,\"limit\":10,\"totalPages\":1}}",
-        "time": 346,
-        "size": 1111,
+        "body": "{\"tasks\":[{\"_id\":\"6ac6806133d62f97a4b2f7fc\",\"title\":\"Desktop UI\",\"description\":\"creating a task bar all upto working windows tabs\",\"status\":\"in-progress\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:24:49.746Z\",\"updatedAt\":\"2026-10-07T17:24:49.746Z\",\"__v\":0},{\"_id\":\"6ac6809a33d62f97a4b2f7fe\",\"title\":\"python IDE\",\"description\":\"creating a python IDE for users to write their custom code\",\"status\":\"done\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:25:46.286Z\",\"updatedAt\":\"2026-10-07T17:25:46.286Z\",\"__v\":0},{\"_id\":\"6ac680c133d62f97a4b2f800\",\"title\":\"Interrupt handler\",\"description\":\"Handle something interrupt occurance\",\"status\":\"todo\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:26:25.786Z\",\"updatedAt\":\"2026-10-07T17:26:25.786Z\",\"__v\":0},{\"_id\":\"6ac680d133d62f97a4b2f802\",\"title\":\"Exception Handling\",\"description\":\"Handle something ..\",\"status\":\"todo\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:26:41.716Z\",\"updatedAt\":\"2026-10-07T17:26:41.716Z\",\"__v\":0},{\"_id\":\"6ac680e533d62f97a4b2f804\",\"title\":\"Just Handling\",\"description\":\"Handle anything ..\",\"status\":\"todo\",\"priority\":\"high\",\"createdBy\":\"6aaeaa7f3bcccf5d51523924\",\"project\":\"6ac6514adf25b9862670e736\",\"createdAt\":\"2026-10-07T17:27:01.157Z\",\"updatedAt\":\"2026-10-07T17:27:01.157Z\",\"__v\":0}],\"pagination\":{\"total\":5,\"page\":1,\"limit\":10,\"totalPages\":1}}",
+        "time": 213,
+        "size": 1621,
         "actualRequest": {
           "method": "GET",
-          "url": "http://localhost:5050/api/workspace/",
+          "url": "http://localhost:5050/api/projects/6ac6514adf25b9862670e736/tasks/",
           "headers": {
-            "Accept": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjAwYmJmNjY2YmM4YWFjMzY2Y2FhMiIsImlhdCI6MTc4OTkyNjE5NSwiZXhwIjoxNzkwNTMwOTk1fQ.5yVuDkG4tc9O8DJNeQw4-AyQva9GFZNmQL53kCbWMeE"
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYWVhYTdmM2JjY2NmNWQ1MTUyMzkyNCIsImlhdCI6MTc5MTM4MDI1MiwiZXhwIjoxNzkxOTg1MDUyfQ.q-7rHhU3bU-SexqXv2Zbo6vsI6VtFg6iXqMSke_IDo0"
           },
           "body": null,
           "protocol": "HTTP/1.1",
@@ -227,7 +221,7 @@
           },
           {
             "name": "HTTP Request",
-            "duration": 346
+            "duration": 213
           },
           {
             "name": "Post-processing",
@@ -259,7 +253,7 @@
   "sidebarCollapsed": true,
   "responseTab": "body",
   "layoutMode": "vertical",
-  "splitRatio": 0.6960950764006791,
+  "splitRatio": 0.22920203735144312,
   "horizontalSplitRatio": 0.5,
   "selectedMockServerId": null
 }
