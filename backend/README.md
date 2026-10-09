@@ -167,7 +167,7 @@ Base: `/tasks`
 | GET | `/:taskId/attachments` | Yes, workspace member | List attachments on a task |
 | DELETE | `/:taskId/attachments/:id` | Yes, uploader | Delete an attachment (removes DB record + file from disk) |
 
-**Task fields:** `title` (required), `description`, `status` (`todo` \| `in-progress` \| `done`, default `todo`), `priority` (`low` \| `medium` \| `high`, default `medium`), `assignee` (set via email in request body, stored as user ref), `createdBy`, `project`.
+**Task fields:** `title` (required), `description`, `status` (`todo` \| `inProgress` \| `done`, default `todo`), `priority` (`low` \| `medium` \| `high`, default `medium`), `assignee` (set via email in request body, stored as user ref), `createdBy`, `project`.
 
 ### Comments
 

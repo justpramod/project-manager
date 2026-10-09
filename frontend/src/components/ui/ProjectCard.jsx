@@ -3,7 +3,7 @@ const ProjectCard = ({ project, workspaceId, task}) => {
 
     const totalTaskCount = tasks.length();
     const toDoTaskCount = tasks.find((task)=> task.status === 'todo').length();
-    const inProgressTaskCount = tasks.find((task)=> task.status === 'in-progress');
+    const inProgressTaskCount = tasks.find((task)=> task.status === 'inProgress');
     const doneTaskCount = tasks.find((task)=> task.status === 'done');
     return (
         <div className="border bg-white  rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col h-full">
