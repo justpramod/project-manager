@@ -1,5 +1,6 @@
 const Project = require('../models/Project');
 const { getIO } = require('../utils/socket');
+const { getTaskByCount } = require('../utils/taskStats');
 
 const createProject = async (req, res) => {
     try {
@@ -30,10 +31,28 @@ const getProjects = async (req, res) => {
 
         const skip = (page - 1) * limit;
 
-        const projects = await Project.find(filter).skip(skip).limit(limit);
+        const projects = await Project.find(filter).skip(skip).limit(limit).lean();
         const total = await Project.countDocuments(filter);
+        const projectIds = projects.map((proj)=> proj._id);
+        
+        const countsByProject = await getTaskByCount(projectIds);
+
+        const projectWithStats = projects.map((p)=> {
+
+            const c = countsByProject[p._id.toString()] || { todo: 0, inProgress: 0, done: 0 };
+            const taskTotal = c.todo + c.inProgress + c.done;
+
+            return {
+                ...p,
+                taskCounts: { taskTotal, ...c},
+                progress: taskTotal === 0 ? 0 : Math.round((c.done / taskTotal) * 100),
+            };
+
+        });
+
+
         res.status(200).json({
-             projects,
+             projectWithStats,
             pagination: { total, page, limit, totalPages: Math.ceil(total / limit )}
          });
     }
