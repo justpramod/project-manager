@@ -90,7 +90,7 @@ const addMember = async (req, res)=>{
         const {email, role} = req.body;
 
         const userToAdd = await User.findOne({ email });
-        if(!userToAdd) return res.status(404).json({mesasge: 'User with that email does not exists'});
+        if(!userToAdd) return res.status(404).json({message: 'User with that email does not exists'});
 
         const alreadyMember = req.workspace.members.find(m => m.user.toString() === userToAdd._id.toString());
         if(alreadyMember) return res.status(400).json({message: 'User is already a member'});

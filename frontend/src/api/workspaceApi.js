@@ -20,9 +20,9 @@ const createWorkspace = async ( name ) => {
     return res.data;
 }
 
-const addMember = async({memberUsername, workspaceId})=>{
+const addMember = async({email, role,  workspaceId})=>{
 
-    const res = await axiosClient.put(`/workspace/${workspaceId}`, memberUsername );
+    const res = await axiosClient.post(`/workspace/${workspaceId}/members`, {email: email, role: role});
     return res;
 
 }

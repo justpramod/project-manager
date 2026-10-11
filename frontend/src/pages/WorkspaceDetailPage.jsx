@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import ProjectCard from "../components/ui/ProjectCard";
+import AddMemberModal from "../components/ui/AddMemberModal";
 
-import { getAWorkspace, getProjects } from '../api/workspaceApi';
+import {  getAWorkspace, getProjects } from '../api/workspaceApi';
 
 const WorkspaceDetailPage = () => {
 
@@ -11,6 +12,8 @@ const WorkspaceDetailPage = () => {
     const [workspace, setWorkspace] = useState(null);
     const [workspaceLoading, setWorkspaceLoading] = useState(true);
     const [workspaceError, setWorkspaceError] = useState('');
+
+    const [isModalOpen, setIsModalOpen ] = useState(false);
 
     const [projects, setProjects] = useState([]);
     const [projectLoading, setProjectLoading] = useState(true);
@@ -62,6 +65,13 @@ const WorkspaceDetailPage = () => {
 
     const currentWorkspaceName = workspace?.name ;
 
+    const handleModalSuccess = ()=>{
+
+        setIsModalOpen(false);
+        getWorkspace();
+        
+    }
+
     return (
 
         <div className="mx-9 my-5 ">
@@ -77,7 +87,7 @@ const WorkspaceDetailPage = () => {
             </header>
 
             {
-                workspaceLoading && <div className="flex place-content-center justify-center h-screen items-center text-5xl">Loading...</div>
+                workspaceLoading && <div className="py-8 text-center text-sm text-slate-500">Loading...</div>
             }
             {
                 !workspaceLoading && !workspaceError && workspace && (
@@ -85,7 +95,10 @@ const WorkspaceDetailPage = () => {
                         <div className="flex-1">
                             <h1 className="text-4xl font-bold tracking-tight text-slate-900">{workspace.name}</h1>
                         </div>
-                        <button type="button" className="ml-6 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm">
+                        <button type="button"
+                         className="ml-6 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
+                         onClick={() => setIsModalOpen(true)}
+                         >
                             Add Member
                         </button>
                     </div>
@@ -96,11 +109,23 @@ const WorkspaceDetailPage = () => {
             }
 
             <div className="mb-5 flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-slate-900">
-                    {projects.length === 0 ? "No Projects yet" : "Active Projects"}
-                </h2>
+                
+                   {
+                    projectError && <h2 className="text-2xl font-bold text-slate-900" > {projectError} </h2>
+                   }
 
-                <button type="button" className="flex items-center gap-2 rounded-xl bg-[#4338CA] px-4 py-3 text-sm font-semibold text-white shadow-sm">
+                   {
+                    projects.length === 0 ?
+                     <h2 className="text-2xl font-bold text-slate-900"> No project Yet </h2>
+                     :
+                      <h2 className="text-2xl font-bold text-slate-900"> Active Projects </h2>
+                   }
+             
+
+                <button type="button"
+                 className="flex items-center gap-2 rounded-xl bg-[#4338CA] px-4 py-3 text-sm font-semibold text-white shadow-sm"
+            
+                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
                         <path d="M12 5v14M5 12h14"
                             fill="none" stroke="currentColor" strokeWidth="2"
@@ -109,9 +134,17 @@ const WorkspaceDetailPage = () => {
                     New Project
                 </button>
             </div>
+
+            <AddMemberModal 
+
+            isOpen={isModalOpen}
+            onClose={()=> setIsModalOpen(false)}
+            onSuccess={handleModalSuccess}
+
+            />
             <main>
                 {
-                    projectLoading && <div className="flex place-content-center justify-center items-center text-4xl">Loading...</div>
+                    projectLoading && <div className="py-8 text-center text-sm text-slate-500">Loading...</div>
                 }
                 {
                     !projectLoading &&
