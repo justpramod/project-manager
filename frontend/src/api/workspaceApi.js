@@ -10,14 +10,21 @@ const getAWorkspace = async (workspaceId) => {
     return res.data;
 }
 
-const getProjects = async (workspaceId) => {
-    const res = await axiosClient.get(`/workspace/${workspaceId}/projects`);
+const getProjects = async (params = {},workspaceId) => {
+    const res = await axiosClient.get(`/workspace/${workspaceId}/projects`, { params });
     return res.data;
 }
 
-const createWorkspace = async ({ name }) => {
-    const res = await axiosClient.post('/workspace', { name });
+const createWorkspace = async ( name ) => {
+    const res = await axiosClient.post('/workspace', name);
     return res.data;
 }
 
-export { getWorkspace, getAWorkspace, getProjects, createWorkspace };
+const addMember = async({memberUsername, workspaceId})=>{
+
+    const res = await axiosClient.put(`/workspace/${workspaceId}`, memberUsername );
+    return res;
+
+}
+
+export { getWorkspace, getAWorkspace, getProjects, createWorkspace, addMember };
