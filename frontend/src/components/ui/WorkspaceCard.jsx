@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const WorkspaceCard = ({ workspace, currentUserId }) => {
 
     const currentUserMember = workspace.members.find((member) => member.user === currentUserId);
@@ -36,7 +36,7 @@ const WorkspaceCard = ({ workspace, currentUserId }) => {
                 <span className="text-sm text-gray-400">Updated {formattedDate}</span>
 
                 <button className="text-sm font-medium text-[#4338CA] flex items-center gap-1 hover:text-indigo-800 transition-colors" >
-                    <NavLink to="/workspace/:workspaceId">Open</NavLink>
+                    <Link to={`/workspace/${workspace._id}`} >Open</Link>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
