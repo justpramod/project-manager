@@ -3,10 +3,15 @@ import { NavLink, useParams } from "react-router-dom";
 import ProjectCard from "../components/ui/ProjectCard";
 import AddMemberModal from "../components/ui/AddMemberModal";
 
+import CreateProjectModal from "../components/ui/createProjectModal";
+
 import {  getAWorkspace, getProjects } from '../api/workspaceApi';
+
+import { useAuth } from "../hooks/useAuth";
 
 const WorkspaceDetailPage = () => {
 
+    const { user } = useAuth();
     const { workspaceId } = useParams();
 
     const [workspace, setWorkspace] = useState(null);
@@ -15,10 +20,19 @@ const WorkspaceDetailPage = () => {
 
     const [isModalOpen, setIsModalOpen ] = useState(false);
 
+    const [iscreateModalOpen, setIsCreateModalOpen] = useState(false);
+
     const [projects, setProjects] = useState([]);
     const [projectLoading, setProjectLoading] = useState(true);
     const [projectError, setProjectError] = useState('');
 
+    const userId = user?._id;
+
+  const isOwner = !!workspace?.members?.some(
+  (member) => member.user === userId && member.role === 'owner'
+);
+    
+  
 
     const getWorkspace = async () => {
 
@@ -58,9 +72,13 @@ const WorkspaceDetailPage = () => {
         }
     };
 
+   
+
     useEffect(() => {
         getWorkspace();
         getProject();
+      
+      
     }, [workspaceId]);
 
     const currentWorkspaceName = workspace?.name ;
@@ -71,6 +89,13 @@ const WorkspaceDetailPage = () => {
         getWorkspace();
         
     }
+
+    const handleProjectModalSuccess = ()=>{
+        setIsCreateModalOpen(false);
+        getProject();
+    }
+
+    
 
     return (
 
@@ -95,12 +120,14 @@ const WorkspaceDetailPage = () => {
                         <div className="flex-1">
                             <h1 className="text-4xl font-bold tracking-tight text-slate-900">{workspace.name}</h1>
                         </div>
-                        <button type="button"
-                         className="ml-6 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
+                        <div> {workspace?.members?.length} Members</div>
+                       {  isOwner  && <button type="button"
+                    
+                         className= {` ml-6 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm`}
                          onClick={() => setIsModalOpen(true)}
                          >
                             Add Member
-                        </button>
+                        </button>}
                     </div>
                 )
             }
@@ -110,13 +137,14 @@ const WorkspaceDetailPage = () => {
 
             <div className="mb-5 flex items-center justify-between">
                 
-                   {
-                    projectError && <h2 className="text-2xl font-bold text-slate-900" > {projectError} </h2>
-                   }
+                  
 
                    {
                     projects.length === 0 ?
-                     <h2 className="text-2xl font-bold text-slate-900"> No project Yet </h2>
+
+                    (!projectError) && (!projectLoading) && (<h2 className="text-2xl font-bold text-slate-900"> No project Yet </h2>)
+                    
+                   
                      :
                       <h2 className="text-2xl font-bold text-slate-900"> Active Projects </h2>
                    }
@@ -124,7 +152,7 @@ const WorkspaceDetailPage = () => {
 
                 <button type="button"
                  className="flex items-center gap-2 rounded-xl bg-[#4338CA] px-4 py-3 text-sm font-semibold text-white shadow-sm"
-            
+                 onClick={() => setIsCreateModalOpen(true)}
                  >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
                         <path d="M12 5v14M5 12h14"
@@ -142,6 +170,13 @@ const WorkspaceDetailPage = () => {
             onSuccess={handleModalSuccess}
 
             />
+
+            <CreateProjectModal 
+            isOpen={iscreateModalOpen}
+            onClose={()=> setIsCreateModalOpen(false)}
+            onSuccess={handleProjectModalSuccess}
+            />
+            
             <main>
                 {
                     projectLoading && <div className="py-8 text-center text-sm text-slate-500">Loading...</div>
