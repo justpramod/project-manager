@@ -86,6 +86,7 @@ const WorkspaceDetailPage = () => {
     const handleModalSuccess = ()=>{
 
         setIsModalOpen(false);
+        setProjectError('');
         getWorkspace();
         
     }
@@ -151,7 +152,7 @@ const WorkspaceDetailPage = () => {
              
 
                 <button type="button"
-                 className="flex items-center gap-2 rounded-xl bg-[#4338CA] px-4 py-3 text-sm font-semibold text-white shadow-sm"
+                 className="flex items-center gap-2 rounded-xl bg-[#4338CA] px-4 py-3 text-sm font-semibold text-white shadow-sm ml-auto"
                  onClick={() => setIsCreateModalOpen(true)}
                  >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
