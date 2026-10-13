@@ -1,8 +1,10 @@
 import axiosClient from './axiosClient';
 
-const createProject = async(params = {}, {workspaceId})=>{
-   
-    const res = await axiosClient.post(`/workspace/${workspaceId}/projects`, {params});
+const createProject = async({ projectName, description, workspaceId })=>{
+    const res = await axiosClient.post(`/workspace/${workspaceId}/projects`, {
+        name: projectName,
+        description,
+    });
     return res;
 }
 
