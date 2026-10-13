@@ -42,8 +42,10 @@ const AddMemberModal = ({ isOpen, onClose, onSuccess }) => {
 
 
         if (!email) {
-            setEmailError('Email is required');
-            return;
+          
+                setEmailError('Email is required');
+                return;
+
         }
 
         setSubmitting(true);
@@ -59,7 +61,7 @@ const AddMemberModal = ({ isOpen, onClose, onSuccess }) => {
         }
         finally {
             setSubmitting(false);
-    
+
         }
     }
     return (
@@ -100,8 +102,8 @@ const AddMemberModal = ({ isOpen, onClose, onSuccess }) => {
                                 }
                                 autoFocus
                                 className={`w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 transition-shadow ${emailError
-                                        ? 'border-red-500 focus:ring-red-200'
-                                        : ' focus:ring-[#4338CA]/20 focus:border-[#4338CA] '
+                                    ? 'border-red-500 focus:ring-red-200'
+                                    : ' focus:ring-[#4338CA]/20 focus:border-[#4338CA] '
                                     }`} />
 
                             {emailError && (
@@ -136,8 +138,8 @@ const AddMemberModal = ({ isOpen, onClose, onSuccess }) => {
                     </div>
 
 
-                      <div className="flex justify-end gap-3 px-6 py-4 bg-gray-50 border-t border-gray-100">
-                        <button 
+                    <div className="flex justify-end gap-3 px-6 py-4 bg-gray-50 border-t border-gray-100">
+                        <button
                             type="button"
                             onClick={onClose}
                             disabled={submitting}
@@ -145,7 +147,7 @@ const AddMemberModal = ({ isOpen, onClose, onSuccess }) => {
                         >
                             Cancel
                         </button>
-                        <button 
+                        <button
                             type="submit"
                             disabled={submitting}
                             className="px-4 py-2 text-sm font-medium text-white bg-[#4338CA] rounded-lg hover:bg-[#3730a3] focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[#4338CA] disabled:opacity-70 disabled:cursor-not-allowed transition-colors"

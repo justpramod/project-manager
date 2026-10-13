@@ -3,7 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import ProjectCard from "../components/ui/ProjectCard";
 import AddMemberModal from "../components/ui/AddMemberModal";
 
-import CreateProjectModal from "../components/ui/createProjectModal";
+import CreateProjectModal from "../components/ui/CreateProjectModal";
 
 import {  getAWorkspace, getProjects } from '../api/workspaceApi';
 
@@ -83,10 +83,9 @@ const WorkspaceDetailPage = () => {
 
     const currentWorkspaceName = workspace?.name ;
 
-    const handleModalSuccess = ()=>{
+    const handleAddMemberSuccess = ()=>{
 
         setIsModalOpen(false);
-        setProjectError('');
         getWorkspace();
         
     }
@@ -121,7 +120,7 @@ const WorkspaceDetailPage = () => {
                         <div className="flex-1">
                             <h1 className="text-4xl font-bold tracking-tight text-slate-900">{workspace.name}</h1>
                         </div>
-                        <div> {workspace?.members?.length} Members</div>
+                        <div> {workspace?.members?.length } {workspace?.members?.length === 1 ? 'Member' : 'Members'} </div>
                        {  isOwner  && <button type="button"
                     
                          className= {` ml-6 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm`}
@@ -168,7 +167,7 @@ const WorkspaceDetailPage = () => {
 
             isOpen={isModalOpen}
             onClose={()=> setIsModalOpen(false)}
-            onSuccess={handleModalSuccess}
+            onSuccess={handleAddMemberSuccess}
 
             />
 
