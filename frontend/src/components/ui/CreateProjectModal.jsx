@@ -19,6 +19,7 @@ const CreateProjectModal = ({ isOpen, onClose, onSuccess }) => {
             setError('');
             setSubmitting(false);
             setProjectName('');
+            setProjectError('');
             setDescription('');
         }
 
@@ -42,7 +43,7 @@ const CreateProjectModal = ({ isOpen, onClose, onSuccess }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if(!projectName)
+        if(!(projectName.trim()))
         {
             setProjectError('Project name is required');
             return;   
