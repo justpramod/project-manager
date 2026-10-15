@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import {  NavLink, useParams } from "react-router-dom";
 import ProjectCard from "../components/ui/ProjectCard";
 import AddMemberModal from "../components/ui/AddMemberModal";
 
 import CreateProjectModal from "../components/ui/CreateProjectModal";
 
-import {  getAWorkspace, getProjects } from '../api/workspaceApi';
+import { getAWorkspace, getProjects } from '../api/workspaceApi';
 
 import { useAuth } from "../hooks/useAuth";
 
@@ -18,7 +18,7 @@ const WorkspaceDetailPage = () => {
     const [workspaceLoading, setWorkspaceLoading] = useState(true);
     const [workspaceError, setWorkspaceError] = useState('');
 
-    const [isModalOpen, setIsModalOpen ] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [iscreateModalOpen, setIsCreateModalOpen] = useState(false);
 
@@ -28,11 +28,12 @@ const WorkspaceDetailPage = () => {
 
     const userId = user?._id;
 
-  const isOwner = !!workspace?.members?.some(
-  (member) => member.user === userId && member.role === 'owner'
-);
-    
-  
+
+    const isOwner = !!workspace?.members?.some(
+        (member) => member.user === userId && member.role === 'owner'
+    );
+
+
 
     const getWorkspace = async () => {
 
@@ -72,30 +73,30 @@ const WorkspaceDetailPage = () => {
         }
     };
 
-   
+
 
     useEffect(() => {
         getWorkspace();
         getProject();
-      
-      
+
+
     }, [workspaceId]);
 
-    const currentWorkspaceName = workspace?.name ;
+    const currentWorkspaceName = workspace?.name;
 
-    const handleAddMemberSuccess = ()=>{
+    const handleAddMemberSuccess = () => {
 
         setIsModalOpen(false);
         getWorkspace();
-        
+
     }
 
-    const handleProjectModalSuccess = ()=>{
+    const handleProjectModalSuccess = () => {
         setIsCreateModalOpen(false);
         getProject();
     }
 
-    
+
 
     return (
 
@@ -120,12 +121,12 @@ const WorkspaceDetailPage = () => {
                         <div className="flex-1">
                             <h1 className="text-4xl font-bold tracking-tight text-slate-900">{workspace.name}</h1>
                         </div>
-                        <div> {workspace?.members?.length } {workspace?.members?.length === 1 ? 'Member' : 'Members'} </div>
-                       {  isOwner  && <button type="button"
-                    
-                         className= {` ml-6 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm`}
-                         onClick={() => setIsModalOpen(true)}
-                         >
+                        <div> {workspace?.members?.length} {workspace?.members?.length === 1 ? 'Member' : 'Members'} </div>
+                        {isOwner && <button type="button"
+
+                            className={` ml-6 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm`}
+                            onClick={() => setIsModalOpen(true)}
+                        >
                             Add Member
                         </button>}
                     </div>
@@ -136,24 +137,24 @@ const WorkspaceDetailPage = () => {
             }
 
             <div className="mb-5 flex items-center justify-between">
-                
-                  
 
-                   {
+
+
+                {
                     projects.length === 0 ?
 
-                    (!projectError) && (!projectLoading) && (<h2 className="text-2xl font-bold text-slate-900"> No project Yet </h2>)
-                    
-                   
-                     :
-                      <h2 className="text-2xl font-bold text-slate-900"> Active Projects </h2>
-                   }
-             
+                        (!projectError) && (!projectLoading) && (<h2 className="text-2xl font-bold text-slate-900"> No project Yet </h2>)
+
+
+                        :
+                        <h2 className="text-2xl font-bold text-slate-900"> Active Projects </h2>
+                }
+
 
                 <button type="button"
-                 className="flex items-center gap-2 rounded-xl bg-[#4338CA] px-4 py-3 text-sm font-semibold text-white shadow-sm ml-auto"
-                 onClick={() => setIsCreateModalOpen(true)}
-                 >
+                    className="flex items-center gap-2 rounded-xl bg-[#4338CA] px-4 py-3 text-sm font-semibold text-white shadow-sm ml-auto"
+                    onClick={() => setIsCreateModalOpen(true)}
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
                         <path d="M12 5v14M5 12h14"
                             fill="none" stroke="currentColor" strokeWidth="2"
@@ -163,20 +164,20 @@ const WorkspaceDetailPage = () => {
                 </button>
             </div>
 
-            <AddMemberModal 
+            <AddMemberModal
 
-            isOpen={isModalOpen}
-            onClose={()=> setIsModalOpen(false)}
-            onSuccess={handleAddMemberSuccess}
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onSuccess={handleAddMemberSuccess}
 
             />
 
-            <CreateProjectModal 
-            isOpen={iscreateModalOpen}
-            onClose={()=> setIsCreateModalOpen(false)}
-            onSuccess={handleProjectModalSuccess}
+            <CreateProjectModal
+                isOpen={iscreateModalOpen}
+                onClose={() => setIsCreateModalOpen(false)}
+                onSuccess={handleProjectModalSuccess}
             />
-            
+
             <main>
                 {
                     projectLoading && <div className="py-8 text-center text-sm text-slate-500">Loading...</div>
@@ -187,10 +188,13 @@ const WorkspaceDetailPage = () => {
                         <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
                             {
                                 projects.map((project) => (
-                                    <ProjectCard
-                                        key={project._id}
-                                        project={project}
-                                    />
+                                   
+                                        <ProjectCard 
+                                            
+                                            key={project._id}
+                                            project={project}
+                                        />
+
                                 ))
                             }
                         </div>
