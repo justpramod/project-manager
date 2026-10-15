@@ -8,4 +8,16 @@ const createProject = async({ projectName, description, workspaceId })=>{
     return res;
 }
 
-export { createProject };
+const getProject = async(projectId) => {
+
+    const res = await axiosClient.get(`/projects/${projectId}`)
+    return res.data;
+}
+
+const getTasks = async(params = {}, projectId) => {
+
+    const res = await axiosClient.get(`/projects/${projectId}/tasks`, { params });
+    return res.data;
+}
+
+export { createProject, getProject, getTasks };

@@ -7,6 +7,7 @@ import Layout from './components/layout/Layout';
 import Settings from './pages/Settings';
 import Calendar from './pages/calendar';
 import WorkspaceDetailPage from './pages/WorkspaceDetailPage';
+import ProjectPage from './pages/ProjectPage';
 
 
 function App() 
@@ -20,6 +21,7 @@ function App()
         <Route element= {<ProtectedRoute> <Layout /> </ProtectedRoute>}>
         <Route path="/workspace" element= {<WorkspacePage />} />
         <Route path='/workspace/:workspaceId' element= {<WorkspaceDetailPage />} />
+        <Route path='/projects/:projectId' element= {<ProjectPage />} />
         <Route path="/settings" element= {<Settings />}/>
         <Route path="/calendar" element = {<Calendar/>}/>
 
