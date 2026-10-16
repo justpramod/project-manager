@@ -3,7 +3,10 @@ import { NavLink, useParams } from "react-router-dom";
 
 
 import { getAWorkspace } from "../api/workspaceApi";
-import { getProject } from "../api/projectApi";
+import { getProject, getTasks } from "../api/projectApi";
+
+import TaskColumn from "../components/ui/TaskColumn";
+
 
 const ProjectPage = () => {
 
@@ -14,9 +17,20 @@ const ProjectPage = () => {
 
 
     const [project, setProject] = useState('');
-    const [projectLoading, setProjectLoading] = useState(false);
+    const [projectLoading, setProjectLoading] = useState(true);
     const [projectError, setProjectError] = useState('');
 
+    const [todoTasks, setTodoTasks] = useState([]);
+    const [todoTaskLoading, setTodoTaskLoading] = useState(true);
+    const [todoTaskError, settodoTaskError] = useState('');
+
+    const [inprogressTasks, setInprogressTasks] = useState([]);
+    const [inprogressLoading, setInprogressLoading] = useState(true);
+    const [inProgressTaskError, setinProgressTaskError] = useState('');
+
+    const [doneTasks, setDoneTasks] = useState([]);
+    const [doneTaskLoading, setdoneTaskLoading] = useState(true);
+    const [doneTaskError, setdoneTaskError] = useState('');
     
     const getAProject = async ()=>{
 
@@ -49,16 +63,84 @@ const ProjectPage = () => {
         }
         catch(e){
             setWorkspaceName(null);
-            setWorkspaceError(e.response?.data?.message || 'Workspace error');
+            setWorkspaceError(e?.response?.data?.message || 'Workspace error');
         }
+        
 
 
     };
+
+    const getTodoTasks = async ()=>{
+        
+        settodoTaskError('');
+        setTodoTaskLoading(true);
+        const params = { status: 'todo', page: 1, limit: 100 };
+
+        try{
+            const data = await getTasks(params, projectId);
+            setTodoTasks(data?.tasks ?? []);
+        }
+        catch(err){
+            setTodoTasks([]);
+            settodoTaskError(err?.response?.data?.message || 'Todo task error');
+            
+        }
+        finally{
+            setTodoTaskLoading(false);
+        }
+    }
+
+    const getInprogressTasks = async ()=>{
+
+        setinProgressTaskError('');
+        setInprogressLoading(true);
+
+        const params = { status: 'inProgress', page: 1, limit: 100 };
+
+        try{
+
+            const data = await getTasks(params, projectId);
+            setInprogressTasks(data?.tasks ?? []);
+        }
+        catch(err)
+        {
+            setInprogressTasks([]);
+            setinProgressTaskError(err?.response?.data?.message || 'Inprogress task error');
+        }
+        finally{
+            setInprogressLoading(false);
+        }
+
+    }
+
+    const getDoneTasks = async ()=>{
+
+        setdoneTaskError('');
+        setdoneTaskLoading(true);
+        
+        const params = { status: 'done', page: 1, limit: 100 };
+
+        try{
+            const data = await getTasks(params, projectId);
+            setDoneTasks(data?.tasks ?? []);
+        }
+        catch(err){
+            setDoneTasks([]);
+            setdoneTaskError(err?.response?.data?.message || 'Done task error');
+        }
+        finally{
+            setdoneTaskLoading(false);
+        }
+
+    }
 
    
     
     useEffect(()=>{
         getAProject();
+        getTodoTasks();
+        getInprogressTasks();
+        getDoneTasks();
     }, [projectId]);
 
     useEffect(()=>{
@@ -70,10 +152,11 @@ const ProjectPage = () => {
 
 
     return (
-        <div className="mx-9 my-5 ">
+        <div className="mx-9 my-8  ">
 
-            <header className="flex items-center gap-3 px-2 py-3 text-sm text-slate-600">
+            <header className="flex items-center gap-3  px-2 py-3 text-sm text-slate-600">
                 <NavLink to="/workspace" className="hover:text-slate-900">Workspace</NavLink>
+                { workspaceError && <h3 className="text-red-500"> {workspaceError} </h3>}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
                     <path d="m9 18 6-6-6-6"
                         fill="none" stroke="currentColor" strokeWidth="2"
@@ -95,7 +178,7 @@ const ProjectPage = () => {
             {
                 !projectError && !projectLoading && project && 
                 (
-                    <div className="mb-8 flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 py-5 px-6">
+                    <div className="mb-8 flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 py-5 px-6 ">
 
                         <div className="flex-1 flex-col">
 
@@ -117,8 +200,12 @@ const ProjectPage = () => {
                 )
             }
 
-            <main>
-                {projectId}
+            <main className="flex justify-between gap-8 ">
+              <TaskColumn tasks={todoTasks} title={'Todo'} total={todoTasks.length} loading={todoTaskLoading} error={todoTaskError}/ >
+
+                <TaskColumn tasks={inprogressTasks} title={'In Progress'} total={inprogressTasks.length} loading={inprogressLoading} error={inProgressTaskError}  />
+
+                <TaskColumn tasks={doneTasks} title = {'Done'} total={doneTasks.length} loading={doneTaskLoading} error={doneTaskError} />
             </main>
 
         </div>
