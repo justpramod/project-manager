@@ -8,11 +8,14 @@ const WorkspaceCard = ({ workspace, currentUserId }) => {
 
     const memberCount = workspace.members.length;
 
-    const dateObj = new Date(workspace.updatedAt);
-    const formattedDate = dateObj.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric'
-    });
+    const updatedAt = workspace?.updatedAt ? new Date(workspace.updatedAt) : null;
+    const daysSinceUpdate = updatedAt
+        ? Math.floor((Date.now() - updatedAt.getTime()) / 86400000)
+        : null;
+
+    const formattedDate = daysSinceUpdate === null || Number.isNaN(daysSinceUpdate)
+        ? 'recently'
+        : new Intl.RelativeTimeFormat('en', { numeric: 'auto' }).format(-daysSinceUpdate, 'day');
 
     return (
         <div className='bg-white border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col h-full'>

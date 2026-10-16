@@ -3,6 +3,7 @@ const User = require('../models/User');
 
 const Notification = require('../models/Notification');
 const { getIO } = require('../utils/socket');
+const touchWorkspace = require('../utils/touchWorkspace');
 
 //protected by isprojectMember on api/project/projectId/tasks 
 const createTask = async (req, res) => {
@@ -29,6 +30,7 @@ const createTask = async (req, res) => {
         });
 
         await task.populate('assignee', 'username email avatarUrl');
+        await touchWorkspace(req.workspace);
         
         getIO().to(req.project._id.toString()).emit('newTask', task);
         res.status(201).json({ message: 'Task created', task: task });
@@ -122,6 +124,7 @@ const updateTask = async (req, res) => {
             getIO().to(user._id.toString()).emit('newNotification', notification);
         }
         await req.task.save();
+        await touchWorkspace(req.workspace);
         await req.task.populate('assignee', 'username email avatarUrl');
         getIO().to(req.project._id.toString()).emit('updateTask', req.task);
 
@@ -136,6 +139,7 @@ const updateTask = async (req, res) => {
 const deleteTask = async (req, res) => {
     try {
         await Task.findByIdAndDelete(req.params.id);
+        await touchWorkspace(req.workspace);
         getIO().to(req.project._id.toString()).emit('deleteTask', req.params.id);
         res.status(200).json({ message: 'Task deleted successfully' });
     }

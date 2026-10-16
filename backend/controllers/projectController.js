@@ -1,6 +1,7 @@
 const Project = require('../models/Project');
 const { getIO } = require('../utils/socket');
 const { getTaskByCount } = require('../utils/taskStats');
+const touchWorkspace = require('../utils/touchWorkspace');
 
 const createProject = async (req, res) => {
     try {
@@ -8,6 +9,8 @@ const createProject = async (req, res) => {
         if (!name) return res.status(400).json({ message: 'Name is required' });
 
         const project = await Project.create({ name, description, workspace: req.workspace._id });
+        await touchWorkspace(req.workspace);
+        
         getIO().to(req.workspace._id.toString()).emit('newProject', project);
 
         res.status(201).json({ project });
@@ -74,6 +77,7 @@ const updateProject = async (req, res) => {
         if (name) req.project.name = name;
         if (description !== undefined) req.project.description = description;
         await req.project.save();
+        await touchWorkspace(req.workspace);
         getIO().to(req.workspace._id.toString()).emit('updateProject', req.project);
 
         res.status(200).json({ message: 'Project Updated', project: req.project });
@@ -88,6 +92,7 @@ const deleteProject = async (req, res) => {
     try {
 
         await Project.findByIdAndDelete(req.params.id);
+        await touchWorkspace(req.workspace);
         getIO().to(req.workspace._id.toString()).emit('deleteProject', req.params.id);
         
         res.status(200).json({ message: 'Project deleted successfully' });
