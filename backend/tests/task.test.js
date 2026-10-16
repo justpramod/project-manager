@@ -43,4 +43,26 @@ describe('tasks', () => {
 
         expect(getRes.statusCode).toBe(403);
     });
+
+    test('member can sort tasks by a supported field', async () => {
+        const owner = await registerAndLogin();
+        const { projectId } = await createWorkspaceAndProject(owner.token);
+
+        await request(app)
+            .post(`/api/projects/${projectId}/tasks`)
+            .set('Authorization', `Bearer ${owner.token}`)
+            .send({ title: 'Zebra task' });
+        await request(app)
+            .post(`/api/projects/${projectId}/tasks`)
+            .set('Authorization', `Bearer ${owner.token}`)
+            .send({ title: 'Alpha task' });
+
+        const res = await request(app)
+            .get(`/api/projects/${projectId}/tasks`)
+            .query({ sortBy: 'title', order: 'asc' })
+            .set('Authorization', `Bearer ${owner.token}`);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.tasks.map(task => task.title)).toEqual(['Alpha task', 'Zebra task']);
+    });
 });

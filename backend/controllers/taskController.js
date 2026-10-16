@@ -27,6 +27,8 @@ const createTask = async (req, res) => {
             createdBy: req.user._id,
             project: req.project._id
         });
+
+        await task.populate('assignee', 'username email avatarUrl');
         
         getIO().to(req.project._id.toString()).emit('newTask', task);
         res.status(201).json({ message: 'Task created', task: task });
@@ -45,6 +47,17 @@ const getTasks = async (req, res) => {
         if (req.query.priority) filter.priority = req.query.priority;
         if (req.query.assignee) filter.assignee = req.query.assignee;
 
+        const sortableFields = ['title', 'status', 'priority', 'createdAt', 'updatedAt'];
+        const sortBy = req.query.sortBy || 'createdAt';
+        const order = req.query.order || 'desc';
+
+        
+        if (!sortableFields.includes(sortBy) || !['asc', 'desc'].includes(order)) {
+            return res.status(400).json({
+                message: 'sortBy must be one of title, status, priority, createdAt, updatedAt and order must be asc or desc'
+            });
+        }
+
         let page = parseInt(req.query.page) || 1;
         let limit = parseInt(req.query.limit) || 10;
         if (page < 1) page = 1;
@@ -52,7 +65,11 @@ const getTasks = async (req, res) => {
         if (limit > 100) limit = 100;
         const skip = (page - 1) * limit;
 
-        const tasks = await Task.find(filter).skip(skip).limit(limit);
+        const tasks = await Task.find(filter)
+            .populate('assignee', 'username email avatarUrl')
+            .sort({ [sortBy]: order === 'asc' ? 1 : -1 })
+            .skip(skip)
+            .limit(limit);
         const total = await Task.countDocuments(filter);
 
         res.status(200).json({
@@ -70,6 +87,7 @@ const getTasks = async (req, res) => {
 
 const getTask = async (req, res) => {
     try {
+        await req.task.populate('assignee', 'username email avatarUrl');
         res.status(200).json({ task: req.task });
     }
     catch (e) {
@@ -104,6 +122,7 @@ const updateTask = async (req, res) => {
             getIO().to(user._id.toString()).emit('newNotification', notification);
         }
         await req.task.save();
+        await req.task.populate('assignee', 'username email avatarUrl');
         getIO().to(req.project._id.toString()).emit('updateTask', req.task);
 
         res.status(200).json({ message: 'Task updated', task: req.task });
