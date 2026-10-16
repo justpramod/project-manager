@@ -1,19 +1,13 @@
-import {  useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const ProjectCard = ({ project }) => {
     const taskCounts = project?.taskCounts || { todo: 0, inProgress: 0, done: 0, taskTotal: 0 };
     const progress = project?.progress ?? 0;
 
-    const navigate = useNavigate();
-
-    const handleClick = ()=>{
-        navigate('/projects/'+project._id)
-    }
-
     return (
 
-      
-            <div className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-10 shadow-sm transition-shadow duration-200 hover:shadow-md cursor-pointer " onClick={handleClick} >
+        <NavLink to={'/projects/' + project._id}>
+            <div className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-10 shadow-sm transition-shadow duration-200 hover:shadow-md cursor-pointer " >
                 <div className="mb-3">
                     <h3 className="text-2xl font-bold text-slate-800">
                         {project?.name || "Untitled Project"}
@@ -71,7 +65,9 @@ const ProjectCard = ({ project }) => {
                     </div>
                 </div>
             </div>
-       
+        </NavLink>
+
+
 
     );
 }
