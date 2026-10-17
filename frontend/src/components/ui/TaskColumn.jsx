@@ -1,5 +1,5 @@
 import TaskCard from "./TaskCard";
-const TaskColumn = ({ title, tasks = [] , total, loading, error }) => {
+const TaskColumn = ({ title, status, tasks = [] , total, loading, error, onAddTask }) => {
 
     return (
      
@@ -13,7 +13,7 @@ const TaskColumn = ({ title, tasks = [] , total, loading, error }) => {
                     </div>
 
                     <div className=''>
-                        <button type="button" className='text-slate-600'>
+                        <button type="button" className='text-slate-600 cursor-pointer' onClick={() => onAddTask(status)} aria-label={`Create ${title} task`}>
 
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 width="24"

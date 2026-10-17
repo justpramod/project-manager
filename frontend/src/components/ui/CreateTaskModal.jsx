@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { createTask } from "../../api/taskApi";
 
-const CreateTaskModal = ({ isOpen, onClose, onSuccess, projectId, projectName, workspaceName }) => {
+const CreateTaskModal = ({ isOpen, onClose, onSuccess, projectId, projectName, workspaceName, initialStatus = 'todo' }) => {
 
     const [title, setTitle] = useState('');
     const [titleError, setTitleError] = useState('');
@@ -19,13 +19,13 @@ const CreateTaskModal = ({ isOpen, onClose, onSuccess, projectId, projectName, w
             setTitle('');
             setTitleError('');
             setDescription('');
-            setStatus('');
+            setStatus(initialStatus);
             setPriority('');
             setAssignee('');
             setSubmitting(false);
             setError('');
         }
-    }, [isOpen]);
+    }, [isOpen, initialStatus]);
 
     useEffect(() => {
         if (!isOpen) return;

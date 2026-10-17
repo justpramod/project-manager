@@ -10,7 +10,7 @@ import CreateTaskModal from "../components/ui/CreateTaskModal";
 
 const ProjectPage = () => {
 
-    const {projectId} = useParams();
+    const { projectId } = useParams();
 
     const [workspaceName, setWorkspaceName] = useState('');
     const [workspaceError, setWorkspaceError] = useState('');
@@ -32,26 +32,27 @@ const ProjectPage = () => {
 
     const [doneTasks, setDoneTasks] = useState([]);
     const [doneTaskLoading, setdoneTaskLoading] = useState(true);
-    const  [doneTotal, setDoneTotal] = useState(null);
+    const [doneTotal, setDoneTotal] = useState(null);
     const [doneTaskError, setdoneTaskError] = useState('');
 
     const [isCreateTaskModalOpen, setIsCreateModalOpen] = useState(false);
+    const [createTaskStatus, setCreateTaskStatus] = useState('todo');
 
-    
-    const getAProject = async ()=>{
+
+    const getAProject = async () => {
 
         setProjectLoading(true);
         setProjectError('');
-        try{
+        try {
             const data = await getProject(projectId);
             setProject(data?.project ?? null);
 
         }
-        catch(e){
-        
+        catch (e) {
+
             setProjectError(e?.response?.data?.message || 'Project error');
         }
-        finally{
+        finally {
             setProjectLoading(false);
         }
 
@@ -59,114 +60,118 @@ const ProjectPage = () => {
 
     const workspaceId = project?.workspace;
 
-    const getWorkspace = async (workspaceId)=>{
-        
+    const getWorkspace = async (workspaceId) => {
+
         setWorkspaceName('');
         setWorkspaceError('');
-        try{
+        try {
             const data = await getAWorkspace(workspaceId);
             setWorkspaceName(data?.workspace?.name);
         }
-        catch(e){
+        catch (e) {
             setWorkspaceName(null);
             setWorkspaceError(e?.response?.data?.message || 'Workspace error');
         }
-        
+
 
 
     };
 
-    const getTodoTasks = async ()=>{
-        
+    const getTodoTasks = async () => {
+
         settodoTaskError('');
         setTodoTaskLoading(true);
         const params = { status: 'todo', page: 1, limit: 100 };
 
-        try{
+        try {
             const data = await getTasks(params, projectId);
             setTodoTasks(data?.tasks ?? []);
             setTodoTotal(data?.pagination.total);
-            
+
         }
-        catch(err){
+        catch (err) {
             setTodoTasks([]);
             settodoTaskError(err?.response?.data?.message || 'Todo task error');
-            
+
         }
-        finally{
+        finally {
             setTodoTaskLoading(false);
         }
     }
 
-    
 
-    const getInprogressTasks = async ()=>{
+
+    const getInprogressTasks = async () => {
 
         setinProgressTaskError('');
         setInprogressLoading(true);
 
         const params = { status: 'inProgress', page: 1, limit: 100 };
 
-        try{
+        try {
 
             const data = await getTasks(params, projectId);
             setInprogressTasks(data?.tasks ?? []);
             setInProgressTotal(data?.pagination.total);
         }
-        catch(err)
-        {
+        catch (err) {
             setInprogressTasks([]);
             setinProgressTaskError(err?.response?.data?.message || 'Inprogress task error');
         }
-        finally{
+        finally {
             setInprogressLoading(false);
         }
 
     }
 
-    const getDoneTasks = async ()=>{
+    const getDoneTasks = async () => {
 
         setdoneTaskError('');
         setdoneTaskLoading(true);
-        
+
         const params = { status: 'done', page: 1, limit: 100 };
 
-        try{
+        try {
             const data = await getTasks(params, projectId);
             setDoneTasks(data?.tasks ?? []);
             setDoneTotal(data?.pagination.total);
         }
-        catch(err){
+        catch (err) {
             setDoneTasks([]);
             setdoneTaskError(err?.response?.data?.message || 'Done task error');
 
         }
-        finally{
+        finally {
             setdoneTaskLoading(false);
         }
 
     }
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         getAProject();
         getTodoTasks();
         getInprogressTasks();
         getDoneTasks();
     }, [projectId]);
 
-    useEffect(()=>{
+    useEffect(() => {
         if (workspaceId) {
             getWorkspace(workspaceId);
         }
     }, [workspaceId]);
 
 
-     const handleCreateTaskModalSuccess = ()=>{
+    const handleCreateTaskModalSuccess = () => {
 
         setIsCreateModalOpen(false);
         getTodoTasks();
         getInprogressTasks();
         getDoneTasks();
+    };
+
+    const openCreateTaskModal = (status = 'todo') => {
+        setCreateTaskStatus(status);
+        setIsCreateModalOpen(true);
     };
 
 
@@ -175,20 +180,20 @@ const ProjectPage = () => {
 
             <header className="flex items-center gap-3  px-2 py-3 text-sm text-slate-600">
                 <NavLink to="/workspace" className="hover:text-slate-900">Workspace</NavLink>
-                { workspaceError && <h3 className="text-red-500"> {workspaceError} </h3>}
+                {workspaceError && <h3 className="text-red-500"> {workspaceError} </h3>}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
                     <path d="m9 18 6-6-6-6"
                         fill="none" stroke="currentColor" strokeWidth="2"
                         strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <NavLink to={`/workspace/${workspaceId}`}  className={ ({isActive})=> isActive ? "font-semibold text-slate-800": ""} > {workspaceName}</NavLink>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
+                <NavLink to={`/workspace/${workspaceId}`} className={({ isActive }) => isActive ? "font-semibold text-slate-800" : ""} > {workspaceName}</NavLink>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
                     <path d="m9 18 6-6-6-6"
                         fill="none" stroke="currentColor" strokeWidth="2"
                         strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <span className="font-semibold text-slate-800"> {project?.name}</span>
-                { 
+                {
                     projectError && <h3 className="text-red-500"> {projectError} </h3>
                 }
 
@@ -198,7 +203,7 @@ const ProjectPage = () => {
                 projectLoading && <div className="py-8 text-center text-sm text-slate-500">Loading...</div>
             }
             {
-                !projectError && !projectLoading && project && 
+                !projectError && !projectLoading && project &&
                 (
                     <div className="mb-8 flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 py-5 px-6 ">
 
@@ -210,9 +215,9 @@ const ProjectPage = () => {
                         </div>
 
                         <div>
-                            <button type="button" 
-                            className="ml-6 rounded-xl border bg-[#4338CA]  px-4 py-2  font-medium text-white shadow-sm cursor-pointer"
-                            onClick={() => setIsCreateModalOpen(true)}
+                            <button type="button"
+                                className="ml-6 rounded-xl border bg-[#4338CA]  px-4 py-2  font-medium text-white shadow-sm cursor-pointer"
+                                onClick={() => setIsCreateModalOpen(true)}
                             >
                                 + New Task
                             </button>
@@ -224,20 +229,21 @@ const ProjectPage = () => {
 
 
             <CreateTaskModal
-                 isOpen={isCreateTaskModalOpen} 
-                 onClose={() => setIsCreateModalOpen(false)}
-                  projectId={projectId}
-                  projectName={project?.name}
-                  workspaceName={workspaceName}
-                 onSuccess={handleCreateTaskModalSuccess} 
+                isOpen={isCreateTaskModalOpen}
+                onClose={() => setIsCreateModalOpen(false)}
+                projectId={projectId}
+                projectName={project?.name}
+                workspaceName={workspaceName}
+                initialStatus={createTaskStatus}
+                onSuccess={handleCreateTaskModalSuccess}
             />
 
             <main className="flex justify-between gap-8 ">
-              <TaskColumn tasks={todoTasks} title={'Todo'} total={todoTotal} loading={todoTaskLoading} error={todoTaskError}/ >
+                <TaskColumn tasks={todoTasks} title={'Todo'} status="todo" total={todoTotal} loading={todoTaskLoading} error={todoTaskError} onAddTask={openCreateTaskModal} />
 
-                <TaskColumn tasks={inprogressTasks} title={'In Progress'} total={inProgressTotal} loading={inprogressLoading} error={inProgressTaskError}  />
+                <TaskColumn tasks={inprogressTasks} title={'In Progress'} status="inProgress" total={inProgressTotal} loading={inprogressLoading} error={inProgressTaskError} onAddTask={openCreateTaskModal} />
 
-                <TaskColumn tasks={doneTasks} title = {'Done'} total={doneTotal} loading={doneTaskLoading} error={doneTaskError} />
+                <TaskColumn tasks={doneTasks} title={'Done'} status="done" total={doneTotal} loading={doneTaskLoading} error={doneTaskError} onAddTask={openCreateTaskModal} />
             </main>
 
         </div>
