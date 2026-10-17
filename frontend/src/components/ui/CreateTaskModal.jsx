@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { createTask } from "../../api/taskApi";
 
-const CreateTaskModal = ({ isOpen, onClose, onSuccess, projectId, projectName, workspaceName, initialStatus = 'todo' }) => {
+const CreateTaskModal = ({ isOpen, onClose, onCreated, projectId, projectName, workspaceName, initialStatus = 'todo' }) => {
 
     const [title, setTitle] = useState('');
     const [titleError, setTitleError] = useState('');
@@ -56,8 +56,8 @@ const CreateTaskModal = ({ isOpen, onClose, onSuccess, projectId, projectName, w
         setError('');
 
         try {
-            await createTask({ title: title.trim(), description: description.trim(), status, priority, assignee: assignee.trim(), projectId });
-            onSuccess();
+            const response = await createTask({ title: title.trim(), description: description.trim(), status, priority, assignee: assignee.trim(), projectId });
+            onCreated(response?.data?.task);
         }
         catch (err) {
             setError(err?.response?.data?.message || 'Failed to create Task. please try again!');

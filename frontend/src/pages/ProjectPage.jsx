@@ -37,6 +37,7 @@ const ProjectPage = () => {
 
     const [isCreateTaskModalOpen, setIsCreateModalOpen] = useState(false);
     const [createTaskStatus, setCreateTaskStatus] = useState('todo');
+    const [taskRefreshCounts, setTaskRefreshCounts] = useState({ todo: 0, inProgress: 0, done: 0 });
 
 
     const getAProject = async () => {
@@ -149,10 +150,19 @@ const ProjectPage = () => {
 
     useEffect(() => {
         getAProject();
-        getTodoTasks();
-        getInprogressTasks();
-        getDoneTasks();
     }, [projectId]);
+
+    useEffect(() => {
+        getTodoTasks();
+    }, [projectId, taskRefreshCounts.todo]);
+
+    useEffect(() => {
+        getInprogressTasks();
+    }, [projectId, taskRefreshCounts.inProgress]);
+
+    useEffect(() => {
+        getDoneTasks();
+    }, [projectId, taskRefreshCounts.done]);
 
     useEffect(() => {
         if (workspaceId) {
@@ -161,12 +171,14 @@ const ProjectPage = () => {
     }, [workspaceId]);
 
 
-    const handleCreateTaskModalSuccess = () => {
-
+    const handleTaskCreated = (task) => {
         setIsCreateModalOpen(false);
-        getTodoTasks();
-        getInprogressTasks();
-        getDoneTasks();
+        if (!task?.status) return;
+
+        setTaskRefreshCounts((counts) => ({
+            ...counts,
+            [task.status]: counts[task.status] + 1,
+        }));
     };
 
     const openCreateTaskModal = (status = 'todo') => {
@@ -217,7 +229,7 @@ const ProjectPage = () => {
                         <div>
                             <button type="button"
                                 className="ml-6 rounded-xl border bg-[#4338CA]  px-4 py-2  font-medium text-white shadow-sm cursor-pointer"
-                                onClick={() => setIsCreateModalOpen(true)}
+                                onClick={() => openCreateTaskModal()}
                             >
                                 + New Task
                             </button>
@@ -235,7 +247,7 @@ const ProjectPage = () => {
                 projectName={project?.name}
                 workspaceName={workspaceName}
                 initialStatus={createTaskStatus}
-                onSuccess={handleCreateTaskModalSuccess}
+                onCreated={handleTaskCreated}
             />
 
             <main className="flex justify-between gap-8 ">
