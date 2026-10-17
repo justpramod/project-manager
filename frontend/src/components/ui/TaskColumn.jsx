@@ -1,5 +1,5 @@
 import TaskCard from "./TaskCard";
-const TaskColumn = ({ title, tasks = [], total = tasks.length, loading, error }) => {
+const TaskColumn = ({ title, status, tasks = [] , total, loading, onAddTask }) => {
 
     return (
      
@@ -13,7 +13,7 @@ const TaskColumn = ({ title, tasks = [], total = tasks.length, loading, error })
                     </div>
 
                     <div className=''>
-                        <button type="button" className='text-slate-600'>
+                        <button type="button" className='text-slate-600 cursor-pointer' onClick={() => onAddTask(status)} aria-label={`Create ${title} task`}>
 
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -40,7 +40,7 @@ const TaskColumn = ({ title, tasks = [], total = tasks.length, loading, error })
                 
                     <div className="mt-4 flex flex-col gap-3">
                 {
-                        !loading && !error && tasks.length > 0 &&
+                        !loading && tasks.length > 0 &&
                     tasks.map((task) => (
 
                          <TaskCard 
@@ -49,7 +49,7 @@ const TaskColumn = ({ title, tasks = [], total = tasks.length, loading, error })
                          />
                     ))
                 }
-                {!loading && !error && tasks.length === 0 && (
+                {!loading && tasks.length === 0 && (
                     <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-400">
                         No {title.toLowerCase()} tasks yet
                     </div>
@@ -58,11 +58,6 @@ const TaskColumn = ({ title, tasks = [], total = tasks.length, loading, error })
                    
                     
                 
-                {
-                    error && <h2 className="text-red-500"> {error}</h2>
-                }
-
-    
             </div>
 
         )
