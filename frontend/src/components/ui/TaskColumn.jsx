@@ -1,5 +1,5 @@
 import TaskCard from "./TaskCard";
-const TaskColumn = ({ title, status, tasks = [] , total, loading, error, onAddTask }) => {
+const TaskColumn = ({ title, status, tasks = [] , total, loading, onAddTask }) => {
 
     return (
      
@@ -40,7 +40,7 @@ const TaskColumn = ({ title, status, tasks = [] , total, loading, error, onAddTa
                 
                     <div className="mt-4 flex flex-col gap-3">
                 {
-                        !loading && !error && tasks.length > 0 &&
+                        !loading && tasks.length > 0 &&
                     tasks.map((task) => (
 
                          <TaskCard 
@@ -49,7 +49,7 @@ const TaskColumn = ({ title, status, tasks = [] , total, loading, error, onAddTa
                          />
                     ))
                 }
-                {!loading && !error && tasks.length === 0 && (
+                {!loading && tasks.length === 0 && (
                     <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-400">
                         No {title.toLowerCase()} tasks yet
                     </div>
@@ -58,11 +58,6 @@ const TaskColumn = ({ title, status, tasks = [] , total, loading, error, onAddTa
                    
                     
                 
-                {
-                    error && <h2 className="text-red-500"> {error}</h2>
-                }
-
-    
             </div>
 
         )

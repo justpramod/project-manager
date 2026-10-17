@@ -18,24 +18,21 @@ const ProjectPage = () => {
 
     const [project, setProject] = useState('');
     const [projectLoading, setProjectLoading] = useState(true);
-    const [projectError, setProjectError] = useState('');
+    const [pageError, setPageError] = useState('');
 
     const [todoTasks, setTodoTasks] = useState([]);
     const [todoTaskLoading, setTodoTaskLoading] = useState(true);
     const [todoTotal, setTodoTotal] = useState(null);
-    const [todoTaskError, settodoTaskError] = useState('');
 
     const [inprogressTasks, setInprogressTasks] = useState([]);
     const [inprogressLoading, setInprogressLoading] = useState(true);
     const [inProgressTotal, setInProgressTotal] = useState(null);
-    const [inProgressTaskError, setinProgressTaskError] = useState('');
 
     const [doneTasks, setDoneTasks] = useState([]);
     const [doneTaskLoading, setdoneTaskLoading] = useState(true);
     const [doneTotal, setDoneTotal] = useState(null);
-    const [doneTaskError, setdoneTaskError] = useState('');
 
-    const [isCreateTaskModalOpen, setIsCreateModalOpen] = useState(false);
+    const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] = useState(false);
     const [createTaskStatus, setCreateTaskStatus] = useState('todo');
     const [taskRefreshCounts, setTaskRefreshCounts] = useState({ todo: 0, inProgress: 0, done: 0 });
 
@@ -43,7 +40,6 @@ const ProjectPage = () => {
     const getAProject = async () => {
 
         setProjectLoading(true);
-        setProjectError('');
         try {
             const data = await getProject(projectId);
             setProject(data?.project ?? null);
@@ -51,7 +47,7 @@ const ProjectPage = () => {
         }
         catch (e) {
 
-            setProjectError(e?.response?.data?.message || 'Project error');
+            setPageError(e?.response?.data?.message || 'Unable to load this project');
         }
         finally {
             setProjectLoading(false);
@@ -80,7 +76,6 @@ const ProjectPage = () => {
 
     const getTodoTasks = async () => {
 
-        settodoTaskError('');
         setTodoTaskLoading(true);
         const params = { status: 'todo', page: 1, limit: 100 };
 
@@ -92,7 +87,7 @@ const ProjectPage = () => {
         }
         catch (err) {
             setTodoTasks([]);
-            settodoTaskError(err?.response?.data?.message || 'Todo task error');
+            setPageError((currentError) => currentError || err?.response?.data?.message || 'Unable to load project tasks');
 
         }
         finally {
@@ -104,7 +99,6 @@ const ProjectPage = () => {
 
     const getInprogressTasks = async () => {
 
-        setinProgressTaskError('');
         setInprogressLoading(true);
 
         const params = { status: 'inProgress', page: 1, limit: 100 };
@@ -117,7 +111,7 @@ const ProjectPage = () => {
         }
         catch (err) {
             setInprogressTasks([]);
-            setinProgressTaskError(err?.response?.data?.message || 'Inprogress task error');
+            setPageError((currentError) => currentError || err?.response?.data?.message || 'Unable to load project tasks');
         }
         finally {
             setInprogressLoading(false);
@@ -127,7 +121,6 @@ const ProjectPage = () => {
 
     const getDoneTasks = async () => {
 
-        setdoneTaskError('');
         setdoneTaskLoading(true);
 
         const params = { status: 'done', page: 1, limit: 100 };
@@ -139,7 +132,7 @@ const ProjectPage = () => {
         }
         catch (err) {
             setDoneTasks([]);
-            setdoneTaskError(err?.response?.data?.message || 'Done task error');
+            setPageError((currentError) => currentError || err?.response?.data?.message || 'Unable to load project tasks');
 
         }
         finally {
@@ -149,6 +142,7 @@ const ProjectPage = () => {
     }
 
     useEffect(() => {
+        setPageError('');
         getAProject();
     }, [projectId]);
 
@@ -172,7 +166,7 @@ const ProjectPage = () => {
 
 
     const handleTaskCreated = (task) => {
-        setIsCreateModalOpen(false);
+        setIsCreateTaskModalOpen(false);
         if (!task?.status) return;
 
         setTaskRefreshCounts((counts) => ({
@@ -183,7 +177,7 @@ const ProjectPage = () => {
 
     const openCreateTaskModal = (status = 'todo') => {
         setCreateTaskStatus(status);
-        setIsCreateModalOpen(true);
+        setIsCreateTaskModalOpen(true);
     };
 
 
@@ -205,9 +199,7 @@ const ProjectPage = () => {
                         strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <span className="font-semibold text-slate-800"> {project?.name}</span>
-                {
-                    projectError && <h3 className="text-red-500"> {projectError} </h3>
-                }
+                {pageError && <h3 className="text-red-500"> {pageError} </h3>}
 
             </header>
 
@@ -215,7 +207,7 @@ const ProjectPage = () => {
                 projectLoading && <div className="py-8 text-center text-sm text-slate-500">Loading...</div>
             }
             {
-                !projectError && !projectLoading && project &&
+                !pageError && !projectLoading && project &&
                 (
                     <div className="mb-8 flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 py-5 px-6 ">
 
@@ -240,23 +232,23 @@ const ProjectPage = () => {
             }
 
 
-            <CreateTaskModal
+            {!pageError && <CreateTaskModal
                 isOpen={isCreateTaskModalOpen}
-                onClose={() => setIsCreateModalOpen(false)}
+                onClose={() => setIsCreateTaskModalOpen(false)}
                 projectId={projectId}
                 projectName={project?.name}
                 workspaceName={workspaceName}
                 initialStatus={createTaskStatus}
                 onCreated={handleTaskCreated}
-            />
+            />}
 
-            <main className="flex justify-between gap-8 ">
-                <TaskColumn tasks={todoTasks} title={'Todo'} status="todo" total={todoTotal} loading={todoTaskLoading} error={todoTaskError} onAddTask={openCreateTaskModal} />
+            {!pageError && <main className="flex justify-between gap-8 ">
+                <TaskColumn tasks={todoTasks} title={'Todo'} status="todo" total={todoTotal} loading={todoTaskLoading} onAddTask={openCreateTaskModal} />
 
-                <TaskColumn tasks={inprogressTasks} title={'In Progress'} status="inProgress" total={inProgressTotal} loading={inprogressLoading} error={inProgressTaskError} onAddTask={openCreateTaskModal} />
+                <TaskColumn tasks={inprogressTasks} title={'In Progress'} status="inProgress" total={inProgressTotal} loading={inprogressLoading} onAddTask={openCreateTaskModal} />
 
-                <TaskColumn tasks={doneTasks} title={'Done'} status="done" total={doneTotal} loading={doneTaskLoading} error={doneTaskError} onAddTask={openCreateTaskModal} />
-            </main>
+                <TaskColumn tasks={doneTasks} title={'Done'} status="done" total={doneTotal} loading={doneTaskLoading} onAddTask={openCreateTaskModal} />
+            </main>}
 
         </div>
     );
