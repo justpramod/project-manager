@@ -6,7 +6,7 @@ import { getAWorkspace } from "../api/workspaceApi";
 import { getProject, getTasks } from "../api/projectApi";
 
 import TaskColumn from "../components/ui/TaskColumn";
-
+import CreateTaskModal from "../components/ui/CreateTaskModal";
 
 const ProjectPage = () => {
 
@@ -31,6 +31,9 @@ const ProjectPage = () => {
     const [doneTasks, setDoneTasks] = useState([]);
     const [doneTaskLoading, setdoneTaskLoading] = useState(true);
     const [doneTaskError, setdoneTaskError] = useState('');
+
+    const [isCreateTaskModalOpen, setIsCreateModalOpen] = useState(false);
+
     
     const getAProject = async ()=>{
 
@@ -133,8 +136,6 @@ const ProjectPage = () => {
         }
 
     }
-
-   
     
     useEffect(()=>{
         getAProject();
@@ -149,6 +150,14 @@ const ProjectPage = () => {
         }
     }, [workspaceId]);
 
+
+     const handleCreateTaskModalSuccess = ()=>{
+
+        setIsCreateModalOpen(false);
+        getTodoTasks();
+        getInprogressTasks();
+        getDoneTasks();
+    };
 
 
     return (
@@ -190,7 +199,7 @@ const ProjectPage = () => {
                         <div>
                             <button type="button" 
                             className="ml-6 rounded-xl border bg-[#4338CA]  px-4 py-2  font-medium text-white shadow-sm cursor-pointer"
-                            
+                            onClick={() => setIsCreateModalOpen(true)}
                             >
                                 + New Task
                             </button>
@@ -199,6 +208,16 @@ const ProjectPage = () => {
                     </div>
                 )
             }
+
+
+            <CreateTaskModal
+                 isOpen={isCreateTaskModalOpen} 
+                 onClose={() => setIsCreateModalOpen(false)}
+                  projectId={projectId}
+                  projectName={project?.name}
+                  workspaceName={workspaceName}
+                 onSuccess={handleCreateTaskModalSuccess} 
+            />
 
             <main className="flex justify-between gap-8 ">
               <TaskColumn tasks={todoTasks} title={'Todo'} total={todoTasks.length} loading={todoTaskLoading} error={todoTaskError}/ >
