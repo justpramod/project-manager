@@ -23,6 +23,20 @@ describe('tasks', () => {
         expect(res.statusCode).toBe(201);
         expect(res.body.message).toMatch(/Task created/i);
     });
+ 
+    test('uses defaults when optional status is submitted empty', async () => {
+        const owner = await registerAndLogin();
+        const { projectId } = await createWorkspaceAndProject(owner.token);
+
+        const res = await request(app)
+            .post(`/api/projects/${projectId}/tasks`)
+            .set('Authorization', `Bearer ${owner.token}`)
+            .send({ title: 'Task with default status', status: '', priority: 'high' });
+
+        expect(res.statusCode).toBe(201);
+        expect(res.body.task.status).toBe('todo');
+        expect(res.body.task.priority).toBe('high');
+    });
 
     test('non-member cannot access a task in the workspace', async () => {
         const owner = await registerAndLogin();

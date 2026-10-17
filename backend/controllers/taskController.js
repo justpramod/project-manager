@@ -22,12 +22,18 @@ const createTask = async (req, res) => {
             assigneeId = assigneeUser._id;
         }
 
-        const task = await Task.create({
-            title, description, status, priority,
+        const taskData = {
+            title,
+            description,
             assignee: assigneeId,
             createdBy: req.user._id,
             project: req.project._id
-        });
+        };
+
+        if (status) taskData.status = status;
+        if (priority) taskData.priority = priority;
+
+        const task = await Task.create(taskData);
 
         await task.populate('assignee', 'username email avatarUrl');
         await touchWorkspace(req.workspace);
