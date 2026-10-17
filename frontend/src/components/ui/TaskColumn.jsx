@@ -1,5 +1,5 @@
 import TaskCard from "./TaskCard";
-const TaskColumn = ({ title, tasks = [], total = tasks.length, loading, error }) => {
+const TaskColumn = ({ title, tasks = [] , total, loading, error }) => {
 
     return (
      

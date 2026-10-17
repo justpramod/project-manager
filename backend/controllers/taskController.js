@@ -16,7 +16,7 @@ const createTask = async (req, res) => {
             const assigneeUser = await User.findOne({ email: assignee });
             if (!assigneeUser) return res.status(404).json({ message: 'Assignee user does not exist' });
 
-            const isMember = await req.workspace.members.find(m=>m.user.toString() === assigneeUser._id.toString())
+            const isMember =  req.workspace.members.find(m=>m.user.toString() === assigneeUser._id.toString())
             if(!isMember) return res.status(403).json({message: 'The desired assignee is not a member of workspace'});
 
             assigneeId = assigneeUser._id;

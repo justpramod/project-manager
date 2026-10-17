@@ -22,14 +22,17 @@ const ProjectPage = () => {
 
     const [todoTasks, setTodoTasks] = useState([]);
     const [todoTaskLoading, setTodoTaskLoading] = useState(true);
+    const [todoTotal, setTodoTotal] = useState(null);
     const [todoTaskError, settodoTaskError] = useState('');
 
     const [inprogressTasks, setInprogressTasks] = useState([]);
     const [inprogressLoading, setInprogressLoading] = useState(true);
+    const [inProgressTotal, setInProgressTotal] = useState(null);
     const [inProgressTaskError, setinProgressTaskError] = useState('');
 
     const [doneTasks, setDoneTasks] = useState([]);
     const [doneTaskLoading, setdoneTaskLoading] = useState(true);
+    const  [doneTotal, setDoneTotal] = useState(null);
     const [doneTaskError, setdoneTaskError] = useState('');
 
     const [isCreateTaskModalOpen, setIsCreateModalOpen] = useState(false);
@@ -82,6 +85,8 @@ const ProjectPage = () => {
         try{
             const data = await getTasks(params, projectId);
             setTodoTasks(data?.tasks ?? []);
+            setTodoTotal(data?.pagination.total);
+            
         }
         catch(err){
             setTodoTasks([]);
@@ -92,6 +97,8 @@ const ProjectPage = () => {
             setTodoTaskLoading(false);
         }
     }
+
+    
 
     const getInprogressTasks = async ()=>{
 
@@ -104,6 +111,7 @@ const ProjectPage = () => {
 
             const data = await getTasks(params, projectId);
             setInprogressTasks(data?.tasks ?? []);
+            setInProgressTotal(data?.pagination.total);
         }
         catch(err)
         {
@@ -126,10 +134,12 @@ const ProjectPage = () => {
         try{
             const data = await getTasks(params, projectId);
             setDoneTasks(data?.tasks ?? []);
+            setDoneTotal(data?.pagination.total);
         }
         catch(err){
             setDoneTasks([]);
             setdoneTaskError(err?.response?.data?.message || 'Done task error');
+
         }
         finally{
             setdoneTaskLoading(false);
@@ -178,6 +188,9 @@ const ProjectPage = () => {
                         strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <span className="font-semibold text-slate-800"> {project?.name}</span>
+                { 
+                    projectError && <h3 className="text-red-500"> {projectError} </h3>
+                }
 
             </header>
 
@@ -220,11 +233,11 @@ const ProjectPage = () => {
             />
 
             <main className="flex justify-between gap-8 ">
-              <TaskColumn tasks={todoTasks} title={'Todo'} total={todoTasks.length} loading={todoTaskLoading} error={todoTaskError}/ >
+              <TaskColumn tasks={todoTasks} title={'Todo'} total={todoTotal} loading={todoTaskLoading} error={todoTaskError}/ >
 
-                <TaskColumn tasks={inprogressTasks} title={'In Progress'} total={inprogressTasks.length} loading={inprogressLoading} error={inProgressTaskError}  />
+                <TaskColumn tasks={inprogressTasks} title={'In Progress'} total={inProgressTotal} loading={inprogressLoading} error={inProgressTaskError}  />
 
-                <TaskColumn tasks={doneTasks} title = {'Done'} total={doneTasks.length} loading={doneTaskLoading} error={doneTaskError} />
+                <TaskColumn tasks={doneTasks} title = {'Done'} total={doneTotal} loading={doneTaskLoading} error={doneTaskError} />
             </main>
 
         </div>
