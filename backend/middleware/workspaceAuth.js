@@ -8,6 +8,7 @@ const checkMember = async function (req, res, next) {
         const member =  ws.members.find(m=> m.user.toString() === req.user._id.toString());
         if (!member) return res.status(403).json({ message: 'User is not a member of this workspace' });
 
+        await ws.populate('members.user', 'username email avatarUrl');
         req.workspace = ws;
         next();
     }

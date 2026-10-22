@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Workspace = require('../models/Workspace');
 const Project = require('../models/Project');
 
@@ -21,6 +22,10 @@ const isProjectMember = (paramName)=>{
 return async (req, res, next) => {
 
     try {
+        if (!mongoose.isValidObjectId(req.params[paramName])) {
+            return res.status(400).json({ message: 'Invalid Id format' });
+        }
+
         const project = await Project.findById(req.params[paramName]);
         if (!project) return res.status(404).json({ message: 'Project doesnot exists' });
 

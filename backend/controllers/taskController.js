@@ -8,7 +8,7 @@ const touchWorkspace = require('../utils/touchWorkspace');
 //protected by isprojectMember on api/project/projectId/tasks 
 const createTask = async (req, res) => {
     try {
-         const { title, description, status, priority, assignee } = req.body;
+        const { title, description, status, priority, assignee } = req.body;
         if (!title) return res.status(400).json({ message: 'Title is required' });
 
         let assigneeId = undefined;
@@ -16,8 +16,8 @@ const createTask = async (req, res) => {
             const assigneeUser = await User.findOne({ email: assignee });
             if (!assigneeUser) return res.status(404).json({ message: 'Assignee user does not exist' });
 
-            const isMember =  req.workspace.members.find(m=>m.user.toString() === assigneeUser._id.toString())
-            if(!isMember) return res.status(403).json({message: 'The desired assignee is not a member of workspace'});
+            const isMember = req.workspace.members.find(m => m.user.toString() === assigneeUser._id.toString())
+            if (!isMember) return res.status(403).json({ message: 'The desired assignee is not a member of workspace' });
 
             assigneeId = assigneeUser._id;
         }
@@ -37,7 +37,7 @@ const createTask = async (req, res) => {
 
         await task.populate('assignee', 'username email avatarUrl');
         await touchWorkspace(req.workspace);
-        
+
         getIO().to(req.project._id.toString()).emit('newTask', task);
         res.status(201).json({ message: 'Task created', task: task });
     }
@@ -58,14 +58,6 @@ const getTasks = async (req, res) => {
         const sortableFields = ['title', 'status', 'priority', 'createdAt', 'updatedAt'];
         const sortBy = req.query.sortBy || 'createdAt';
         const order = req.query.order || 'desc';
-
-        
-        if (!sortableFields.includes(sortBy) || !['asc', 'desc'].includes(order)) {
-            return res.status(400).json({
-                message: 'sortBy must be one of title, status, priority, createdAt, updatedAt and order must be asc or desc'
-            });
-        }
-
         let page = parseInt(req.query.page) || 1;
         let limit = parseInt(req.query.limit) || 10;
         if (page < 1) page = 1;
@@ -113,6 +105,7 @@ const updateTask = async (req, res) => {
         if (priority) req.task.priority = priority;
 
         if (assignee) {
+
             const user = await User.findOne({ email: assignee });
             if (!user) return res.status(404).json({ message: 'Asignee user does not exists' });
 
@@ -121,7 +114,7 @@ const updateTask = async (req, res) => {
 
             req.task.assignee = user._id; // store actual objectId reference on task.
 
-           const notification =  await Notification.create({
+            const notification = await Notification.create({
                 recipient: user._id,
                 type: 'task_assigned',
                 message: `You were assigned to "${req.task.title}"`,
@@ -129,7 +122,13 @@ const updateTask = async (req, res) => {
             });
             getIO().to(user._id.toString()).emit('newNotification', notification);
         }
+
+        if (assignee === '') {
+            req.task.assignee = null;
+        }
+
         await req.task.save();
+
         await touchWorkspace(req.workspace);
         await req.task.populate('assignee', 'username email avatarUrl');
         getIO().to(req.project._id.toString()).emit('updateTask', req.task);
@@ -137,7 +136,10 @@ const updateTask = async (req, res) => {
         res.status(200).json({ message: 'Task updated', task: req.task });
     }
     catch (e) {
-        console.log(e);
+        if(e.name === 'ValidationError')
+        {
+            return res.status(400).json({message: 'Invalid data by user'})
+        }
         res.status(500).json({ message: 'Server error on updateTask' });
     }
 };
