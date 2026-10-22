@@ -13,6 +13,7 @@ const ProjectPage = () => {
     const { projectId } = useParams();
 
     const [workspaceName, setWorkspaceName] = useState('');
+    const [workspaceMembers, setWorkspaceMembers] = useState([]);
     const [workspaceError, setWorkspaceError] = useState('');
 
 
@@ -64,9 +65,11 @@ const ProjectPage = () => {
         try {
             const data = await getAWorkspace(workspaceId);
             setWorkspaceName(data?.workspace?.name);
+            setWorkspaceMembers(data?.workspace?.members ?? []);
         }
         catch (e) {
             setWorkspaceName(null);
+            setWorkspaceMembers([]);
             setWorkspaceError(e?.response?.data?.message || 'Workspace error');
         }
 
@@ -124,8 +127,8 @@ const ProjectPage = () => {
         setdoneTaskLoading(true);
 
         const params = { status: 'done', page: 1, limit: 100 };
-
         try {
+           
             const data = await getTasks(params, projectId);
             setDoneTasks(data?.tasks ?? []);
             setDoneTotal(data?.pagination.total);
@@ -143,20 +146,24 @@ const ProjectPage = () => {
 
     useEffect(() => {
         setPageError('');
+        setProject(null);
         getAProject();
     }, [projectId]);
 
     useEffect(() => {
+        if (!project) return;
         getTodoTasks();
-    }, [projectId, taskRefreshCounts.todo]);
+    }, [project?._id, taskRefreshCounts.todo]);
 
     useEffect(() => {
+        if (!project) return;
         getInprogressTasks();
-    }, [projectId, taskRefreshCounts.inProgress]);
+    }, [project?._id, taskRefreshCounts.inProgress]);
 
     useEffect(() => {
+        if (!project) return;
         getDoneTasks();
-    }, [projectId, taskRefreshCounts.done]);
+    }, [project?._id, taskRefreshCounts.done]);
 
     useEffect(() => {
         if (workspaceId) {
@@ -238,6 +245,7 @@ const ProjectPage = () => {
                 projectId={projectId}
                 projectName={project?.name}
                 workspaceName={workspaceName}
+                members={workspaceMembers}
                 initialStatus={createTaskStatus}
                 onCreated={handleTaskCreated}
             />}
