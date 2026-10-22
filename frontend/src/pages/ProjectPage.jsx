@@ -7,6 +7,7 @@ import { getProject, getTasks } from "../api/projectApi";
 
 import TaskColumn from "../components/ui/TaskColumn";
 import CreateTaskModal from "../components/ui/CreateTaskModal";
+import TaskDetailPanel from "../components/ui/TaskDetailPanel";
 
 const ProjectPage = () => {
 
@@ -36,6 +37,7 @@ const ProjectPage = () => {
     const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] = useState(false);
     const [createTaskStatus, setCreateTaskStatus] = useState('todo');
     const [taskRefreshCounts, setTaskRefreshCounts] = useState({ todo: 0, inProgress: 0, done: 0 });
+    const [selectedTask, setSelectedTask] = useState(null);
 
 
     const getAProject = async () => {
@@ -182,6 +184,15 @@ const ProjectPage = () => {
         }));
     };
 
+    const handleTaskUpdated = ({ oldStatus, task }) => {
+        setSelectedTask(null);
+        setTaskRefreshCounts((counts) => ({
+            ...counts,
+            [task.status]: counts[task.status] + 1,
+            ...(oldStatus !== task.status ? { [oldStatus]: counts[oldStatus] + 1 } : {}),
+        }));
+    };
+
     const openCreateTaskModal = (status = 'todo') => {
         setCreateTaskStatus(status);
         setIsCreateTaskModalOpen(true);
@@ -251,12 +262,19 @@ const ProjectPage = () => {
             />}
 
             {!pageError && <main className="flex justify-between gap-8 ">
-                <TaskColumn tasks={todoTasks} title={'Todo'} status="todo" total={todoTotal} loading={todoTaskLoading} onAddTask={openCreateTaskModal} />
+                <TaskColumn tasks={todoTasks} title={'Todo'} status="todo" total={todoTotal} loading={todoTaskLoading} onAddTask={openCreateTaskModal} onOpen={setSelectedTask} />
 
-                <TaskColumn tasks={inprogressTasks} title={'In Progress'} status="inProgress" total={inProgressTotal} loading={inprogressLoading} onAddTask={openCreateTaskModal} />
+                <TaskColumn tasks={inprogressTasks} title={'In Progress'} status="inProgress" total={inProgressTotal} loading={inprogressLoading} onAddTask={openCreateTaskModal} onOpen={setSelectedTask} />
 
-                <TaskColumn tasks={doneTasks} title={'Done'} status="done" total={doneTotal} loading={doneTaskLoading} onAddTask={openCreateTaskModal} />
+                <TaskColumn tasks={doneTasks} title={'Done'} status="done" total={doneTotal} loading={doneTaskLoading} onAddTask={openCreateTaskModal} onOpen={setSelectedTask} />
             </main>}
+
+            <TaskDetailPanel
+                task={selectedTask}
+                onClose={() => setSelectedTask(null)}
+                onUpdated={handleTaskUpdated}
+                members={workspaceMembers}
+            />
 
         </div>
     );

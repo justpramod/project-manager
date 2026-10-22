@@ -1,6 +1,6 @@
 import { getImageUrl } from "../../utils/getImageUrl";
 
-const TaskCard = ({ task, title }) => {
+const TaskCard = ({ task, title, onClick }) => {
 
     const priority = task?.priority || 'medium';
     const priorityStyles = {
@@ -21,7 +21,7 @@ const TaskCard = ({ task, title }) => {
         : 'recently';
 
     return (
-        <div className=" rounded-xl border border-slate-200  bg-slate-50 px-3 py-5 shadow-[0_2px_6px_rgba(15,23,42,0.04)]">
+        <button type="button" onClick={onClick} className="w-full hover:cursor-pointer rounded-xl border border-slate-200 bg-slate-50 px-3 py-5 text-left shadow-[0_2px_6px_rgba(15,23,42,0.04)]">
             <div className="flex items-center justify-between gap-3">
                 <span className={`rounded-full px-2.5 py-1 text-[10px] font-semibold capitalize ${priorityStyles[priority] || priorityStyles.medium}`}>
                     {priority}
@@ -39,7 +39,7 @@ const TaskCard = ({ task, title }) => {
                 <img src={getImageUrl(assignee?.avatarUrl)} alt="" className="h-6 w-6 rounded-full object-cover" />
                 <span>{assigneeName}</span>
             </div>
-        </div>
+        </button>
     );
 }
 
