@@ -13,4 +13,8 @@ const updateTask = async (taskId, fields) => {
     return axiosClient.put(`/tasks/${taskId}`, fields);
 }
 
-export { createTask, updateTask };
+const deleteTask = async (taskId) => {
+    return axiosClient.delete(`/tasks/${taskId}`);
+}
+
+export { createTask, updateTask, deleteTask };

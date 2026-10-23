@@ -146,14 +146,17 @@ const updateTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
     try {
-        await Task.findByIdAndDelete(req.params.id);
+        await await req.task.deleteOne();
         await touchWorkspace(req.workspace);
+        await Notification.deleteMany({ relatedTask: req.params.id });
         getIO().to(req.project._id.toString()).emit('deleteTask', req.params.id);
         res.status(200).json({ message: 'Task deleted successfully' });
+
+
     }
     catch (e) {
         console.log(e);
-        res.status(500).json({ message: 'Invalid Id Format' });
+        res.status(500).json({ message: 'Server Error on deleteTask' });
     }
 }
 module.exports = { createTask, getTasks, getTask, updateTask, deleteTask };
