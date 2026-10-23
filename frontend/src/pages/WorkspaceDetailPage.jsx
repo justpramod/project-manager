@@ -28,10 +28,11 @@ const WorkspaceDetailPage = () => {
 
     const userId = user?._id;
 
-
-    const isOwner = !!workspace?.members?.some(
-        (member) => member.user === userId && member.role === 'owner'
-    );
+    //works on populated members array
+    const isOwner = !!workspace?.members?.some((member) => {
+        const memberUserId = member.user?._id ?? member.user;
+        return memberUserId?.toString() === userId?.toString() && member.role === 'owner';
+    });
 
 
 

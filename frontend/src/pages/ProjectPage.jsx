@@ -193,6 +193,14 @@ const ProjectPage = () => {
         }));
     };
 
+    const handleTaskDeleted = (task) => {
+        setSelectedTask(null);
+        setTaskRefreshCounts((counts) => ({
+            ...counts,
+            [task.status]: counts[task.status] + 1,
+        }));
+    };
+
     const openCreateTaskModal = (status = 'todo') => {
         setCreateTaskStatus(status);
         setIsCreateTaskModalOpen(true);
@@ -273,6 +281,7 @@ const ProjectPage = () => {
                 task={selectedTask}
                 onClose={() => setSelectedTask(null)}
                 onUpdated={handleTaskUpdated}
+                onDeleted={handleTaskDeleted}
                 members={workspaceMembers}
             />
 
