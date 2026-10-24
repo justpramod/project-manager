@@ -1,9 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { deleteTask, updateTask } from "../../api/taskApi";
+import { authContext } from "../../contexts/AuthContext";
 import { getImageUrl } from "../../utils/getImageUrl";
+import AlertDialog from './AlertDialog';
 
 const getAssigneeEmail = (assignee) => assignee?.email || '';
 
+// IDs may arrive as strings, MongoDB objects, or populated user objects.
+// Converting them here lets permission checks compare them reliably even if they get fetched in different times or ways.
+const getId = (value) => value?._id?.toString() || value?.toString();
+
+// default values for form filelds, to avoid uncontrolled component warnings when the task is first loaded.
 const getTaskValues = (task) => ({
     title: task?.title || '',
     description: task?.description || '',
@@ -42,6 +49,7 @@ const OptionMenu = ({ options, value, onChange, renderValue, renderOption, class
     const [open, setOpen] = useState(false);
     const selected = options.find((option) => option.value === value);
 
+  // small menu that can be used for status, priority, and assignee selection. 
     return (
         <div className={`relative ${className}`}>
             <button
@@ -78,23 +86,29 @@ const OptionMenu = ({ options, value, onChange, renderValue, renderOption, class
 };
 
 const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) => {
+    const { user } = useContext(authContext);
     const [values, setValues] = useState(getTaskValues(task));
     const [originalValues, setOriginalValues] = useState(getTaskValues(task));
     const [submitting, setSubmitting] = useState(false);
     const [deleting, setDeleting] = useState(false);
+    const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
     const [error, setError] = useState('');
+    // useRef used to reference the description textarea so we can adjust its height dynamically as the user types.
     const descriptionRef = useRef(null);
 
     useEffect(() => {
+        // Replace the form values whenever the user opens a different task.
         const nextValues = getTaskValues(task);
         setValues(nextValues);
         setOriginalValues(nextValues);
         setSubmitting(false);
         setDeleting(false);
+        setDeleteDialogOpen(false);
         setError('');
     }, [task]);
 
     useEffect(() => {
+        // Let the description grow with its content without showing empty space.
         const descriptionInput = descriptionRef.current;
         if (!descriptionInput) return;
 
@@ -103,6 +117,7 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
     }, [values.description]);
 
     useEffect(() => {
+        // Escape closes the panel; remove the listener when the panel changes/unmounts.
         if (!task) return;
 
         const downKeyHandler = (event) => {
@@ -114,10 +129,19 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
 
     if (!task) return null;
 
+    // Determine if the user has made any changes to the form fields.
     const hasChanges = Object.keys(originalValues).some(
         (field) => values[field] !== originalValues[field]
     );
 
+    const userId = getId(user);
+    const taskCreatorId = getId(task.createdBy);
+    const isWorkspaceOwner = members.some((member) => (
+        getId(member.user) === userId && member.role === 'owner'
+    ));
+    const canDeleteTask = userId === taskCreatorId || isWorkspaceOwner;
+
+    // Update one field while preserving the rest of the form.
     const setField = (field, value) => {
         setValues((currentValues) => ({ ...currentValues, [field]: value }));
     };
@@ -134,6 +158,7 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
         event.preventDefault();
         if (!hasChanges || !values.title.trim()) return;
 
+        // Send only fields that changed, which avoids overwriting newer server data.
         const changedFields = Object.keys(values).reduce((fields, field) => {
             const value = field === 'title' || field === 'description'
                 ? values[field].trim()
@@ -159,7 +184,7 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
     };
 
     const handleDelete = async () => {
-        if (!window.confirm('Delete this task? This action cannot be undone.')) return;
+        if (!canDeleteTask) return;
 
         setDeleting(true);
         setError('');
@@ -169,6 +194,7 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
         } catch (err) {
             setError(err?.response?.data?.message || 'Failed to delete task. Please try again.');
             setDeleting(false);
+            setDeleteDialogOpen(false);
         }
     };
 
@@ -231,32 +257,43 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
                     </div>
 
                     <div>
+                    
                         <label htmlFor="detail-task-description" className="mb-2 block text-xs font-semibold text-slate-700">Description</label>
                         <textarea ref={descriptionRef} id="detail-task-description" rows="1" value={values.description} onChange={(event) => setField('description', event.target.value)} className="max-h-48 w-full resize-none overflow-y-auto rounded-lg border border-slate-200 px-3 py-2 text-sm leading-5 text-slate-900 outline-none focus:ring-2 focus:ring-indigo-100" />
                     </div>
 
                     {error && <div role="alert" className="rounded-lg border border-red-100 bg-red-50 px-3 py-2.5 text-xs text-red-600">{error}</div>}
-
+                
                     <div className="flex justify-end gap-2 border-t border-slate-200 pt-4">
                         <button type="button" onClick={onClose} disabled={submitting || deleting} className="rounded-md border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-60">Cancel</button>
-                        <button type="submit" disabled={!hasChanges || submitting || deleting} className="rounded-md bg-indigo-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50">{submitting ? 'Saving...' : 'Save'}</button>
+                        <button type="submit" disabled={!hasChanges || submitting || deleting} className="rounded-md bg-indigo-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50">{submitting ? 'Saving...' : 'Save'}</button> 
                     </div>
                 </form>
 
-                <section  className="border-t border-red-100 bg-red-50/40 px-5 py-4" aria-labelledby="danger-zone-heading">
-                    <h2 id="danger-zone-heading" className="text-[11px] font-bold uppercase tracking-wide text-red-700">Danger Zone</h2>
-                    <p className="mt-1 text-xs text-red-600">Delete this task permanently. Review carefully before continuing.</p>
-                    <button type="button" onClick={handleDelete} disabled={deleting || submitting} className="mt-3 flex w-full items-center justify-center gap-2 rounded-md border border-red-300 bg-transparent px-3 py-2 text-xs font-semibold text-red-700 hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-60">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <path d="M3 6h18" />
-                            <path d="M8 6V4h8v2" />
-                            <path d="m19 6-1 14H6L5 6" />
-                            <path d="M10 11v5M14 11v5" />
-                        </svg>
-                        {deleting ? 'Deleting...' : 'Delete Task'}
-                    </button>
-                </section>
+                {canDeleteTask && (
+                    <section className="border-t border-red-100 bg-red-50/40 px-5 py-4" aria-labelledby="danger-zone-heading">
+                        <h2 id="danger-zone-heading" className="text-[11px] font-bold uppercase tracking-wide text-red-700">Danger Zone</h2>
+                        <p className="mt-1 text-xs text-red-600">Delete this task permanently. Review carefully before continuing.</p>
+                        <button type="button" onClick={() => setDeleteDialogOpen(true)} disabled={deleting || submitting} className="mt-3 flex w-full items-center justify-center gap-2 rounded-md border border-red-300 bg-transparent px-3 py-2 text-xs font-semibold text-red-700 hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-60">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                <path d="M3 6h18" />
+                                <path d="M8 6V4h8v2" />
+                                <path d="m19 6-1 14H6L5 6" />
+                                <path d="M10 11v5M14 11v5" />
+                            </svg>
+                            {deleting ? 'Deleting...' : 'Delete Task'}
+                        </button>
+                    </section>
+                )}
             </aside>
+            <AlertDialog
+                open={deleteDialogOpen}
+                title="Delete this task?"
+                description="This action cannot be undone. The task and its details will be permanently deleted."
+                onCancel={() => setDeleteDialogOpen(false)}
+                onConfirm={handleDelete}
+                confirming={deleting}
+            />
         </div>
     );
 };
