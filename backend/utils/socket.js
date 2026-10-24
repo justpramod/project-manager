@@ -5,11 +5,23 @@ let io;
 // initSocket sets the module-level io variable once.
 function initSocket(server) {
     io = new Server(server, {
-        cors: { origin: process.env.CLIENT_URL }
+        cors: {
+            origin: (origin, callback) => {
+                if (!origin || origin === process.env.CLIENT_URL || /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+                    return callback(null, true);
+                }
+                return callback(new Error(`Socket origin not allowed: ${origin}`));
+            },
+            credentials: true,
+        }
     });
 
     io.on('connection', (socket) => {
         console.log('A user connected: ', socket.id);
+
+        socket.on('error', (error) => {
+            console.error('Socket error:', error);
+        });
 
         socket.on('joinUser', (userId)=>{
             socket.join(userId);
@@ -34,6 +46,9 @@ function initSocket(server) {
         socket.on('disconnect', () => {
             console.log('User disconected: ', socket.id);
         });
+    });
+    io.engine.on('connection_error', (error) => {
+        console.error('Socket connection error:', error.message);
     });
     return io;
 }
