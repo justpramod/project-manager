@@ -39,6 +39,7 @@ const createTask = async (req, res) => {
         await touchWorkspace(req.workspace);
 
         getIO().to(req.project._id.toString()).emit('newTask', task);
+        getIO().to(req.workspace._id.toString()).emit('projectTasksChanged', req.project._id.toString());
         res.status(201).json({ message: 'Task created', task: task });
     }
     catch (e) {
@@ -99,6 +100,7 @@ const getTask = async (req, res) => {
 const updateTask = async (req, res) => {
     try {
         const { title, description, status, priority, assignee } = req.body;
+        const oldStatus = req.task.status;
         if (title) req.task.title = title;
         if (description !== undefined) req.task.description = description;
         if (status) req.task.status = status;
@@ -131,7 +133,8 @@ const updateTask = async (req, res) => {
 
         await touchWorkspace(req.workspace);
         await req.task.populate('assignee', 'username email avatarUrl');
-        getIO().to(req.project._id.toString()).emit('updateTask', req.task);
+        getIO().to(req.project._id.toString()).emit('updateTask', { oldStatus, task: req.task });
+        getIO().to(req.workspace._id.toString()).emit('projectTasksChanged', req.project._id.toString());
 
         res.status(200).json({ message: 'Task updated', task: req.task });
     }
@@ -150,6 +153,7 @@ const deleteTask = async (req, res) => {
         await touchWorkspace(req.workspace);
         await Notification.deleteMany({ relatedTask: req.params.id });
         getIO().to(req.project._id.toString()).emit('deleteTask', req.params.id);
+        getIO().to(req.workspace._id.toString()).emit('projectTasksChanged', req.project._id.toString());
         res.status(200).json({ message: 'Task deleted successfully' });
 
 
