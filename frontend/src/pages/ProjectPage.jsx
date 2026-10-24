@@ -9,6 +9,8 @@ import TaskColumn from "../components/ui/TaskColumn";
 import CreateTaskModal from "../components/ui/CreateTaskModal";
 import TaskDetailPanel from "../components/ui/TaskDetailPanel";
 
+import { socket } from "../utils/socket";
+
 const ProjectPage = () => {
 
     const { projectId } = useParams();
@@ -172,6 +174,55 @@ const ProjectPage = () => {
             getWorkspace(workspaceId);
         }
     }, [workspaceId]);
+
+    useEffect(() => {
+        const onProjectUpdated = (updatedProject) => setProject(updatedProject);
+        const onWorkspaceUpdated = () => getWorkspace(workspaceId);
+        const refreshTaskLists = (task) => {
+            if (!task?.status) return;
+            setTaskRefreshCounts((counts) => ({
+                ...counts,
+                [task.status]: counts[task.status] + 1,
+            }));
+        };
+        const onTaskUpdated = ({ oldStatus, task }) => {
+            refreshTaskLists(task);
+            if (oldStatus && oldStatus !== task?.status) refreshTaskLists({ status: oldStatus });
+        };
+        const onTaskDeleted = () => {
+            setTaskRefreshCounts((counts) => ({
+                todo: counts.todo + 1,
+                inProgress: counts.inProgress + 1,
+                done: counts.done + 1,
+            }));
+        };
+
+        const joinRooms = () => {
+            socket.emit('joinProject', projectId);
+            if (workspaceId) socket.emit('joinWorkspace', workspaceId);
+        };
+        socket.connect();
+        socket.on('connect', joinRooms);
+        if (socket.connected) joinRooms();
+        socket.on('updateProject', onProjectUpdated);
+        socket.on('workspaceUpdated', onWorkspaceUpdated);
+        socket.on('memberAdded', onWorkspaceUpdated);
+        socket.on('newTask', refreshTaskLists);
+        socket.on('updateTask', onTaskUpdated);
+        socket.on('deleteTask', onTaskDeleted);
+
+        return () => {
+            socket.off('updateProject', onProjectUpdated);
+            socket.off('workspaceUpdated', onWorkspaceUpdated);
+            socket.off('memberAdded', onWorkspaceUpdated);
+            socket.off('newTask', refreshTaskLists);
+            socket.off('updateTask', onTaskUpdated);
+            socket.off('deleteTask', onTaskDeleted);
+            socket.off('connect', joinRooms);
+            socket.disconnect();
+        };
+
+    }, [projectId]);
 
 
     const handleTaskCreated = (task) => {

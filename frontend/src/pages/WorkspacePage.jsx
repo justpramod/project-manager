@@ -3,6 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { getWorkspace } from '../api/workspaceApi';
 import WorkspaceCard from '../components/ui/WorkspaceCard';
 import CreateWorkspaceModal from '../components/ui/CreateWorkspaceModal';
+import { socket } from '../utils/socket';
 
 const WorkspacePage = () => {
     const { logout, user } = useAuth();
@@ -32,10 +33,40 @@ const WorkspacePage = () => {
 
 
     useEffect(() => {
-
+        if (!user?._id) return;
         getWorkspaces();
 
-    }, []);
+        const addWorkspace = (workspace) => {
+            setWorkspaces((currentWorkspaces) =>
+                currentWorkspaces.some((current) => current._id === workspace._id)
+                    ? currentWorkspaces
+                    : [workspace, ...currentWorkspaces]
+            );
+        };
+        const updateWorkspace = (workspace) => {
+            setWorkspaces((currentWorkspaces) => currentWorkspaces.map((current) =>
+                current._id === workspace._id ? workspace : current
+            ));
+        };
+        const joinUserRoom = () => socket.emit('joinUser', user._id);
+        socket.connect();
+        socket.on('connect', joinUserRoom);
+        if (socket.connected) joinUserRoom();
+        socket.on('workspaceCreated', addWorkspace);
+        socket.on('workspaceUpdated', updateWorkspace);
+        socket.on('deleteWorkspace', (workspaceId) => {
+            setWorkspaces((currentWorkspaces) => currentWorkspaces.filter(({ _id }) => _id !== workspaceId));
+        });
+
+        return () => {
+            socket.off('workspaceCreated', addWorkspace);
+            socket.off('workspaceUpdated', updateWorkspace);
+            socket.off('deleteWorkspace');
+            socket.off('connect', joinUserRoom);
+            socket.disconnect();
+        };
+
+    }, [user?._id]);
 
 
     const currentUserId = user?._id;

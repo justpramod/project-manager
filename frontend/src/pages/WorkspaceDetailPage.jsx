@@ -8,6 +8,7 @@ import CreateProjectModal from "../components/ui/CreateProjectModal";
 import { getAWorkspace, getProjects } from '../api/workspaceApi';
 
 import { useAuth } from "../hooks/useAuth";
+import { socket } from "../utils/socket";
 
 const WorkspaceDetailPage = () => {
 
@@ -80,7 +81,29 @@ const WorkspaceDetailPage = () => {
         getWorkspace();
         getProject();
 
+        const joinWorkspaceRoom = () => socket.emit('joinWorkspace', workspaceId);
+        socket.connect();
+        socket.on('connect', joinWorkspaceRoom);
+        if (socket.connected) joinWorkspaceRoom();
+        const updateWorkspace = (updatedWorkspace) => setWorkspace(updatedWorkspace);
+        const refreshProjects = () => getProject();
+        socket.on('workspaceUpdated', updateWorkspace);
+        socket.on('memberAdded', updateWorkspace);
+        socket.on('newProject', refreshProjects);
+        socket.on('updateProject', refreshProjects);
+        socket.on('deleteProject', refreshProjects);
+        socket.on('projectTasksChanged', refreshProjects);
 
+        return () => {
+            socket.off('workspaceUpdated', updateWorkspace);
+            socket.off('memberAdded', updateWorkspace);
+            socket.off('newProject', refreshProjects);
+            socket.off('updateProject', refreshProjects);
+            socket.off('deleteProject', refreshProjects);
+            socket.off('projectTasksChanged', refreshProjects);
+            socket.off('connect', joinWorkspaceRoom);
+            socket.disconnect();
+        };
     }, [workspaceId]);
 
     const currentWorkspaceName = workspace?.name;
