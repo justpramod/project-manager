@@ -82,7 +82,6 @@ const WorkspaceDetailPage = () => {
         getProject();
 
         const joinWorkspaceRoom = () => socket.emit('joinWorkspace', workspaceId);
-        socket.connect();
         socket.on('connect', joinWorkspaceRoom);
         if (socket.connected) joinWorkspaceRoom();
         const updateWorkspace = (updatedWorkspace) => setWorkspace(updatedWorkspace);
@@ -102,7 +101,7 @@ const WorkspaceDetailPage = () => {
             socket.off('deleteProject', refreshProjects);
             socket.off('projectTasksChanged', refreshProjects);
             socket.off('connect', joinWorkspaceRoom);
-            socket.disconnect();
+            socket.emit('leaveWorkspace', workspaceId);
         };
     }, [workspaceId]);
 

@@ -48,10 +48,6 @@ const WorkspacePage = () => {
                 current._id === workspace._id ? workspace : current
             ));
         };
-        const joinUserRoom = () => socket.emit('joinUser', user._id);
-        socket.connect();
-        socket.on('connect', joinUserRoom);
-        if (socket.connected) joinUserRoom();
         socket.on('workspaceCreated', addWorkspace);
         socket.on('workspaceUpdated', updateWorkspace);
         socket.on('deleteWorkspace', (workspaceId) => {
@@ -62,8 +58,6 @@ const WorkspacePage = () => {
             socket.off('workspaceCreated', addWorkspace);
             socket.off('workspaceUpdated', updateWorkspace);
             socket.off('deleteWorkspace');
-            socket.off('connect', joinUserRoom);
-            socket.disconnect();
         };
 
     }, [user?._id]);

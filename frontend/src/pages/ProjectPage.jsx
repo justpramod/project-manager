@@ -176,8 +176,37 @@ const ProjectPage = () => {
     }, [workspaceId]);
 
     useEffect(() => {
+        const joinProjectRoom = () => socket.emit('joinProject', projectId);
+        socket.on('connect', joinProjectRoom);
+        if (socket.connected) joinProjectRoom();
+
+        return () => {
+            socket.off('connect', joinProjectRoom);
+            socket.emit('leaveProject', projectId);
+        };
+    }, [projectId]);
+
+    useEffect(() => {
+        if (!workspaceId) return;
+
+        const joinWorkspaceRoom = () => socket.emit('joinWorkspace', workspaceId);
+        socket.on('connect', joinWorkspaceRoom);
+        if (socket.connected) joinWorkspaceRoom();
+
+        return () => {
+            socket.off('connect', joinWorkspaceRoom);
+            socket.emit('leaveWorkspace', workspaceId);
+        };
+    }, [workspaceId]);
+
+    useEffect(() => {
         const onProjectUpdated = (updatedProject) => setProject(updatedProject);
         const onWorkspaceUpdated = () => getWorkspace(workspaceId);
+
+        // task is an object with status and other task details, oldStatus is the previous status of the task before update
+        // refreshTaskLists is a function that increments the refresh count for the given task status, which will trigger a re-fetch of tasks in that status
+
+        
         const refreshTaskLists = (task) => {
             if (!task?.status) return;
             setTaskRefreshCounts((counts) => ({
@@ -185,6 +214,7 @@ const ProjectPage = () => {
                 [task.status]: counts[task.status] + 1,
             }));
         };
+
         const onTaskUpdated = ({ oldStatus, task }) => {
             refreshTaskLists(task);
             if (oldStatus && oldStatus !== task?.status) refreshTaskLists({ status: oldStatus });
@@ -197,19 +227,12 @@ const ProjectPage = () => {
             }));
         };
 
-        const joinRooms = () => {
-            socket.emit('joinProject', projectId);
-            if (workspaceId) socket.emit('joinWorkspace', workspaceId);
-        };
-        socket.connect();
-        socket.on('connect', joinRooms);
-        if (socket.connected) joinRooms();
         socket.on('updateProject', onProjectUpdated);
         socket.on('workspaceUpdated', onWorkspaceUpdated);
         socket.on('memberAdded', onWorkspaceUpdated);
         socket.on('newTask', refreshTaskLists);
         socket.on('updateTask', onTaskUpdated);
-        socket.on('deleteTask', onTaskDeleted);
+        socket.on('deleteTask', onTaskDeleted);                                 
 
         return () => {
             socket.off('updateProject', onProjectUpdated);
@@ -218,11 +241,9 @@ const ProjectPage = () => {
             socket.off('newTask', refreshTaskLists);
             socket.off('updateTask', onTaskUpdated);
             socket.off('deleteTask', onTaskDeleted);
-            socket.off('connect', joinRooms);
-            socket.disconnect();
         };
 
-    }, [projectId]);
+    }, [workspaceId]);
 
 
     const handleTaskCreated = (task) => {
