@@ -1,12 +1,30 @@
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import ProfileMenu from "../ui/ProfileMenu";
+import { useAuth } from "../../hooks/useAuth";
+import { socket } from "../../utils/socket";
 
 const Layout = () => {
+    const { user } = useAuth();
     const [notificationCount, setNotificationCount] = useState(5);
     const [userAvatar, setUserAvatar] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        if (!user?._id) return;
+
+        const joinUserRoom = () => socket.emit('joinUser', user._id);
+        socket.connect();
+        socket.on('connect', joinUserRoom);
+        if (socket.connected) joinUserRoom();
+
+        return () => {
+            socket.off('connect', joinUserRoom);
+            socket.disconnect();
+        };
+    }, [user?._id]);
+
     return (
         <div className="flex-col ">
             <div className=" border-t-gray-200 border-b">

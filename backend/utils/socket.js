@@ -37,6 +37,18 @@ function initSocket(server) {
             socket.join(projectId);
             console.log(`Socket ${socket.id} joined Project room ${projectId}`);
         });
+
+        socket.on('leaveProject', (projectId, acknowledge) => {
+            socket.leave(projectId);
+            console.log(`Socket ${socket.id} left Project room ${projectId}`);
+            acknowledge?.({ ok: true });
+        });
+
+        socket.on('leaveWorkspace', (workspaceId, acknowledge) => {
+            socket.leave(workspaceId);
+            console.log(`Socket ${socket.id} left Workspace room ${workspaceId}`);
+            acknowledge?.({ ok: true });
+        });
         
         socket.on('joinWorkspace',(workspaceId)=>{
             socket.join(workspaceId);
@@ -46,10 +58,13 @@ function initSocket(server) {
         socket.on('disconnect', () => {
             console.log('User disconected: ', socket.id);
         });
+        //  socket.onAny((event, ...args) => console.log('socket event:', event, args));
+       // log all events for debugging
     });
     io.engine.on('connection_error', (error) => {
         console.error('Socket connection error:', error.message);
     });
+    
     return io;
 }
 
