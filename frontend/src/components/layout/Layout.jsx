@@ -14,13 +14,20 @@ const Layout = () => {
     useEffect(() => {
         if (!user?._id) return;
 
-        const joinUserRoom = () => socket.emit('joinUser', user._id);
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
+        const handleConnectError = (error) => {
+            console.error('Socket connection failed:', error.message);
+            socket.disconnect();
+        };
+
+        socket.auth = { token };
+        socket.on('connect_error', handleConnectError);
         socket.connect();
-        socket.on('connect', joinUserRoom);
-        if (socket.connected) joinUserRoom();
 
         return () => {
-            socket.off('connect', joinUserRoom);
+            socket.off('connect_error', handleConnectError);
             socket.disconnect();
         };
     }, [user?._id]);
