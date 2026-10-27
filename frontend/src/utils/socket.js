@@ -10,8 +10,3 @@ export const socket = io(socketUrl, {
 socket.on('connect_error', (error) => {
     console.error('Socket connection failed:', error.message);
 });
-
-// Temporary Socket.IO test logger.
-socket.onAny((event, ...args) => {
-    console.log('[socket event]', event, ...args);
-});

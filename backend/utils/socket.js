@@ -41,13 +41,6 @@ function initSocket(server) {
         socket.workspaceIds = new Set();
         socket.join(userRoom);
 
-        const emitPresence = (workspaceId) => {
-            io.to(workspaceId).emit('presenceChanged', {
-                workspaceId,
-                onlineUserIds: onlineIds(workspaceId)
-            });
-        };
-
         socket.on('error', (error) => {
             console.error('Socket error:', error);
         });
@@ -148,9 +141,7 @@ function initSocket(server) {
                     }
                 }
                 acknowledge?.({ ok: true, onlineIds: onlineIds(workspaceId) });
-                
                 console.log(`Socket ${socket.id} joined Workspace room ${workspaceId}`);
-                acknowledge?.({ ok: true });
             } catch (error) {
                 console.error('Workspace room join failed:', error);
                 acknowledge?.({ ok: false, message: 'Unable to join workspace room' });
