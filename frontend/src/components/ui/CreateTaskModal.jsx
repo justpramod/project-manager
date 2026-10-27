@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { createTask } from "../../api/taskApi";
 
-const CreateTaskModal = ({ isOpen, onClose, onCreated, projectId, projectName, workspaceName, initialStatus = 'todo' }) => {
+const CreateTaskModal = ({ isOpen, onClose, onCreated, projectId, projectName, workspaceName, members = [], initialStatus = 'todo' }) => {
 
     const [title, setTitle] = useState('');
     const [titleError, setTitleError] = useState('');
@@ -175,16 +175,24 @@ const CreateTaskModal = ({ isOpen, onClose, onCreated, projectId, projectName, w
                         <label htmlFor="task-assignee" className="mb-2 block text-xs font-semibold text-slate-700">
                             Assignee email <span className="font-normal text-slate-500">(optional)</span>
                         </label>
-                        <input
+                        <select
                             id="task-assignee"
-                            type="email"
                             value={assignee}
                             onChange={(e)=> setAssignee(e.target.value)}
-                            placeholder="Enter email address"
-                            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
-                        />
+                            className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                        >
+                            <option value="">Leave unassigned</option>
+                            {members.map((member) => {
+                                const user = member.user ?? member;
+                                return (
+                                    <option key={user._id ?? user.email} value={user.email}>
+                                        {user.username ? `${user.username} (${user.email})` : user.email}
+                                    </option>
+                                );
+                            })}
+                        </select>
                         <p className="mt-2 text-[11px] text-slate-500">
-                            Must be a member of Engineering Team. Leave blank to keep this task unassigned.
+                            Select a workspace member or leave the task unassigned.
                         </p>
                     </div>
                     {error && (

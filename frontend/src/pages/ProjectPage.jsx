@@ -7,12 +7,16 @@ import { getProject, getTasks } from "../api/projectApi";
 
 import TaskColumn from "../components/ui/TaskColumn";
 import CreateTaskModal from "../components/ui/CreateTaskModal";
+import TaskDetailPanel from "../components/ui/TaskDetailPanel";
+
+import { socket } from "../utils/socket";
 
 const ProjectPage = () => {
 
     const { projectId } = useParams();
 
     const [workspaceName, setWorkspaceName] = useState('');
+    const [workspaceMembers, setWorkspaceMembers] = useState([]);
     const [workspaceError, setWorkspaceError] = useState('');
 
 
@@ -35,6 +39,7 @@ const ProjectPage = () => {
     const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] = useState(false);
     const [createTaskStatus, setCreateTaskStatus] = useState('todo');
     const [taskRefreshCounts, setTaskRefreshCounts] = useState({ todo: 0, inProgress: 0, done: 0 });
+    const [selectedTask, setSelectedTask] = useState(null);
 
 
     const getAProject = async () => {
@@ -64,9 +69,11 @@ const ProjectPage = () => {
         try {
             const data = await getAWorkspace(workspaceId);
             setWorkspaceName(data?.workspace?.name);
+            setWorkspaceMembers(data?.workspace?.members ?? []);
         }
         catch (e) {
             setWorkspaceName(null);
+            setWorkspaceMembers([]);
             setWorkspaceError(e?.response?.data?.message || 'Workspace error');
         }
 
@@ -124,8 +131,8 @@ const ProjectPage = () => {
         setdoneTaskLoading(true);
 
         const params = { status: 'done', page: 1, limit: 100 };
-
         try {
+           
             const data = await getTasks(params, projectId);
             setDoneTasks(data?.tasks ?? []);
             setDoneTotal(data?.pagination.total);
@@ -143,20 +150,24 @@ const ProjectPage = () => {
 
     useEffect(() => {
         setPageError('');
+        setProject(null);
         getAProject();
     }, [projectId]);
 
     useEffect(() => {
+        if (!project) return;
         getTodoTasks();
-    }, [projectId, taskRefreshCounts.todo]);
+    }, [project?._id, taskRefreshCounts.todo]);
 
     useEffect(() => {
+        if (!project) return;
         getInprogressTasks();
-    }, [projectId, taskRefreshCounts.inProgress]);
+    }, [project?._id, taskRefreshCounts.inProgress]);
 
     useEffect(() => {
+        if (!project) return;
         getDoneTasks();
-    }, [projectId, taskRefreshCounts.done]);
+    }, [project?._id, taskRefreshCounts.done]);
 
     useEffect(() => {
         if (workspaceId) {
@@ -164,11 +175,98 @@ const ProjectPage = () => {
         }
     }, [workspaceId]);
 
+    useEffect(() => {
+        const joinProjectRoom = () => socket.emit('joinProject', projectId);
+        socket.on('connect', joinProjectRoom);
+        if (socket.connected) joinProjectRoom();
+
+        return () => {
+            socket.off('connect', joinProjectRoom);
+            socket.emit('leaveProject', projectId);
+        };
+    }, [projectId]);
+
+    useEffect(() => {
+        if (!workspaceId) return;
+
+        const joinWorkspaceRoom = () => socket.emit('joinWorkspace', workspaceId);
+        socket.on('connect', joinWorkspaceRoom);
+        if (socket.connected) joinWorkspaceRoom();
+
+        return () => {
+            socket.off('connect', joinWorkspaceRoom);
+            socket.emit('leaveWorkspace', workspaceId);
+        };
+    }, [workspaceId]);
+
+    useEffect(() => {
+        const onProjectUpdated = (updatedProject) => setProject(updatedProject);
+        const onWorkspaceUpdated = () => getWorkspace(workspaceId);
+
+        // task is an object with status and other task details, oldStatus is the previous status of the task before update
+        // refreshTaskLists is a function that increments the refresh count for the given task status, which will trigger a re-fetch of tasks in that status
+
+        
+        const refreshTaskLists = (task) => {
+            if (!task?.status) return;
+            setTaskRefreshCounts((counts) => ({
+                ...counts,
+                [task.status]: counts[task.status] + 1,
+            }));
+        };
+
+        const onTaskUpdated = ({ oldStatus, task }) => {
+            refreshTaskLists(task);
+            if (oldStatus && oldStatus !== task?.status) refreshTaskLists({ status: oldStatus });
+        };
+        const onTaskDeleted = () => {
+            setTaskRefreshCounts((counts) => ({
+                todo: counts.todo + 1,
+                inProgress: counts.inProgress + 1,
+                done: counts.done + 1,
+            }));
+        };
+
+        socket.on('updateProject', onProjectUpdated);
+        socket.on('workspaceUpdated', onWorkspaceUpdated);
+        socket.on('memberAdded', onWorkspaceUpdated);
+        socket.on('newTask', refreshTaskLists);
+        socket.on('updateTask', onTaskUpdated);
+        socket.on('deleteTask', onTaskDeleted);                                 
+
+        return () => {
+            socket.off('updateProject', onProjectUpdated);
+            socket.off('workspaceUpdated', onWorkspaceUpdated);
+            socket.off('memberAdded', onWorkspaceUpdated);
+            socket.off('newTask', refreshTaskLists);
+            socket.off('updateTask', onTaskUpdated);
+            socket.off('deleteTask', onTaskDeleted);
+        };
+
+    }, [workspaceId]);
+
 
     const handleTaskCreated = (task) => {
         setIsCreateTaskModalOpen(false);
         if (!task?.status) return;
 
+        setTaskRefreshCounts((counts) => ({
+            ...counts,
+            [task.status]: counts[task.status] + 1,
+        }));
+    };
+
+    const handleTaskUpdated = ({ oldStatus, task }) => {
+        setSelectedTask(null);
+        setTaskRefreshCounts((counts) => ({
+            ...counts,
+            [task.status]: counts[task.status] + 1,
+            ...(oldStatus !== task.status ? { [oldStatus]: counts[oldStatus] + 1 } : {}),
+        }));
+    };
+
+    const handleTaskDeleted = (task) => {
+        setSelectedTask(null);
         setTaskRefreshCounts((counts) => ({
             ...counts,
             [task.status]: counts[task.status] + 1,
@@ -238,17 +336,26 @@ const ProjectPage = () => {
                 projectId={projectId}
                 projectName={project?.name}
                 workspaceName={workspaceName}
+                members={workspaceMembers}
                 initialStatus={createTaskStatus}
                 onCreated={handleTaskCreated}
             />}
 
             {!pageError && <main className="flex justify-between gap-8 ">
-                <TaskColumn tasks={todoTasks} title={'Todo'} status="todo" total={todoTotal} loading={todoTaskLoading} onAddTask={openCreateTaskModal} />
+                <TaskColumn tasks={todoTasks} title={'Todo'} status="todo" total={todoTotal} loading={todoTaskLoading} onAddTask={openCreateTaskModal} onOpen={setSelectedTask} />
 
-                <TaskColumn tasks={inprogressTasks} title={'In Progress'} status="inProgress" total={inProgressTotal} loading={inprogressLoading} onAddTask={openCreateTaskModal} />
+                <TaskColumn tasks={inprogressTasks} title={'In Progress'} status="inProgress" total={inProgressTotal} loading={inprogressLoading} onAddTask={openCreateTaskModal} onOpen={setSelectedTask} />
 
-                <TaskColumn tasks={doneTasks} title={'Done'} status="done" total={doneTotal} loading={doneTaskLoading} onAddTask={openCreateTaskModal} />
+                <TaskColumn tasks={doneTasks} title={'Done'} status="done" total={doneTotal} loading={doneTaskLoading} onAddTask={openCreateTaskModal} onOpen={setSelectedTask} />
             </main>}
+
+            <TaskDetailPanel
+                task={selectedTask}
+                onClose={() => setSelectedTask(null)}
+                onUpdated={handleTaskUpdated}
+                onDeleted={handleTaskDeleted}
+                members={workspaceMembers}
+            />
 
         </div>
     );

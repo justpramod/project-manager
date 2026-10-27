@@ -1,12 +1,37 @@
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import ProfileMenu from "../ui/ProfileMenu";
+import { useAuth } from "../../hooks/useAuth";
+import { socket } from "../../utils/socket";
 
 const Layout = () => {
+    const { user } = useAuth();
     const [notificationCount, setNotificationCount] = useState(5);
     const [userAvatar, setUserAvatar] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        if (!user?._id) return;
+
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
+        const handleConnectError = (error) => {
+            console.error('Socket connection failed:', error.message);
+            socket.disconnect();
+        };
+
+        socket.auth = { token };
+        socket.on('connect_error', handleConnectError);
+        socket.connect();
+
+        return () => {
+            socket.off('connect_error', handleConnectError);
+            socket.disconnect();
+        };
+    }, [user?._id]);
+
     return (
         <div className="flex-col ">
             <div className=" border-t-gray-200 border-b">

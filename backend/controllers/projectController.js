@@ -4,13 +4,14 @@ const { getTaskByCount } = require('../utils/taskStats');
 const touchWorkspace = require('../utils/touchWorkspace');
 
 const createProject = async (req, res) => {
+
     try {
         const { name, description } = req.body;
         if (!name) return res.status(400).json({ message: 'Name is required' });
 
         const project = await Project.create({ name, description, workspace: req.workspace._id });
         await touchWorkspace(req.workspace);
-        
+
         getIO().to(req.workspace._id.toString()).emit('newProject', project);
 
         res.status(201).json({ project });
@@ -22,32 +23,33 @@ const createProject = async (req, res) => {
 };
 
 const getProjects = async (req, res) => {
+    
     try {
-        const filter = {workspace: req.params.workspaceId};
-        if(req.query.name) filter.name = { $regex: req.query.name, $options: 'i'};
-        
+        const filter = { workspace: req.params.workspaceId };
+        if (req.query.name) filter.name = { $regex: req.query.name, $options: 'i' };
+
         let page = parseInt(req.query.page) || 1;
         let limit = parseInt(req.query.limit) || 10;
-        if(page< 1) page = 1;
-        if(limit< 1) limit = 10;
-        if(limit > 100) limit = 100;
+        if (page < 1) page = 1;
+        if (limit < 1) limit = 10;
+        if (limit > 100) limit = 100;
 
         const skip = (page - 1) * limit;
 
         const projects = await Project.find(filter).skip(skip).limit(limit).lean();
         const total = await Project.countDocuments(filter);
-        const projectIds = projects.map((proj)=> proj._id);
-        
+        const projectIds = projects.map((proj) => proj._id);
+
         const countsByProject = await getTaskByCount(projectIds);
 
-        const projectWithStats = projects.map((p)=> {
+        const projectWithStats = projects.map((p) => {
 
             const c = countsByProject[p._id.toString()] || { todo: 0, inProgress: 0, done: 0 };
             const taskTotal = c.todo + c.inProgress + c.done;
 
             return {
                 ...p,
-                taskCounts: { taskTotal, ...c},
+                taskCounts: { taskTotal, ...c },
                 progress: taskTotal === 0 ? 0 : Math.round((c.done / taskTotal) * 100),
             };
 
@@ -55,9 +57,9 @@ const getProjects = async (req, res) => {
 
 
         res.status(200).json({
-             projectWithStats,
-            pagination: { total, page, limit, totalPages: Math.ceil(total / limit )}
-         });
+            projectWithStats,
+            pagination: { total, page, limit, totalPages: Math.ceil(total / limit) }
+        });
     }
     catch (e) {
         console.log(e);
@@ -66,8 +68,14 @@ const getProjects = async (req, res) => {
 }
 
 const getProject = async (req, res) => {
+    try {
+        res.status(200).json({ project: req.project });
+    }
+    catch (e) {
+        res.status(500).json({message: 'Invalid Id format'});
+    }
 
-    res.status(200).json({ project: req.project });
+
 
 }
 
@@ -94,7 +102,7 @@ const deleteProject = async (req, res) => {
         await Project.findByIdAndDelete(req.params.id);
         await touchWorkspace(req.workspace);
         getIO().to(req.workspace._id.toString()).emit('deleteProject', req.params.id);
-        
+
         res.status(200).json({ message: 'Project deleted successfully' });
 
     }

@@ -38,6 +38,32 @@ describe('tasks', () => {
         expect(res.body.task.priority).toBe('high');
     });
 
+    test('member can unassign a task', async () => {
+        const owner = await registerAndLogin();
+        const { projectId, workspaceId } = await createWorkspaceAndProject(owner.token);
+        const member = await registerAndLogin();
+
+        const addRes = await request(app)
+            .post(`/api/workspace/${workspaceId}/members`)
+            .set('Authorization', `Bearer ${owner.token}`)
+            .send({ email: member.email });
+        expect(addRes.statusCode).toBe(200);
+
+        const createRes = await request(app)
+            .post(`/api/projects/${projectId}/tasks`)
+            .set('Authorization', `Bearer ${owner.token}`)
+            .send({ title: 'Task to unassign', assignee: member.email });
+        expect(createRes.statusCode).toBe(201);
+
+        const updateRes = await request(app)
+            .put(`/api/tasks/${createRes.body.task._id}`)
+            .set('Authorization', `Bearer ${owner.token}`)
+            .send({ assignee: '' });
+
+        expect(updateRes.statusCode).toBe(200);
+        expect(updateRes.body.task.assignee).toBeNull();
+    });
+
     test('non-member cannot access a task in the workspace', async () => {
         const owner = await registerAndLogin();
         const { projectId } = await createWorkspaceAndProject(owner.token);
@@ -78,5 +104,15 @@ describe('tasks', () => {
 
         expect(res.statusCode).toBe(200);
         expect(res.body.tasks.map(task => task.title)).toEqual(['Alpha task', 'Zebra task']);
+    });
+
+    test('returns 400 for a malformed project id', async () => {
+        const owner = await registerAndLogin();
+
+        const res = await request(app)
+            .get('/api/projects/not-an-object-id/tasks')
+            .set('Authorization', `Bearer ${owner.token}`);
+
+        expect(res.statusCode).toBe(400);
     });
 });

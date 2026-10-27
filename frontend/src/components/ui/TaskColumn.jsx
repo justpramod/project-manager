@@ -1,5 +1,5 @@
 import TaskCard from "./TaskCard";
-const TaskColumn = ({ title, status, tasks = [] , total, loading, onAddTask }) => {
+const TaskColumn = ({ title, status, tasks = [] , total, loading, onAddTask, onOpen }) => {
 
     return (
      
@@ -46,6 +46,7 @@ const TaskColumn = ({ title, status, tasks = [] , total, loading, onAddTask }) =
                          <TaskCard 
                          key={task._id}
                         task={task}
+                        onClick={() => onOpen(task)}
                          />
                     ))
                 }
