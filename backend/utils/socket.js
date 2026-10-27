@@ -2,9 +2,11 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const { Server } = require('socket.io');
 const Project = require('../models/Project');
+const Task = require('../models/Task');
 const User = require('../models/User');
 const Workspace = require('../models/Workspace');
 const { verifyToken } = require('../middleware/authMiddleware');
+const { addPresence, removePresence, onlineIds } = require('./presence');
 let io;
 // initSocket sets the module-level io variable once.
 function initSocket(server) {
@@ -36,15 +38,48 @@ function initSocket(server) {
     io.on('connection', (socket) => {
         console.log('A user connected: ', socket.id);
         const userRoom = socket.user._id.toString();
+        socket.workspaceIds = new Set();
         socket.join(userRoom);
+
+        const emitPresence = (workspaceId) => {
+            io.to(workspaceId).emit('presenceChanged', {
+                workspaceId,
+                onlineUserIds: onlineIds(workspaceId)
+            });
+        };
 
         socket.on('error', (error) => {
             console.error('Socket error:', error);
         });
 
-        socket.on('joinTask', (taskId)=>{
-            socket.join(taskId);
-            console.log(`Socket ${socket.id} joined task room ${taskId}`);
+        socket.on('joinTask', async (taskId, acknowledge) => {
+            try {
+                if (!mongoose.isValidObjectId(taskId)) {
+                    return acknowledge?.({ ok: false, message: 'Invalid task ID' });
+                }
+
+                const task = await Task.findById(taskId).select('project');
+                const project = task && await Project.findById(task.project).select('workspace');
+                const workspace = project && await Workspace.findById(project.workspace).select('members');
+                const isMember = workspace?.members.some((member) => member.user.toString() === userRoom);
+
+                if (!isMember) {
+                    return acknowledge?.({ ok: false, message: 'Unauthorized' });
+                }
+
+                socket.join(taskId);
+                console.log(`Socket ${socket.id} joined task room ${taskId}`);
+                acknowledge?.({ ok: true });
+            } catch (error) {
+                console.error('Task room join failed:', error);
+                acknowledge?.({ ok: false, message: 'Unable to join task room' });
+            }
+        });
+
+        socket.on('leaveTask', (taskId, acknowledge) => {
+            socket.leave(taskId);
+            console.log(`Socket ${socket.id} left task room ${taskId}`);
+            acknowledge?.({ ok: true });
         });
 
         socket.on('joinProject', async (projectId, acknowledge) => {
@@ -76,7 +111,18 @@ function initSocket(server) {
         });
 
         socket.on('leaveWorkspace', (workspaceId, acknowledge) => {
+            if (!socket.rooms.has(workspaceId)) {
+                return acknowledge?.({ ok: true });
+            }
+
             socket.leave(workspaceId);
+            socket.workspaceIds.delete(workspaceId);
+            if (removePresence(workspaceId, userRoom)) {
+                socket.to(workspaceId).emit('presenceUpdate', {
+                    userId: userRoom,
+                    online: false
+                });
+            }
             console.log(`Socket ${socket.id} left Workspace room ${workspaceId}`);
             acknowledge?.({ ok: true });
         });
@@ -92,14 +138,35 @@ function initSocket(server) {
                 if (!isMember) {
                     return acknowledge?.({ ok: false, message: 'Unauthorized' });
                 }
-
+                const wasIn = socket.rooms.has(workspaceId);
                 socket.join(workspaceId);
+
+                if (!wasIn) {
+                    socket.workspaceIds.add(workspaceId);
+                    if (addPresence(workspaceId, userRoom)) {
+                        socket.to(workspaceId).emit('presenceUpdate', { userId: userRoom, online: true });
+                    }
+                }
+                acknowledge?.({ ok: true, onlineIds: onlineIds(workspaceId) });
+                
                 console.log(`Socket ${socket.id} joined Workspace room ${workspaceId}`);
                 acknowledge?.({ ok: true });
             } catch (error) {
                 console.error('Workspace room join failed:', error);
                 acknowledge?.({ ok: false, message: 'Unable to join workspace room' });
             }
+        });
+
+        socket.on('disconnecting', () => {
+            for (const workspaceId of socket.workspaceIds) {
+                if (removePresence(workspaceId, userRoom)) {
+                    socket.to(workspaceId).emit('presenceUpdate', {
+                        userId: userRoom,
+                        online: false
+                    });
+                }
+            }
+            socket.workspaceIds.clear();
         });
 
         socket.on('disconnect', () => {
