@@ -28,7 +28,8 @@
     "mongodb": "^7.5.0",
     "mongoose": "^9.9.2",
     "multer": "^2.2.0",
-    "socket.io": "^4.8.3"
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.4"
   },
   "devDependencies": {
     "jest": "^30.5.0",

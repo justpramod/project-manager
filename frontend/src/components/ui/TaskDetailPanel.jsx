@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { deleteTask, updateTask } from "../../api/taskApi";
 import { authContext } from "../../contexts/AuthContext";
 import { getImageUrl } from "../../utils/getImageUrl";
+import { socket } from "../../utils/socket";
 import AlertDialog from './AlertDialog';
 
 const getAssigneeEmail = (assignee) => assignee?.email || '';
@@ -126,6 +127,19 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
         document.addEventListener('keydown', downKeyHandler);
         return () => document.removeEventListener('keydown', downKeyHandler);
     }, [task, onClose]);
+
+    useEffect(() => {
+        if (!task?._id) return;
+
+        const joinTaskRoom = () => socket.emit('joinTask', task._id);
+        socket.on('connect', joinTaskRoom);
+        if (socket.connected) joinTaskRoom();
+
+        return () => {
+            socket.off('connect', joinTaskRoom);
+            if (socket.connected) socket.emit('leaveTask', task._id);
+        };
+    }, [task?._id]);
 
     if (!task) return null;
 
