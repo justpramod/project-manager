@@ -140,6 +140,9 @@ const WorkspaceDetailPage = () => {
 
 
     const currentWorkspaceName = workspace?.name;
+    const onlineMembers = workspace?.members?.filter((member) =>
+        onlineIds.some((id) => id?.toString() === (member.user?._id ?? member.user)?.toString()) // ?? means if member.user?._id is undefined, then use member.user
+    ) ?? [];
 
     const handleAddMemberSuccess = () => {
 
@@ -214,7 +217,12 @@ const WorkspaceDetailPage = () => {
                 <div className="mb-5 flex items-center justify-between">
                     <div>
                         <h2 className="text-2xl font-bold">Online Presence</h2>
-                        <p className="text-slate-500 text-sm">Workspace members currently online and available for collaboration.</p>
+                        <p className="text-slate-500 text-sm">
+                            {
+                                onlineMembers.length === 0 ? '' : 
+                                'Workspace members currently online and available for collaboration.'
+                            }
+                        </p>
                     </div>
                     <button
                         type="button"
@@ -233,12 +241,12 @@ const WorkspaceDetailPage = () => {
 
                 {isPresenceOpen && <div id="online-presence-content">
                     {
-                        onlineIds.length === 0 ? <p className="text-slate-500">No one is currently online.</p>
+                        onlineMembers.length === 0 ? <p className="text-slate-500">No one is currently online.</p>
                             :
                             <div className="mb-5 max-h-72 overflow-y-auto rounded-2xl border border-slate-200 bg-slate-50 px-6 py-5">
                                 {
 
-                                    workspace?.members?.filter((member) => onlineIds.some((id) => id?.toString() === (member.user?._id ?? member.user)?.toString())).map((member) =>
+                                    onlineMembers.map((member) =>
 
                                     (<div key={member.user?._id ?? member.user} className="flex items-center gap-3 divide-x-2 divide-slate-200 rounded-lg px-3 py-2">
                                         <img src={getImageUrl(member.user?.avatarUrl)} alt={member.user?.userName} className="w-7 h-7 rounded-full object-cover" />
