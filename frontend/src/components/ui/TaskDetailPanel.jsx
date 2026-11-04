@@ -5,6 +5,8 @@ import { getImageUrl } from "../../utils/getImageUrl";
 import { socket } from "../../utils/socket";
 import AlertDialog from './AlertDialog';
 
+import AttachmentUI from "./AttachmentUI";
+
 const getAssigneeEmail = (assignee) => assignee?.email || '';
 
 // IDs may arrive as strings, MongoDB objects, or populated user objects.
@@ -19,12 +21,6 @@ const getTaskValues = (task) => ({
     priority: task?.priority || 'medium',
     assignee: getAssigneeEmail(task?.assignee),
 });
-
-const formatFileSize = (size) => {
-    if (size < 1024) return `${size} B`;
-    if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)} KB`;
-    return `${(size / (1024 * 1024)).toFixed(1)} MB`;
-};
 
 const statusOptions = [
     { value: 'todo', label: 'Todo', dot: 'bg-slate-400' },
@@ -105,6 +101,7 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
     const [attachmentError, setAttachmentError] = useState('');
     const [attachmentUploading, setAttachmentUploading] = useState(false);
     const [attachmentDeletingId, setAttachmentDeletingId] = useState(null);
+    const [activeTab, setActiveTab] = useState('attachments');
     // useRef used to reference the description textarea so we can adjust its height dynamically as the user types.
     const descriptionRef = useRef(null);
 
@@ -122,6 +119,7 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
         setAttachmentError('');
         setAttachmentUploading(false);
         setAttachmentDeletingId(null);
+        setActiveTab('attachments');
     }, [task]);
 
     // Fetch the attachments for the task whenever the task changes. If the task is deleted or closed, cancel any ongoing fetch to avoid setting state on an unmounted component.
@@ -203,8 +201,6 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
         getId(member.user) === userId && member.role === 'owner'
     ));
     const canDeleteTask = userId === taskCreatorId || isWorkspaceOwner;
-    const apiBaseUrl = import.meta.env.VITE_API_URL.replace(/\/api\/?$/, '');
-
     // Update one field while preserving the rest of the form.
     const setField = (field, value) => {
         setValues((currentValues) => ({ ...currentValues, [field]: value }));
@@ -359,7 +355,7 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
                     <div>
                     
                         <label htmlFor="detail-task-description" className="mb-2 block text-xs font-semibold text-slate-700">Description</label>
-                        <textarea ref={descriptionRef} id="detail-task-description" rows="1" value={values.description} onChange={(event) => setField('description', event.target.value)} className="max-h-48 w-full resize-none overflow-y-auto rounded-lg border border-slate-200 px-3 py-2 text-sm leading-5 text-slate-900 outline-none focus:ring-2 focus:ring-indigo-100" />
+                        <textarea ref={descriptionRef} id="detail-task-description" rows="1" value={values.description} onChange={(event) => setField('description', event.target.value)} className="max-h-48 w-full resize-none overflow-y-auto border-0 bg-transparent px-0 py-0 text-sm leading-5 text-slate-900 outline-none focus:ring-0" />
                     </div>
 
                     {error && <div role="alert" className="rounded-lg border border-red-100 bg-red-50 px-3 py-2.5 text-xs text-red-600">{error}</div>}
@@ -370,64 +366,44 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
                     </div>
                 </form>
 
-                <section className="border-t border-slate-200 px-5 py-4" >
-                    <div className="flex items-center justify-between gap-3">
-                        <div>
-                            <h2 id="attachments-heading" className="text-sm font-semibold text-slate-800">Attachments</h2>
-                            <p className="mt-1 text-xs text-slate-400">Files shared with this task</p>
-                        </div>
-                        <label className="inline-flex cursor-pointer items-center gap-2 rounded-md bg-indigo-600 px-3 py-2 text-xs font-semibold text-white hover:bg-indigo-700 has-disabled:opacity-60">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                                <path d="M12 5v14M5 12h14" />
-                            </svg>
-                            {attachmentUploading ? 'Uploading...' : 'Add file'}
-                            <input type="file" className="sr-only" onChange={handleAttachmentUpload} disabled={attachmentUploading} />
-                        </label>
-                    </div>
-
-                    {attachmentError && <p role="alert" className="mt-3 rounded-md border border-red-100 bg-red-50 px-3 py-2 text-xs text-red-600">{attachmentError}</p>}
-
-                    <div className="mt-3 max-h-48 space-y-2 overflow-y-auto">
-                        {attachments.length === 0 && !attachmentError && <p className="py-3 text-xs text-slate-400">No attachments yet.</p>}
-                        {attachments.map((attachment) => {
-                            const canDeleteAttachment = getId(attachment.uploadedBy) === userId;
-                            return (
-                                <div key={attachment._id} className="flex items-center gap-3 rounded-md border border-slate-200 px-3 py-2">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-slate-400" aria-hidden="true">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                        <path d="M14 2v6h6M8 13h8M8 17h5" />
-                                    </svg>
-                                    <div className="min-w-0 flex-1">
-                                        <a href={`${apiBaseUrl}${attachment.url}`} target="_blank" rel="noreferrer" className="block truncate text-xs font-medium text-slate-700 hover:text-indigo-600">
-                                            {attachment.filename}
-                                        </a>
-                                        <span className="text-[11px] text-slate-400">{formatFileSize(attachment.size)}</span>
-                                    </div>
-                                    {canDeleteAttachment && <button type="button" onClick={() => handleAttachmentDelete(attachment)} disabled={attachmentDeletingId === attachment._id} aria-label={`Delete ${attachment.filename}`} className="rounded p-1.5 text-slate-400 hover:bg-red-50 hover:text-red-600 disabled:opacity-50">
-                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                                            <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v5M14 11v5" />
-                                        </svg>
-                                    </button>}
-                                </div>
-                            );
-                        })}
-                    </div>
-                </section>
-
-                {canDeleteTask && (
-                    <section className="border-t border-red-100 bg-red-50/40 px-5 py-4" aria-labelledby="danger-zone-heading">
-                        <h2 id="danger-zone-heading" className="text-[11px] font-bold uppercase tracking-wide text-red-700">Danger Zone</h2>
-                        <p className="mt-1 text-xs text-red-600">Delete this task permanently. Review carefully before continuing.</p>
-                        <button type="button" onClick={() => setDeleteDialogOpen(true)} disabled={deleting || submitting} className="mt-3 flex w-full items-center justify-center gap-2 rounded-md border border-red-300 bg-transparent px-3 py-2 text-xs font-semibold text-red-700 hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-60">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                                <path d="M3 6h18" />
-                                <path d="M8 6V4h8v2" />
-                                <path d="m19 6-1 14H6L5 6" />
-                                <path d="M10 11v5M14 11v5" />
-                            </svg>
-                            {deleting ? 'Deleting...' : 'Delete Task'}
+                <div className="border-t border-slate-200 px-5 pt-4">
+                    <div className="flex gap-6 border-b border-slate-200" role="tablist" aria-label="Task details">
+                        <button
+                            type="button"
+                            role="tab"
+                            aria-selected={activeTab === 'comments'}
+                            onClick={() => setActiveTab('comments')}
+                            className={`border-b-2 pb-2 text-xs font-semibold ${activeTab === 'comments' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-400 hover:text-slate-600'}`}
+                        >
+                            Comments
                         </button>
-                    </section>
+                        <button
+                            type="button"
+                            role="tab"
+                            aria-selected={activeTab === 'attachments'}
+                            onClick={() => setActiveTab('attachments')}
+                            className={`border-b-2 pb-2 text-xs font-semibold ${activeTab === 'attachments' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-400 hover:text-slate-600'}`}
+                        >
+                            Attachments
+                        </button>
+                    </div>
+                </div>
+
+                {activeTab === 'attachments' && (
+                    <AttachmentUI
+                        attachments={attachments}
+                        attachmentUploading={attachmentUploading}
+                        attachmentError={attachmentError}
+                        attachmentDeletingId={attachmentDeletingId}
+                        apiBaseUrl={import.meta.env.VITE_API_URL.replace(/\/api\/?$/, '')}
+                        canDeleteTask={canDeleteTask}
+                        deleting={deleting}
+                        handleAttachmentDelete={handleAttachmentDelete}
+                        handleAttachmentUpload={handleAttachmentUpload}
+                        onDeleteTask={() => setDeleteDialogOpen(true)}
+                        submitting={submitting}
+                        userId={userId}
+                    />
                 )}
             </aside>
             <AlertDialog
