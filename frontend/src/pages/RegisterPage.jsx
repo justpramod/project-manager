@@ -48,17 +48,21 @@ function RegisterPage() {
                     </div>
 
                     <form className="space-y-6" onSubmit={handleSubmit}>
-                        <InputField label= "Username" type= "text" placeholder= "example_01" value={username} onChange={(e)=> setUsername(e.target.value)}/>        
-                        <InputField label="Email Address" type="email" placeholder="example@gmail.com" value={email} onChange={(e)=> setEmail(e.target.value)}  />
-                        <InputField label="Password" type="password" placeholder="Strong password"  value={password} onChange={(e)=> setPassword(e.target.value)}/>
+                        <InputField label="Username" type="text" placeholder="example_01" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <InputField label="Email Address" type="email" placeholder="example@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <InputField label="Password" type="password" placeholder="Strong password" isPassword={true} value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                        <button type='submit' disabled = {submitting} className="w-full bg-[#4338CA] text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition mt-6">
-                           {submitting ? 'Registering' : "Register"} 
+                        <button type='submit' disabled={submitting} className="w-full bg-[#4338CA] text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition mt-6">
+                            {submitting ? 'Registering' : "Register"}
                         </button>
+
+                        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+                        
                     </form>
                     <div className="mt-8 text-center text-sm text-gray-600">
                         Already have an account? <Link to="/login" className="text-[#4338CA] font-semibold hover:underline">SignIn here</Link>
                     </div>
+
                 </AuthCard>
             </div>
 

@@ -53,6 +53,8 @@ function LoginPage() {
                         <button type='submit' disabled = {submitting} className="w-full bg-[#4338CA] text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition mt-6">
                            { submitting? "Signing In...": "Sign In"}
                         </button>
+
+                        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                     </form>
                     <div className="mt-8 text-center text-sm text-gray-600">
                         Don't have an account? <Link to="/register" className="text-[#4338CA] font-semibold hover:underline">Register here</Link>
