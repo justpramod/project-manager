@@ -32,4 +32,17 @@ const deleteAttachment = async (taskId, attachmentId) => {
     return axiosClient.delete(`/tasks/${taskId}/attachments/${attachmentId}`);
 };
 
-export { createTask, updateTask, deleteTask, getAttachments, uploadAttachment, deleteAttachment };
+const getComments = async (taskId) => {
+    return axiosClient.get(`/tasks/${taskId}/comments`);
+}
+
+const createComment = async (taskId, text) =>{
+    return axiosClient.post(`/tasks/${taskId}/comments`, { text });
+
+}
+
+const deleteComment = async (taskId, commentId) =>{
+    return axiosClient.delete(`/tasks/${taskId}/comments/${commentId}`);
+}
+
+export { createTask, updateTask, deleteTask, getAttachments, uploadAttachment, deleteAttachment, getComments, createComment, deleteComment };

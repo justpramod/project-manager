@@ -1,11 +1,12 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { deleteAttachment, deleteTask, getAttachments, updateTask, uploadAttachment } from "../../api/taskApi";
+import { deleteAttachment, deleteTask, getAttachments, updateTask, uploadAttachment, deleteComment, getComments, createComment } from "../../api/taskApi";
 import { authContext } from "../../contexts/AuthContext";
 import { getImageUrl } from "../../utils/getImageUrl";
 import { socket } from "../../utils/socket";
 import AlertDialog from './AlertDialog';
 
 import AttachmentUI from "./AttachmentUI";
+import CommentUi from "./CommentUi";
 
 const getAssigneeEmail = (assignee) => assignee?.email || '';
 
@@ -100,10 +101,18 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
     const [attachments, setAttachments] = useState([]);
     const [attachmentError, setAttachmentError] = useState('');
     const [attachmentUploading, setAttachmentUploading] = useState(false);
-    const [attachmentDeletingId, setAttachmentDeletingId] = useState(null);
+    const [attachmentDeletingId, setAttachmentDeletingId] = useState(null); // Id of the attachment currently being deleted, to disable its delete button and show a loading state.
     const [activeTab, setActiveTab] = useState('attachments');
     // useRef used to reference the description textarea so we can adjust its height dynamically as the user types.
     const descriptionRef = useRef(null);
+
+    const [comments, setComments] = useState([]);
+    const [commentError, setCommentError] = useState('');
+    const [commentSubmitting, setCommentSubmitting] = useState(false);
+    const [commentDeletingId, setCommentDeletingId] = useState(null);
+    const [commentText, setCommentText] = useState('');
+    
+
 
     useEffect(() => {
         // Replace the form values whenever the user opens a different task.
@@ -134,6 +143,15 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
             })
             .catch((err) => {
                 if (!cancelled) setAttachmentError(err?.response?.data?.message || 'Failed to load attachments.');
+            });
+        
+        setCommentError('');
+        getComments(task._id)
+            .then((response) => {
+                if (!cancelled) setComments(response.data.comments ?? []);
+            })
+            .catch((err) => {
+                if (!cancelled) setCommentError(err?.response?.data?.message || 'Failed to load comments.');
             });
 
         return () => {
@@ -209,6 +227,7 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
     const assigneeOptions = [
         { value: '', label: 'Unassigned' },
         ...members.map((member) => {
+            // If the member is a populated user object, use its email and username. If it's just an ID or email, use that as the label.
             const user = member.user ?? member;
             return { value: user.email, label: user.username || user.email, email: user.email, user };
         }),
@@ -270,7 +289,7 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
         try {
             const response = await uploadAttachment(task._id, file);
             setAttachments((currentAttachments) => currentAttachments.some(({ _id }) => _id === response.data.attachment._id)
-                ? currentAttachments
+                ? currentAttachments // If the attachment already exists in the list, don't add it again.
                 : [...currentAttachments, response.data.attachment]);
         } catch (err) {
             setAttachmentError(err?.response?.data?.message || 'Failed to upload attachment.');
@@ -293,6 +312,46 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
             setAttachmentDeletingId(null);
         }
     };
+
+  const handleCommentSubmit = async (event) =>{
+
+    const text = event.target.value.trim();
+
+    if(!text || commentSubmitting) return; // If the comment is empty or a submission is already in progress, do nothing.
+
+    setCommentSubmitting(true);
+    setCommentError('');
+
+    try{
+        const response = await createComment(task._id, text);
+        setComments((currentComments) => [...currentComments, response.data.comment]);
+        setCommentText(''); // Clear the comment input after successful submission.
+    } catch(err){
+        setCommentError(err?.response?.data?.message || 'Failed to add comment.');
+    } finally {
+        setCommentSubmitting(false);
+    }
+
+  }
+
+  const handleCommentDelete = async (comment) =>{
+
+    if(getId(comment.createdBy) !== userId || commentDeletingId) return; // If the user is not the creator of the comment or a deletion is already in progress, do nothing.
+
+    setCommentDeletingId(comment._id);
+    setCommentError('');
+
+    try{
+        await deleteComment(task._id, comment._id);
+        setComments((currentComments) => currentComments.filter(({ _id}) => _id !== comment._id));
+    } catch(err) {
+        setCommentError(err?.response?.data?.message || 'Failed to delete comment.');
+    }
+    finally {
+        setCommentDeletingId(null);
+    }
+
+  }
 
     return (
         <div className="fixed inset-0 z-50  bg-slate-900/10" onClick={onClose}>
@@ -405,6 +464,27 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
                         userId={userId}
                     />
                 )}
+
+                {
+                    activeTab === 'comments' && (
+                        <CommentUi
+                            comments = {comments}
+                            commentError = {commentError}
+                            commentSubmitting = {commentSubmitting}
+                            commentDeletingId = {commentDeletingId}
+                            commentText = {commentText}
+                            canDeleteTask = {canDeleteTask}
+                            deleting = {deleting}
+                            handleCommentDelete = {handleCommentDelete}
+                            setCommentText = {setCommentText}
+                            onDeleteTask = {() => setDeleteDialogOpen(true)}
+                            submitting = {submitting}
+                            userId = {userId}
+                            taskId = {task._id}
+                            handleCommentSubmit = {handleCommentSubmit}
+                        />
+                    )
+                }
             </aside>
             <AlertDialog
                 open={deleteDialogOpen}
