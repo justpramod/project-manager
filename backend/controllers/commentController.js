@@ -8,6 +8,7 @@ try{
     if(!text) return res.status(400).json({message: 'text filed required to comment'});
 
     const comment = await Comment.create({text, author: req.user._id, task: req.task._id});
+    await comment.populate({path: 'author', select: 'username avatarUrl'});
 
     if(req.task.assignee && req.task.assignee.toString() !== req.user._id.toString()){
       await Notification.create({
@@ -30,7 +31,8 @@ catch(e){
 const getComments = async(req, res)=>{
     try{
            
-            const comments = await Comment.find({ task: req.task._id });
+            const comments = await Comment.find({ task: req.task._id })
+                .populate('author', 'username avatarUrl');
             if(comments.length===0) return res.status(200).json({message: 'No comments yet'});
             res.status(200).json({comments});
     }
