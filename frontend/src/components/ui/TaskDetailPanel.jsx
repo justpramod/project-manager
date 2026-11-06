@@ -111,6 +111,10 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
     const [commentSubmitting, setCommentSubmitting] = useState(false);
     const [commentDeletingId, setCommentDeletingId] = useState(null);
     const [commentText, setCommentText] = useState('');
+
+    const [panelWidth, setPanelWidth] = useState(null);
+    const [isResizing, setIsResizing] = useState(false);
+    const resizeStartRef = useRef(null);
     
 
 
@@ -178,6 +182,37 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
         document.addEventListener('keydown', downKeyHandler);
         return () => document.removeEventListener('keydown', downKeyHandler);
     }, [task, onClose]);
+
+    useEffect(() => {
+        if (!isResizing) return;
+
+        const handlePointerMove = (event) => {
+
+            const start = resizeStartRef.current;
+            if (!start) return;
+
+            const minimumWidth = window.innerWidth / 3;
+            const maximumWidth = window.innerWidth * 0.8;
+            const nextWidth = start.width + start.clientX - event.clientX;
+            setPanelWidth(Math.min(Math.max(nextWidth, minimumWidth), maximumWidth));
+        };
+        const stopResizing = () => {
+            resizeStartRef.current = null;
+            setIsResizing(false);
+        };
+
+        document.addEventListener('pointermove', handlePointerMove);
+        document.addEventListener('pointerup', stopResizing);
+        document.body.style.cursor = 'col-resize';
+        document.body.style.userSelect = 'none';
+
+        return () => {
+            document.removeEventListener('pointermove', handlePointerMove);
+            document.removeEventListener('pointerup', stopResizing);
+            document.body.style.cursor = '';
+            document.body.style.userSelect = '';
+        };
+    }, [isResizing]);
 
     useEffect(() => {
         if (!task?._id) return;
@@ -314,8 +349,9 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
     };
 
   const handleCommentSubmit = async (event) =>{
+        event.preventDefault();
 
-    const text = event.target.value.trim();
+        const text = commentText.trim();
 
     if(!text || commentSubmitting) return; // If the comment is empty or a submission is already in progress, do nothing.
 
@@ -353,10 +389,41 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
 
   }
 
+    const startResizing = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        resizeStartRef.current = {
+            clientX: event.clientX,
+            width: event.currentTarget.parentElement.getBoundingClientRect().width,
+        };
+        setPanelWidth(resizeStartRef.current.width);
+        setIsResizing(true);
+    };
+
+    const adjustPanelWidth = (event) => {
+        const step = event.key === 'ArrowLeft' ? 24 : event.key === 'ArrowRight' ? -24 : 0;
+        if (!step) return;
+
+        event.preventDefault();
+        const currentWidth = panelWidth || event.currentTarget.parentElement.getBoundingClientRect().width;
+        const minimumWidth = window.innerWidth / 3;
+        const maximumWidth = window.innerWidth * 0.8;
+        setPanelWidth(Math.min(Math.max(currentWidth + step, minimumWidth), maximumWidth));
+    };
+
     return (
         <div className="fixed inset-0 z-50  bg-slate-900/10" onClick={onClose}>
-            <aside className="absolute right-0 top-0 h-full w-full md:w-1/3 overflow-y-auto border-l border-slate-200 bg-white shadow-lg" onClick={(event) => event.stopPropagation()}>
-                <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+            <aside
+                className="absolute right-0 top-0 flex h-full w-full flex-col overflow-hidden border-l border-slate-200 bg-white shadow-lg md:w-1/3"
+                style={panelWidth ? { width: `${panelWidth}px` } : undefined}
+                onClick={(event) => event.stopPropagation()}
+            >
+                <div
+                    onPointerDown={startResizing}
+                    onKeyDown={adjustPanelWidth}
+                    className="absolute left-0 top-0 z-10 h-full w-1 cursor-col-resize touch-none hover:bg-indigo-200 focus:bg-indigo-300 focus:outline-none"
+                />
+                <div className="flex shrink-0 items-center justify-between border-b border-slate-200 px-5 py-4">
                     <input
                         id="detail-task-title"
                         value={values.title}
@@ -373,7 +440,7 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
                     </button>
                 </div>
 
-                <form className="space-y-4 px-5 py-4" onSubmit={handleSubmit}>
+                <form className="shrink-0 space-y-4 px-5 py-4" onSubmit={handleSubmit}>
                     <div className="divide-y divide-slate-100">
                         <div className="flex items-center justify-between gap-6 py-3">
                             <span className="shrink-0 text-xs font-medium text-slate-500">Status</span>
@@ -425,8 +492,8 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
                     </div>
                 </form>
 
-                <div className="border-t border-slate-200 px-5 pt-4">
-                    <div className="flex gap-6 border-b border-slate-200" role="tablist" aria-label="Task details">
+                <div className="shrink-0 border-t border-slate-200 px-5 pt-4">
+                    <div className="flex gap-6 border-b border-slate-200 " role="tablist" aria-label="Task details">
                         <button
                             type="button"
                             role="tab"
@@ -448,43 +515,43 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
                     </div>
                 </div>
 
-                {activeTab === 'attachments' && (
-                    <AttachmentUI
-                        attachments={attachments}
-                        attachmentUploading={attachmentUploading}
-                        attachmentError={attachmentError}
-                        attachmentDeletingId={attachmentDeletingId}
-                        apiBaseUrl={import.meta.env.VITE_API_URL.replace(/\/api\/?$/, '')}
-                        canDeleteTask={canDeleteTask}
-                        deleting={deleting}
-                        handleAttachmentDelete={handleAttachmentDelete}
-                        handleAttachmentUpload={handleAttachmentUpload}
-                        onDeleteTask={() => setDeleteDialogOpen(true)}
-                        submitting={submitting}
-                        userId={userId}
-                    />
-                )}
-
-                {
-                    activeTab === 'comments' && (
-                        <CommentUi
-                            comments = {comments}
-                            commentError = {commentError}
-                            commentSubmitting = {commentSubmitting}
-                            commentDeletingId = {commentDeletingId}
-                            commentText = {commentText}
-                            canDeleteTask = {canDeleteTask}
-                            deleting = {deleting}
-                            handleCommentDelete = {handleCommentDelete}
-                            setCommentText = {setCommentText}
-                            onDeleteTask = {() => setDeleteDialogOpen(true)}
-                            submitting = {submitting}
-                            userId = {userId}
-                            taskId = {task._id}
-                            handleCommentSubmit = {handleCommentSubmit}
+                <div className="min-h-0 flex-1 overflow-y-auto">
+                    {activeTab === 'attachments' && (
+                        <AttachmentUI
+                            attachments={attachments}
+                            attachmentUploading={attachmentUploading}
+                            attachmentError={attachmentError}
+                            attachmentDeletingId={attachmentDeletingId}
+                            apiBaseUrl={import.meta.env.VITE_API_URL.replace(/\/api\/?$/, '')}
+                            canDeleteTask={canDeleteTask}
+                            deleting={deleting}
+                            handleAttachmentDelete={handleAttachmentDelete}
+                            handleAttachmentUpload={handleAttachmentUpload}
+                            onDeleteTask={() => setDeleteDialogOpen(true)}
+                            submitting={submitting}
+                            userId={userId}
                         />
-                    )
-                }
+                    )}
+
+                    {activeTab === 'comments' && (
+                        <CommentUi
+                            comments={comments}
+                            commentError={commentError}
+                            commentSubmitting={commentSubmitting}
+                            commentDeletingId={commentDeletingId}
+                            commentText={commentText}
+                            canDeleteTask={canDeleteTask}
+                            deleting={deleting}
+                            handleCommentDelete={handleCommentDelete}
+                            setCommentText={setCommentText}
+                            onDeleteTask={() => setDeleteDialogOpen(true)}
+                            submitting={submitting}
+                            userId={userId}
+                            taskId={task._id}
+                            handleCommentSubmit={handleCommentSubmit}
+                        />
+                    )}
+                </div>
             </aside>
             <AlertDialog
                 open={deleteDialogOpen}
