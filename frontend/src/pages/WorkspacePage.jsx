@@ -115,7 +115,7 @@ const WorkspacePage = () => {
             }
 
             {!loading &&
-                <div className="p-8 bg-gray-50 min-h-screen">
+                <div className="min-h-screen bg-slate-100 p-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
                         {workspaces.map((workspace) => (

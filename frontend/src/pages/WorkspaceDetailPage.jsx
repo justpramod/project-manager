@@ -160,7 +160,7 @@ const WorkspaceDetailPage = () => {
 
     return (
 
-        <div className="mx-9 my-5 ">
+        <div className="min-h-screen bg-slate-100 px-9 py-5">
 
             <header className="flex items-center gap-3 px-2 py-3 text-sm text-slate-600">
                 <NavLink to="/workspace" className="hover:text-slate-900">Workspaces</NavLink>
@@ -177,7 +177,7 @@ const WorkspaceDetailPage = () => {
             }
             {
                 !workspaceLoading && !workspaceError && workspace && (
-                    <div className="mb-8 flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-6 py-5">
+                    <div className="mb-8 flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-6 py-5 shadow-sm">
                         <div className="flex-1">
                             <h1 className="text-4xl font-bold tracking-tight text-slate-900">{workspace.name}</h1>
                         </div>
@@ -243,7 +243,7 @@ const WorkspaceDetailPage = () => {
                     {
                         onlineMembers.length === 0 ? <p className="text-slate-500">No one is currently online.</p>
                             :
-                            <div className="mb-5 max-h-72 overflow-y-auto rounded-2xl border border-slate-200 bg-slate-50 px-6 py-5">
+                            <div className="mb-5 max-h-72 overflow-y-auto rounded-2xl border border-slate-200 bg-white px-6 py-5 shadow-sm">
                                 {
 
                                     onlineMembers.map((member) =>
@@ -312,7 +312,7 @@ const WorkspaceDetailPage = () => {
                 }
                 {
                     !projectLoading &&
-                    <div className="bg-white">
+                    <div className="rounded-2xl bg-transparent">
                         <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
                             {
                                 projects.map((project) => (

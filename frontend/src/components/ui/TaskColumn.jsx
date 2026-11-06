@@ -51,7 +51,7 @@ const TaskColumn = ({ title, status, tasks = [] , total, loading, onAddTask, onO
                     ))
                 }
                 {!loading && tasks.length === 0 && (
-                    <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-400">
+                    <div className="rounded-xl border border-dashed border-slate-300 bg-slate-100 px-4 py-8 text-center text-sm text-slate-400">
                         No {title.toLowerCase()} tasks yet
                     </div>
                 )}

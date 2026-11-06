@@ -280,7 +280,7 @@ const ProjectPage = () => {
 
 
     return (
-        <div className="mx-9 my-8  ">
+        <div className="min-h-screen bg-slate-100 px-9 py-8">
 
             <header className="flex items-center gap-3  px-2 py-3 text-sm text-slate-600">
                 <NavLink to="/workspace" className="hover:text-slate-900">Workspace</NavLink>
@@ -307,7 +307,7 @@ const ProjectPage = () => {
             {
                 !pageError && !projectLoading && project &&
                 (
-                    <div className="mb-8 flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 py-5 px-6 ">
+                    <div className="mb-8 flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-6 py-5 shadow-sm">
 
                         <div className="flex-1 flex-col">
 

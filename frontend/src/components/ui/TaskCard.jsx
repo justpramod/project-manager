@@ -21,7 +21,7 @@ const TaskCard = ({ task, title, onClick }) => {
         : 'recently';
 
     return (
-        <button type="button" onClick={onClick} className="w-full hover:cursor-pointer rounded-xl border border-slate-200 bg-slate-50 px-3 py-5 text-left shadow-[0_2px_6px_rgba(15,23,42,0.04)]">
+        <button type="button" onClick={onClick} className="w-full hover:cursor-pointer rounded-xl border border-slate-200 bg-white px-3 py-5 text-left shadow-[0_2px_6px_rgba(15,23,42,0.04)]">
             <div className="flex items-center justify-between gap-3">
                 <span className={`rounded-full px-2.5 py-1 text-[10px] font-semibold capitalize ${priorityStyles[priority] || priorityStyles.medium}`}>
                     {priority}

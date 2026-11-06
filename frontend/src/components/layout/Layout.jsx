@@ -33,9 +33,9 @@ const Layout = () => {
     }, [user?._id]);
 
     return (
-        <div className="flex-col ">
-            <div className=" border-t-gray-200 border-b">
-                <nav className="flex  items-center justify-between mx-7 py-3">
+        <div className="min-h-screen bg-slate-100 text-slate-800">
+            <div className="border-b border-slate-200 bg-white">
+                <nav className="flex items-center justify-between mx-7 py-3">
                     <div className="flex items-center  px-4 py-2  gap-8">
                         <Link to="/workspace">
                             <img src="/projectLogo.png" alt="Proj" className="w-12" />
