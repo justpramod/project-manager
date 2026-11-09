@@ -8,7 +8,6 @@ import { socket } from "../../utils/socket";
 const Layout = () => {
     const { user } = useAuth();
     const [notificationCount, setNotificationCount] = useState(5);
-    const [userAvatar, setUserAvatar] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
@@ -22,11 +21,12 @@ const Layout = () => {
             socket.disconnect();
         };
 
-        socket.auth = { token };
+        socket.auth = { token }; // Set the token for authentication
         socket.on('connect_error', handleConnectError);
-        socket.connect();
+        socket.connect(); // Connect the socket when the user is available
 
         return () => {
+            // Cleanup: remove the event listener and disconnect the socket when the component unmounts or user changes
             socket.off('connect_error', handleConnectError);
             socket.disconnect();
         };

@@ -6,7 +6,7 @@ import CreateWorkspaceModal from '../components/ui/CreateWorkspaceModal';
 import { socket } from '../utils/socket';
 
 const WorkspacePage = () => {
-    const { logout, user } = useAuth();
+    const {  user } = useAuth();
 
     const [workspaces, setWorkspaces] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -38,17 +38,17 @@ const WorkspacePage = () => {
 
         const addWorkspace = (workspace) => {
             setWorkspaces((currentWorkspaces) =>
-                currentWorkspaces.some((current) => current._id === workspace._id)
+                currentWorkspaces.some((current) => current._id === workspace._id) 
                     ? currentWorkspaces
                     : [workspace, ...currentWorkspaces]
             );
         };
         const updateWorkspace = (workspace) => {
             setWorkspaces((currentWorkspaces) => currentWorkspaces.map((current) =>
-                current._id === workspace._id ? workspace : current
+                current._id === workspace._id ? workspace : current // Update the workspace if it exists, otherwise keep the current one
             ));
         };
-        socket.on('workspaceCreated', addWorkspace);
+        socket.on('workspaceCreated', addWorkspace); 
         socket.on('workspaceUpdated', updateWorkspace);
         socket.on('deleteWorkspace', (workspaceId) => {
             setWorkspaces((currentWorkspaces) => currentWorkspaces.filter(({ _id }) => _id !== workspaceId));

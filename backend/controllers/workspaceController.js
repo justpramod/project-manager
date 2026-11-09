@@ -21,6 +21,7 @@ const createWorkspace = async (req, res)=>{
         });
 
         getIO().to(req.user._id.toString()).emit('workspaceCreated', workspace);
+        // Emit to the user who created the workspace to notify them of the new workspace
         
         res.status(201).json({message: 'Workspace created!', workspace: workspace});
     }
@@ -75,8 +76,8 @@ const updateWorkspace = async (req, res) => {
         const { name } = req.body;
         if(name) req.workspace.name = name;
         await req.workspace.save();
-        emitToWorkspaceMembers(req.workspace, 'workspaceUpdated', req.workspace);
-        getIO().to(req.workspace._id.toString()).emit('workspaceUpdated', req.workspace);
+        emitToWorkspaceMembers(req.workspace, 'workspaceUpdated', req.workspace); // Emit to all members of the workspace
+        getIO().to(req.workspace._id.toString()).emit('workspaceUpdated', req.workspace); // Emit to the workspace room for real-time updates
         res.status(200).json({ message: 'Workspace updated!', Workspace: req.workspace});
     }
     catch (e) {
@@ -92,6 +93,7 @@ const deleteWorkspace = async (req, res)=>{
         await Workspace.findByIdAndDelete(req.params.id);
         getIO().to(workspaceId).emit('deleteWorkspace', req.params.id);
         memberIds.forEach((memberId) => getIO().to(memberId).emit('deleteWorkspace', req.params.id));
+        // Emit to all members of the workspace and the workspace room to notify them of the deletion
         res.status(200).json({message: 'workspace deleted successfully'});
     }
     catch(e){
@@ -114,7 +116,8 @@ const addMember = async (req, res)=>{
         req.workspace.members.push({user: userToAdd._id, role: role || 'member'});
         await req.workspace.save();
 
-        getIO().to(req.workspace._id.toString()).emit('memberAdded', req.workspace);
+        getIO().to(req.workspace._id.toString()).emit('memberAdded', req.workspace); 
+        // passed req.workspace to the emit function so that the frontend can update the workspace members list in real-time
         emitToWorkspaceMembers(req.workspace, 'workspaceUpdated', req.workspace);
         getIO().to(userToAdd._id.toString()).emit('workspaceCreated', req.workspace);
 

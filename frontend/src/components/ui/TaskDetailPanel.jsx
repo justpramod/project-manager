@@ -228,15 +228,32 @@ const TaskDetailPanel = ({ task, onClose, onUpdated, onDeleted, members = [] }) 
             setAttachments((currentAttachments) => currentAttachments.filter(({ _id }) => _id !== attachmentId));
         };
 
+        const onCommentAdded = (comment) => {
+            setComments((currentComments) => currentComments.some((current) => current._id === comment._id) ? currentComments : [...currentComments, comment]);
+
+        };
+
+        const onCommentDeleted = (commentId) => {
+            setComments((currentComments) => currentComments.filter(({ _id }) => _id !== commentId));
+        }
+
         socket.on('connect', joinTaskRoom);
         socket.on('newAttachment', onAttachmentAdded);
         socket.on('deleteAttachment', onAttachmentDeleted);
+
+        socket.on('newComment', onCommentAdded);
+        socket.on('deleteComment', onCommentDeleted);
+        
+
         if (socket.connected) joinTaskRoom();
 
         return () => {
             socket.off('connect', joinTaskRoom);
             socket.off('newAttachment', onAttachmentAdded);
             socket.off('deleteAttachment', onAttachmentDeleted);
+
+            socket.off('newComment', onCommentAdded);
+            socket.off('deleteComment', onCommentDeleted);
             if (socket.connected) socket.emit('leaveTask', task._id);
         };
     }, [task?._id]);

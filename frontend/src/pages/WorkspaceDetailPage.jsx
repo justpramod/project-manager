@@ -41,7 +41,8 @@ const WorkspaceDetailPage = () => {
         return memberUserId?.toString() === userId?.toString() && member.role === 'owner';
     });
 
-
+// we use some to check if the current user is an owner of the workspace by iterating through the members array 
+// and checking if any member has a matching user ID and role of 'owner'. The double negation (!!) converts the result to a boolean value.
 
     const getWorkspace = async () => {
 
@@ -90,11 +91,13 @@ const WorkspaceDetailPage = () => {
         const joinWorkspaceRoom = () => socket.emit('joinWorkspace', workspaceId);
         socket.on('connect', joinWorkspaceRoom);
         if (socket.connected) joinWorkspaceRoom(); // if already connected, join the workspace room
+
         const updateWorkspace = (updatedWorkspace) => setWorkspace(updatedWorkspace);
         const refreshProjects = () => getProject();
 
         const join = () => socket.emit('joinWorkspace', workspaceId, (res) => {
-            if (res?.ok) setOnlineIds(res.onlineIds.filter((id) => !isCurrentUser(id)));
+            if (res?.ok) setOnlineIds(res.onlineIds.filter((id) => !isCurrentUser(id))); 
+            // Update the onlineIds state with the list of online user IDs, excluding the current user
         });
 
         const onPresence = ({ userId, online }) => {
@@ -103,9 +106,11 @@ const WorkspaceDetailPage = () => {
 
                 if (isCurrentUser(userId)) return prevOnlineIds;
 
+                // If the user is not the current user, update the onlineIds state
                 return online
                     ? (prevOnlineIds.includes(userId) ? prevOnlineIds : [...prevOnlineIds, userId])
-                    : prevOnlineIds.filter((id) => id?.toString() !== userId?.toString());
+                    : prevOnlineIds.filter((id) => id?.toString() !== userId?.toString()); 
+                    // for extra safety, we check if it is the current user, and if not, we filter it out from the onlineIds state
 
             });
 

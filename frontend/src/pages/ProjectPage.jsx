@@ -227,7 +227,7 @@ const ProjectPage = () => {
             }));
         };
 
-        socket.on('updateProject', onProjectUpdated);
+        socket.on('updateProject', onProjectUpdated); // onProjectUpdated recieves the updated project data (which we set in the backend controller) and updates the project state
         socket.on('workspaceUpdated', onWorkspaceUpdated);
         socket.on('memberAdded', onWorkspaceUpdated);
         socket.on('newTask', refreshTaskLists);
